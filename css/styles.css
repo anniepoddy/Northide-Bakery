@@ -155,18 +155,20 @@ p { text-wrap: pretty; }
 /* ---------- Hero ----------
    Words on the left, a full-height food slideshow on the right. */
 .hero {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: grid; grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
   height: 100svh; min-height: 640px; padding-top: var(--header-height);
   background: var(--paper);
 }
 .hero__text {
   position: relative; overflow: hidden;
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
-  padding: 3vh clamp(32px, 5vw, 96px) 3vh clamp(32px, 7vw, 128px);
+  /* The words sit in from the left so the drawings get their own band down the edge, like the side of the bag */
+  padding: 3vh clamp(28px, 3vw, 56px) 3vh clamp(130px, 13vw, 250px);
 }
 .hero__text > :not(.hero__ink) { position: relative; z-index: 1; }
-.hero__logo img { width: clamp(120px, min(10vw, 17vh), 170px); }
-.hero__eyebrow { margin-top: clamp(14px, 2.4vh, 24px); font-weight: 600; font-size: 19px; font-variant-caps: all-small-caps; letter-spacing: .18em; color: var(--red); }
+.hero__logo { align-self: flex-start; margin-left: -6px; } /* on the same left edge as the words (-6px makes up for the logo artwork's own margin) */
+.hero__logo img { width: clamp(180px, min(16.7vw, 27vh), 300px); } /* about 70% of the headline width */
+.hero__eyebrow { margin-top: clamp(14px, 2.2vh, 24px); font-weight: 600; font-size: 19px; font-variant-caps: all-small-caps; letter-spacing: .18em; color: var(--red); }
 .hero__eyebrow span { margin: 0 .55em; opacity: .5; }
 .hero__motto {
   margin-top: 10px; max-width: 8.5em;
@@ -186,11 +188,12 @@ p { text-wrap: pretty; }
 .hero__today .status:not(.is-closed)::before { animation: pulse 2.4s ease-in-out infinite; }
 .hero__today .status.is-closed { color: var(--ink); }
 
-/* Two small clusters of engraved drawings, tucked into corners of the words side and partly cut off, like the bag print */
+/* Three clusters of engraved drawings down the left edge, partly cut off like the bag print */
 .hero__ink { position: absolute; aspect-ratio: 1; pointer-events: none; }
-.hero__ink--bottom { right: 0; bottom: 0; width: clamp(160px, 13vw, 240px); translate: 6% 12%; }
-.hero__ink--top { right: 0; top: 0; width: clamp(140px, 13vw, 210px); translate: 2% -6%; }
-.hero__ink .d { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; rotate: var(--r, 0deg); color: var(--ink); opacity: .8; }
+.hero__ink--top { left: 0; top: 0; width: clamp(200px, 17vw, 310px); translate: -16% -6%; }
+.hero__ink--mid { left: 0; top: 50%; width: clamp(180px, 15vw, 280px); translate: -22% -46%; }
+.hero__ink--bottom { left: 0; bottom: 0; width: clamp(210px, 18vw, 330px); translate: -18% 8%; }
+.hero__ink .d { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; rotate: var(--r, 0deg); color: var(--ink); opacity: .85; }
 .hero__ink .d > .doodle { position: relative; width: 100%; }
 /* A paper-colored silhouette under each drawing, so the ones in front hide the ones behind */
 .hero__ink .d::before {
@@ -222,8 +225,10 @@ p { text-wrap: pretty; }
   .hero__show figcaption { left: 20px; right: 20px; bottom: 52px; font-size: 22px; }
   .hero__bars { left: 14px; right: auto; bottom: 16px; }
   .hero__text { padding: 48px var(--gutter) 96px; }
-  .hero__ink--top { width: 130px; }
-  .hero__ink--bottom { width: 200px; }
+  .hero__logo img { width: clamp(170px, 34vw, 240px); }
+  .hero__ink--mid { display: none; }
+  .hero__ink--top { left: auto; right: 0; width: clamp(150px, 26vw, 220px); translate: 2% -6%; }
+  .hero__ink--bottom { left: auto; right: 0; width: clamp(150px, 26vw, 230px); translate: 8% 34%; }
 }
 
 /* ---------- Marquee band (like the border on our bags) ---------- */
@@ -500,7 +505,7 @@ img[data-parallax] { scale: 1.16; }
 
   /* The corner drawings ink in softly after the words */
   .js .hero__ink .d { animation: ink-in 1.2s var(--ease-expo) both; animation-delay: calc(.5s + var(--n, 0) * 90ms); }
-  .js .hero__ink .d:nth-child(2) { --n: 1; } .js .hero__ink .d:nth-child(3) { --n: 2; } .js .hero__ink .d:nth-child(4) { --n: 3; } .js .hero__ink .d:nth-child(5) { --n: 4; }
+  .js .hero__ink .d:nth-child(2) { --n: 1; } .js .hero__ink .d:nth-child(3) { --n: 2; } .js .hero__ink .d:nth-child(4) { --n: 3; } .js .hero__ink .d:nth-child(5) { --n: 4; } .js .hero__ink .d:nth-child(6) { --n: 5; }
 
   /* The photo on show zooms out slowly while it is up */
   .hero__show .slide.is-active img { animation: slow-zoom 7s ease-out both; }

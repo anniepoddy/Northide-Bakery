@@ -50,25 +50,29 @@
 
   const rows = Array.from(document.querySelectorAll('[data-hours] tr[data-days]'));
   const todayEl = document.querySelector('[data-today]');
-  if (rows.length) {
+  // Shows today's hours and whether we're open right now; runs again every minute so it changes live
+  function updateToday() {
     const { day, minutes } = nowInBrooklyn();
     const row = rows.find((r) => r.dataset.days.split(',').map(Number).includes(day));
-    if (row) {
-      row.classList.add('is-today');
-      const open = toMinutes(row.dataset.open);
-      const close = toMinutes(row.dataset.close);
-      let status, closed = false;
-      if (minutes < open) { status = `Opens at ${formatTime(row.dataset.open)}`; closed = true; }
-      else if (minutes < close) status = `Open now until ${formatTime(row.dataset.close)}`;
-      else { status = 'Closed for today'; closed = true; }
-      if (todayEl) {
-        todayEl.textContent = `Today: ${formatTime(row.dataset.open)} to ${formatTime(row.dataset.close)}`;
-        const badge = document.createElement('span');
-        badge.className = 'status' + (closed ? ' is-closed' : '');
-        badge.textContent = status;
-        todayEl.append(badge);
-      }
+    rows.forEach((r) => r.classList.toggle('is-today', r === row));
+    if (!row) return;
+    const open = toMinutes(row.dataset.open);
+    const close = toMinutes(row.dataset.close);
+    let status, closed = false;
+    if (minutes < open) { status = `Opens at ${formatTime(row.dataset.open)}`; closed = true; }
+    else if (minutes < close) status = `Open now until ${formatTime(row.dataset.close)}`;
+    else { status = 'Closed for today'; closed = true; }
+    if (todayEl) {
+      todayEl.textContent = `Today: ${formatTime(row.dataset.open)} to ${formatTime(row.dataset.close)}`;
+      const badge = document.createElement('span');
+      badge.className = 'status' + (closed ? ' is-closed' : '');
+      badge.textContent = status;
+      todayEl.append(badge);
     }
+  }
+  if (rows.length) {
+    updateToday();
+    setInterval(updateToday, 60 * 1000);
   }
 
   /* ---------- 3. Hero slideshow: food photos crossfade every few seconds ---------- */
