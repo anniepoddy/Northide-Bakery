@@ -1,0 +1,20 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Bread slice</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="43"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#F3E6CF"/><circle cx="3.4" cy="3.4" r=".7" fill="#F3E6CF"/></pattern>
+    <pattern id="st2" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="#F3E6CF"/><circle cx="6.5" cy="6" r=".6" fill="#F3E6CF"/><circle cx="7" cy="1.5" r=".45" fill="#F3E6CF"/></pattern>
+    <clipPath id="crust"><path d="M48 70c-8-6-10-16-7-24 5-16 28-26 59-26s54 10 59 26c3 8 1 18-7 24v108H48Z"/></clipPath>
+  </defs>
+  <g filter="url(#hand)" transform="rotate(10 100 100)">
+    <g clip-path="url(#crust)">
+      <rect x="40" y="16" width="120" height="170" fill="url(#st2)"/>
+      <path d="M40 16h120v170H40ZM58 76c-4-4-6-10-4-16 4-10 22-16 46-16s42 6 46 16c2 6 0 12-4 16v94H58Z" fill="url(#st)" fill-rule="evenodd"/>
+    </g>
+    <g fill="none" stroke="#F3E6CF" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M48 70c-8-6-10-16-7-24 5-16 28-26 59-26s54 10 59 26c3 8 1 18-7 24v108H48Z" stroke-width="3.4"/>
+      <path d="M58 76c-4-4-6-10-4-16 4-10 22-16 46-16s42 6 46 16c2 6 0 12-4 16v94H58Z" stroke-width="1.8"/>
+      <g stroke-width="1.6"><ellipse cx="80" cy="96" rx="5" ry="3"/><ellipse cx="116" cy="112" rx="4" ry="2.6"/><ellipse cx="94" cy="140" rx="6" ry="3.4"/><ellipse cx="124" cy="150" rx="3.4" ry="2.2"/><ellipse cx="74" cy="160" rx="3.6" ry="2.4"/></g>
+    </g>
+  </g>
+</svg>

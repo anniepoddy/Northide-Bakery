@@ -1,0 +1,13 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <title>Gołąbek, cabbage roll</title>
+  <defs><filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="21"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter></defs>
+  <g filter="url(#hand)" fill="none" stroke="#F3E6CF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 56c0-14 12-18 46-18s46 4 46 18v14c0 14-12 18-46 18S14 84 14 70Z"/>
+    <path d="M14 58c8 6 20 4 26-2M106 58c-8 6-20 4-26-2"/>
+    <path d="M32 40c10 14 9 32 0 46M54 38c9 16 8 34 0 50M76 38c9 16 8 34 0 50M96 41c7 14 6 30-1 44"/>
+    <g stroke-width="1.3">
+      <path d="M36 52l-6-3M38 64l-7-2M36 76l-6 1M58 50l-7-3M60 62l-8-1M58 75l-7 2M80 50l-7-3M82 62l-8-1M80 75l-7 2M99 54l-5-2M100 66l-6 0"/>
+    </g>
+    <path d="M20 96c20 4 60 4 80 0" stroke-width="1.6"/>
+  </g>
+</svg>

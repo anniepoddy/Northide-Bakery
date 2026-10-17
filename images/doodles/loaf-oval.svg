@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Oval loaf</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="41"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#9A1B1F"/><circle cx="3.4" cy="3.4" r=".7" fill="#9A1B1F"/></pattern>
+    <pattern id="st2" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".85" fill="#9A1B1F"/><circle cx="6" cy="5.5" r=".6" fill="#9A1B1F"/></pattern>
+    <clipPath id="c"><path d="M12 100c0-26 38-44 88-44s88 18 88 44-38 44-88 44-88-18-88-44Z"/></clipPath>
+  </defs>
+  <g filter="url(#hand)" transform="rotate(-24 100 100)">
+    <g clip-path="url(#c)">
+      <ellipse cx="110" cy="138" rx="94" ry="26" fill="url(#st)"/>
+      <ellipse cx="100" cy="74" rx="80" ry="14" fill="url(#st2)"/>
+      <path d="M40 76c12 10 16 26 14 44-8-14-12-28-14-44Z" fill="url(#st)"/>
+      <path d="M74 70c12 10 16 28 14 48-8-16-12-30-14-48Z" fill="url(#st)"/>
+      <path d="M108 70c12 10 16 28 14 48-8-16-12-30-14-48Z" fill="url(#st)"/>
+      <path d="M142 76c12 10 16 26 14 44-8-14-12-28-14-44Z" fill="url(#st)"/>
+    </g>
+    <g fill="none" stroke="#9A1B1F" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 100c0-26 38-44 88-44s88 18 88 44-38 44-88 44-88-18-88-44Z" stroke-width="3.4"/>
+      <path d="M40 76c12 10 16 26 14 44M74 70c12 10 16 28 14 48M108 70c12 10 16 28 14 48M142 76c12 10 16 26 14 44" stroke-width="2.6"/>
+      <path d="M40 76c-2 16 2 30 14 44M74 70c-2 18 2 34 14 48M108 70c-2 18 2 34 14 48M142 76c-2 16 2 30 14 44" stroke-width="1.6"/>
+    </g>
+  </g>
+  <g fill="#9A1B1F"><circle cx="18" cy="40" r="1.4"/><circle cx="186" cy="150" r="1.4"/><circle cx="172" cy="170" r="1"/><ellipse cx="30" cy="176" rx="2.4" ry="1.4"/></g>
+</svg>

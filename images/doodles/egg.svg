@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Egg</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="45"/><feDisplacementMap in="SourceGraphic" scale="1.4"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#9A1B1F"/><circle cx="3.4" cy="3.4" r=".7" fill="#9A1B1F"/></pattern>
+    <pattern id="st2" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".85" fill="#9A1B1F"/><circle cx="6" cy="5.5" r=".6" fill="#9A1B1F"/></pattern>
+    <clipPath id="c"><path d="M100 30c34 0 56 46 56 84s-24 58-56 58-56-20-56-58 22-84 56-84Z"/></clipPath>
+  </defs>
+  <g filter="url(#hand)" transform="rotate(-28 100 100)">
+    <g clip-path="url(#c)">
+      <ellipse cx="146" cy="124" rx="42" ry="74" fill="url(#st)"/>
+      <ellipse cx="100" cy="176" rx="60" ry="22" fill="url(#st)"/>
+      <ellipse cx="120" cy="96" rx="36" ry="60" fill="url(#st2)"/>
+    </g>
+    <path d="M100 30c34 0 56 46 56 84s-24 58-56 58-56-20-56-58 22-84 56-84Z" fill="none" stroke="#9A1B1F" stroke-width="3.2"/>
+  </g>
+</svg>

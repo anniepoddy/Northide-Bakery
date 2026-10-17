@@ -1,0 +1,19 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Makowiec, poppy seed roll</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="51"/><feDisplacementMap in="SourceGraphic" scale="1.4"/></filter>
+    <pattern id="poppy" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1.4" cy="1.4" r="1.1" fill="#F3E6CF"/><circle cx="3.8" cy="3.6" r=".9" fill="#F3E6CF"/></pattern>
+    <mask id="swirl" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+      <circle cx="100" cy="100" r="66" fill="#fff"/>
+      <path d="M100 100c8 0 12 7 9 13-4 9-17 10-24 3-10-10-8-27 4-35 17-11 40-4 48 13 11 23-2 50-27 58-31 10-62-8-68-38" fill="none" stroke="#000" stroke-width="10" stroke-linecap="round"/>
+    </mask>
+  </defs>
+  <g filter="url(#hand)">
+    <rect width="200" height="200" fill="url(#poppy)" mask="url(#swirl)"/>
+    <g fill="none" stroke="#F3E6CF" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="100" cy="100" r="66" stroke-width="3.4"/>
+      <circle cx="100" cy="100" r="73" stroke-width="1.8"/>
+      <path d="M100 100c8 0 12 7 9 13-4 9-17 10-24 3-10-10-8-27 4-35 17-11 40-4 48 13 11 23-2 50-27 58-31 10-62-8-68-38" stroke-width="1.8" transform="translate(4 -3)"/>
+    </g>
+  </g>
+</svg>

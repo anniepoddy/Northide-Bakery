@@ -1,0 +1,24 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Croissant</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#F3E6CF"/><circle cx="3.4" cy="3.4" r=".7" fill="#F3E6CF"/></pattern>
+    <pattern id="st2" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".85" fill="#F3E6CF"/><circle cx="6" cy="5.5" r=".6" fill="#F3E6CF"/></pattern>
+    <clipPath id="c"><path d="M14 118c10-34 50-52 86-52s76 18 86 52c-10 10-26 14-40 10-14 12-30 16-46 16s-32-4-46-16c-14 4-30 0-40-10Z"/></clipPath>
+  </defs>
+  <g filter="url(#hand)" transform="rotate(-20 100 100)">
+    <g clip-path="url(#c)">
+      <ellipse cx="100" cy="140" rx="96" ry="26" fill="url(#st)"/>
+      <path d="M40 84c-6 14-8 30-4 44l12 2c-4-16-2-32 4-46Z" fill="url(#st)"/>
+      <path d="M70 72c-6 18-6 38 0 56l12 4c-6-18-6-40 0-58Z" fill="url(#st)"/>
+      <path d="M102 68c-4 20-4 42 2 62l12 0c-6-20-6-42-2-62Z" fill="url(#st2)"/>
+      <path d="M134 72c-4 18-2 38 6 56l12-2c-8-18-10-36-6-54Z" fill="url(#st)"/>
+    </g>
+    <g fill="none" stroke="#F3E6CF" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 118c10-34 50-52 86-52s76 18 86 52c-10 10-26 14-40 10-14 12-30 16-46 16s-32-4-46-16c-14 4-30 0-40-10Z" stroke-width="3.4"/>
+      <path d="M44 82c-6 16-6 32-2 46M76 70c-6 20-6 40 0 60M108 66c-4 22-4 44 2 66M140 70c-4 20-2 40 6 58M166 86c-2 14 0 28 6 38" stroke-width="2.4"/>
+      <path d="M14 118c-6-2-10 2-8 8M186 118c6-2 10 2 8 8" stroke-width="2.2"/>
+    </g>
+    <g fill="#F3E6CF"><circle cx="30" cy="150" r="1.4"/><circle cx="172" cy="152" r="1.2"/></g>
+  </g>
+</svg>

@@ -1,0 +1,80 @@
+{
+  "_howToEdit": [
+    "Each item needs: name, category, description, availability. Everything else is optional.",
+    "category must be one of the category ids below: bread, sweets, pierogi, hot, market.",
+    "polish: the Polish name, or leave it out.",
+    "photo: a file in images/photos, e.g. images/photos/challah-sm.jpg. Use \"\" for no photo yet; a drawing is shown instead.",
+    "price: text exactly as it should appear, e.g. \"$1.65 each\". Use \"\" for no price.",
+    "priceConfirmed: false marks a placeholder price. Set showUnconfirmedPrices to false to hide all of them at once.",
+    "availability: \"Every day\" or \"Rotating – ask in store\".",
+    "Watch the commas: every item ends with a comma except the last one in the list."
+  ],
+  "settings": {
+    "showPrices": true,
+    "showUnconfirmedPrices": true
+  },
+  "categories": [
+    { "id": "bread", "name": "Bread", "polish": "Chleb", "intro": "Fresh every morning: rye, sourdough, seeded loaves and soft sandwich bread." },
+    { "id": "sweets", "name": "Pastries & Cakes", "polish": "Ciasta", "intro": "Pączki, chruściki, sernik and the rest of the pastry case, plus a few American favorites." },
+    { "id": "pierogi", "name": "Pierogi & Dumplings", "polish": "Pierogi", "intro": "Handmade pierogi sold by the piece, plus blintzes, krokiety and pyzy." },
+    { "id": "hot", "name": "Hot Food Bar", "polish": "Obiady", "intro": "Hot plates, soup of the day and build-your-own lunch by the pound." },
+    { "id": "market", "name": "Market", "polish": "Sklep", "intro": "Polish and European groceries, smoked meats and sweets. The shelves change often." }
+  ],
+  "items": [
+    { "name": "Country bread", "polish": "Chleb wiejski", "category": "bread", "description": "Big crusty loaves with a soft, open crumb. Our everyday table bread.", "photo": "images/photos/bread-rack-loaves-sm.jpg", "price": "$5.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Sunflower rye", "polish": "Chleb ze słonecznikiem", "category": "bread", "description": "Dark rye loaf with a deep crust, covered in toasted sunflower seeds.", "photo": "images/photos/bread-sunflower-rye-sm.jpg", "price": "$6.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Seeded multigrain", "polish": "Chleb wieloziarnisty", "category": "bread", "description": "Hearty loaf packed with sunflower, sesame and flax seeds.", "photo": "images/photos/bread-seeded-loaves-sm.jpg", "price": "$6.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Sourdough boule", "polish": "Chleb na zakwasie", "category": "bread", "description": "Slow-fermented round loaf with a crackly, scored crust.", "photo": "images/photos/bread-sourdough-boules-sm.jpg", "price": "$7.00", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Rustic rye boule", "polish": "Chleb żytni", "category": "bread", "description": "Floured rye with a tangy, dense crumb. Great with butter and salt.", "photo": "images/photos/bread-rye-boule-sm.jpg", "price": "$7.00", "priceConfirmed": false, "availability": "Rotating – ask in store" },
+    { "name": "Sandwich loaf", "polish": "Chleb tostowy", "category": "bread", "description": "Soft, square loaf for toast and sandwiches.", "photo": "images/photos/bread-rack-pullman-sm.jpg", "price": "$4.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Challah", "polish": "Chałka", "category": "bread", "description": "Braided egg bread with a shiny, golden crust.", "photo": "images/photos/challah-sm.jpg", "price": "$6.00", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Seeded bread sticks", "category": "bread", "description": "Twisted sticks topped with poppy seeds and sesame.", "photo": "images/photos/pastry-poppy-sticks-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+
+    { "name": "Glazed pączki", "polish": "Pączki", "category": "sweets", "description": "Polish filled doughnuts with a shiny sugar glaze. Ask about today's fillings.", "photo": "images/photos/paczki-rose-glaze-sm.jpg", "price": "$2.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Chocolate pączki", "polish": "Pączki w czekoladzie", "category": "sweets", "description": "Filled doughnuts dipped in chocolate glaze.", "photo": "images/photos/paczki-chocolate-sm.jpg", "price": "$2.75", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Powdered pączki", "category": "sweets", "description": "Filled doughnuts rolled in powdered sugar.", "photo": "images/photos/paczki-powdered-sm.jpg", "price": "$2.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Pączki with orange peel", "polish": "Pączki ze skórką pomarańczową", "category": "sweets", "description": "Glazed pączki topped with candied orange peel.", "photo": "images/photos/paczki-orange-peel-sm.jpg", "price": "$2.75", "priceConfirmed": false, "availability": "Rotating – ask in store" },
+    { "name": "Angel wings", "polish": "Chruściki", "category": "sweets", "description": "Thin, crisp fried pastry ribbons dusted with powdered sugar.", "photo": "images/photos/chrusciki-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Cheese & blueberry bun", "polish": "Drożdżówka z serem i jagodami", "category": "sweets", "description": "Soft sweet bun with farmer's cheese, blueberries and crumble.", "photo": "images/photos/cheese-blueberry-bun-sm.jpg", "price": "$3.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Cream horns", "polish": "Rurki z kremem", "category": "sweets", "description": "Flaky puff pastry horns filled with sweet cream, some dipped in chocolate.", "photo": "images/photos/cream-horns-sm.jpg", "price": "$3.50", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Cream puffs", "polish": "Ptysie", "category": "sweets", "description": "Choux pastry piled high with whipped cream.", "photo": "images/photos/cream-puffs-sm.jpg", "price": "$3.75", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Polish cheesecake", "polish": "Sernik", "category": "sweets", "description": "Creamy farmer's-cheese cake, plain or with a strawberry topping.", "photo": "images/photos/cheesecake-strawberry-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Crumb cake", "polish": "Placek z kruszonką", "category": "sweets", "description": "Yeast cake with fruit and a thick, buttery crumble.", "photo": "images/photos/crumb-cake-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Apple pie", "polish": "Szarlotka", "category": "sweets", "description": "Lattice-topped pie full of spiced apples.", "photo": "images/photos/apple-pie-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Chocolate babka", "polish": "Babka", "category": "sweets", "description": "Tall, ring-shaped cake with a thick chocolate coat.", "photo": "images/photos/babka-chocolate-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Coconut macaroons", "polish": "Kokosanki", "category": "sweets", "description": "Chewy coconut cookies, golden on the edges.", "photo": "images/photos/macaroons-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Jam cookies", "polish": "Ciasteczka z marmoladą", "category": "sweets", "description": "Tender butter cookies folded around fruit jam.", "photo": "images/photos/jam-cookies-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Sheet cakes by the slice", "polish": "Ciasta na blasze", "category": "sweets", "description": "Layered cakes, cheesecakes and fruit cakes cut to order from the tray.", "photo": "images/photos/cake-trays-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Oreo cheesecake", "category": "sweets", "description": "Rich cheesecake loaded with cookie pieces.", "photo": "images/photos/cheesecake-oreo-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Raspberry tart", "category": "sweets", "description": "Nutty shortbread tart crowned with fresh raspberries.", "photo": "images/photos/raspberry-tart-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Berry layer cake", "category": "sweets", "description": "Light green sponge layered with cream and fresh berries.", "photo": "images/photos/berry-layer-cake-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Pumpkin pie", "category": "sweets", "description": "Silky spiced pumpkin in a flaky crust. A fall favorite.", "photo": "images/photos/pumpkin-pie-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Oatmeal cookies", "category": "sweets", "description": "Big, chewy oatmeal cookies baked by the tray.", "photo": "images/photos/cookies-oatmeal-sm.jpg", "price": "", "availability": "Every day" },
+
+    { "name": "Cheese & potato pierogi", "polish": "Pierogi ruskie", "category": "pierogi", "description": "The classic: potato and farmer's cheese.", "photo": "images/photos/pierogi-handmade-sm.jpg", "price": "$1.65 each", "availability": "Every day" },
+    { "name": "Meat pierogi", "polish": "Pierogi z mięsem", "category": "pierogi", "description": "Seasoned meat filling.", "photo": "", "price": "$1.85 each", "availability": "Every day" },
+    { "name": "Spinach pierogi", "polish": "Pierogi ze szpinakiem", "category": "pierogi", "description": "Spinach filling.", "photo": "", "price": "$1.75 each", "availability": "Every day" },
+    { "name": "Lentil pierogi", "polish": "Pierogi z soczewicą", "category": "pierogi", "description": "Lentil filling.", "photo": "", "price": "$1.75 each", "availability": "Every day" },
+    { "name": "Buckwheat pierogi", "polish": "Pierogi z kaszą gryczaną", "category": "pierogi", "description": "Buckwheat kasha filling.", "photo": "", "price": "$1.75 each", "availability": "Every day" },
+    { "name": "Blueberry pierogi", "polish": "Pierogi z jagodami", "category": "pierogi", "description": "Sweet blueberry filling.", "photo": "", "price": "$1.95 each", "availability": "Every day" },
+    { "name": "Sauerkraut & mushroom pierogi", "polish": "Pierogi z kapustą i grzybami", "category": "pierogi", "description": "Tangy sauerkraut with mushrooms.", "photo": "", "price": "$1.75 each", "availability": "Every day" },
+    { "name": "Blintzes", "polish": "Naleśniki", "category": "pierogi", "description": "Rolled crêpes with cheese, apple, or cheese and fruit.", "photo": "", "price": "$4.25", "availability": "Every day" },
+    { "name": "Croquettes", "polish": "Krokiety", "category": "pierogi", "description": "Breaded, filled crêpes: meat, spinach, or sauerkraut and mushroom.", "photo": "", "price": "$4.95", "availability": "Every day" },
+    { "name": "Potato dumpling with meat", "polish": "Pyza", "category": "pierogi", "description": "A big, soft potato dumpling stuffed with meat.", "photo": "", "price": "$4.75", "availability": "Every day" },
+
+    { "name": "Stuffed cabbage rolls", "polish": "Gołąbki", "category": "hot", "description": "Cabbage leaves wrapped around rice and meat, or buckwheat and mushroom.", "photo": "images/photos/golabki-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Build your own plate", "category": "hot", "description": "Pick any mix of proteins, sides and vegetables from the hot bar. Priced by the pound.", "photo": "images/photos/chicken-broccoli-sm.jpg", "price": "$10.50 / lb", "priceConfirmed": false, "availability": "Every day" },
+    { "name": "Soup of the day", "polish": "Zupa dnia", "category": "hot", "description": "A different pot every day. Ask what's on.", "photo": "images/photos/soup-sm.jpg", "price": "Small $4.25, large $7.95", "availability": "Every day" },
+    { "name": "Kielbasa with onions", "polish": "Kiełbasa z cebulą", "category": "hot", "description": "Grilled Polish sausage with slow-browned onions.", "photo": "images/photos/kielbasa-onions-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Kielbasa plate", "category": "hot", "description": "Kielbasa with mashed potatoes, sauerkraut and dill pickles.", "photo": "images/photos/kielbasa-plate-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Pierogi & kielbasa plate", "category": "hot", "description": "Pierogi with fried onions and grilled kielbasa.", "photo": "images/photos/pierogi-kielbasa-plate-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Pork cutlet", "polish": "Kotlet schabowy", "category": "hot", "description": "Breaded pork cutlet with cabbage slaw.", "photo": "images/photos/cutlet-plate-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Chicken & broccoli", "category": "hot", "description": "Glazed chicken with broccoli, straight from the hot bar.", "photo": "images/photos/chicken-broccoli-2-sm.jpg", "price": "", "availability": "Rotating – ask in store" },
+
+    { "name": "Smoked meats", "polish": "Wędliny", "category": "market", "description": "Smoked bacon, ham and more, sliced or whole.", "photo": "images/photos/smoked-meats-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Kielbasa to take home", "polish": "Kiełbasa", "category": "market", "description": "Polish sausages from the case, ready for your own pan.", "photo": "images/photos/kielbasa-tray-sm.jpg", "price": "", "availability": "Every day" },
+    { "name": "Pickles & preserves", "polish": "Przetwory", "category": "market", "description": "Sour pickles, sauerkraut, jams and jarred goods from Poland and across Europe.", "photo": "", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "European sweets", "polish": "Słodycze", "category": "market", "description": "Chocolates, wafers and candy you won't find in a regular grocery.", "photo": "", "price": "", "availability": "Rotating – ask in store" },
+    { "name": "Pantry staples", "category": "market", "description": "Flours, kasha, spices, teas and coffee from European brands.", "photo": "", "price": "", "availability": "Rotating – ask in store" }
+  ]
+}

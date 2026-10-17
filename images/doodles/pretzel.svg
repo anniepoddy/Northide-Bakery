@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Pretzel</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="11"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#9A1B1F"/><circle cx="3.4" cy="3.4" r=".7" fill="#9A1B1F"/></pattern>
+    <mask id="rope" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path id="p" d="M100 158C56 158 22 132 26 96 30 58 72 46 96 74c14 16 22 44 38 74M100 158c44 0 78-26 74-62-4-38-46-50-70-22-14 16-22 44-38 74" stroke="#fff" stroke-width="24"/>
+        <path d="M100 158C56 158 22 132 26 96 30 58 72 46 96 74c14 16 22 44 38 74M100 158c44 0 78-26 74-62-4-38-46-50-70-22-14 16-22 44-38 74" stroke="#000" stroke-width="17"/>
+      </g>
+    </mask>
+  </defs>
+  <g filter="url(#hand)" transform="rotate(14 100 100)">
+    <rect width="200" height="200" fill="#9A1B1F" mask="url(#rope)"/>
+    <path d="M100 158C56 158 22 132 26 96 30 58 72 46 96 74c14 16 22 44 38 74M100 158c44 0 78-26 74-62-4-38-46-50-70-22-14 16-22 44-38 74" fill="none" stroke="url(#st)" stroke-width="8" stroke-dasharray="40 30" stroke-dashoffset="10" transform="translate(2 3)"/>
+    <g fill="none" stroke="#9A1B1F" stroke-width="1.8" stroke-linecap="round">
+      <path d="M38 80l4 2M56 62l3 3M30 108l4 1M150 64l-3 3M168 84l-4 2M172 112l-4 1M84 152l2 3M116 152l-2 3M110 104l3 2M88 106l-3 2"/>
+    </g>
+  </g>
+</svg>

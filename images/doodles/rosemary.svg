@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Rosemary sprig</title>
+  <defs><filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="47"/><feDisplacementMap in="SourceGraphic" scale="1.4"/></filter></defs>
+  <g filter="url(#hand)" fill="none" stroke="#9A1B1F" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 176C66 134 118 82 178 24" stroke-width="2.8"/>
+    <g stroke-width="2.2">
+      <path d="M42 160c-14-2-24-10-28-20 12 2 22 10 28 20ZM42 160c2-14 10-24 20-28-2 12-10 22-20 28Z"/>
+      <path d="M60 142c-14-2-24-10-28-20 12 2 22 10 28 20ZM60 142c2-14 10-24 20-28-2 12-10 22-20 28Z"/>
+      <path d="M78 124c-14-2-24-10-28-20 12 2 22 10 28 20ZM78 124c2-14 10-24 20-28-2 12-10 22-20 28Z"/>
+      <path d="M96 106c-14-2-24-10-28-20 12 2 22 10 28 20ZM96 106c2-14 10-24 20-28-2 12-10 22-20 28Z"/>
+      <path d="M114 88c-14-2-24-10-28-20 12 2 22 10 28 20ZM114 88c2-14 10-24 20-28-2 12-10 22-20 28Z"/>
+      <path d="M132 70c-12-2-20-9-24-17 10 2 18 9 24 17ZM132 70c2-12 9-20 17-24-2 10-9 18-17 24Z"/>
+      <path d="M150 52c-10-2-17-8-20-15 9 2 15 8 20 15ZM150 52c2-10 8-17 15-20-2 9-8 15-15 20Z"/>
+      <path d="M166 36c-7-1-12-6-14-11 6 1 11 6 14 11ZM166 36c1-7 6-12 11-14-1 6-6 11-11 14Z"/>
+    </g>
+    <g stroke-width="1.2"><path d="M36 154l-12-10M54 136l-12-10M72 118l-12-10M90 100l-12-10M108 82l-12-10M48 154l10-12M66 136l10-12M84 118l10-12M102 100l10-12M120 82l10-12"/></g>
+  </g>
+</svg>

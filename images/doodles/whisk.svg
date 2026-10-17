@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Whisk</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="15"/><feDisplacementMap in="SourceGraphic" scale="1.4"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#9A1B1F"/><circle cx="3.4" cy="3.4" r=".7" fill="#9A1B1F"/></pattern>
+  </defs>
+  <g filter="url(#hand)" transform="rotate(28 100 100)" fill="none" stroke="#9A1B1F" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M92 194v-62h16v62c0 6-16 6-16 0Z" fill="url(#st)" stroke-width="3"/>
+    <path d="M92 194v-62h16v62c0 6-16 6-16 0Z" stroke-width="3"/>
+    <path d="M88 132h24" stroke-width="5"/>
+    <path d="M92 132C46 98 60 16 100 8c40 8 54 90 8 124" stroke-width="3"/>
+    <path d="M95 132C64 100 72 20 100 8c28 12 36 92 5 124" stroke-width="2.4"/>
+    <path d="M98 132C84 104 88 24 100 8c12 16 16 96 2 124" stroke-width="2.4"/>
+    <path d="M100 132V8" stroke-width="2"/>
+    <circle cx="100" cy="8" r="3.4" stroke-width="2.4"/>
+  </g>
+</svg>

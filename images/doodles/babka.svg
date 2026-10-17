@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Babka</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="53"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#9A1B1F"/><circle cx="3.4" cy="3.4" r=".7" fill="#9A1B1F"/></pattern>
+    <clipPath id="c"><path d="M26 152c0-54 30-92 74-92s74 38 74 92c-24 12-124 12-148 0Z"/></clipPath>
+  </defs>
+  <g filter="url(#hand)">
+    <g clip-path="url(#c)">
+      <path d="M120 60c30 12 54 44 54 92v20h-40c4-36-2-76-14-112Z" fill="url(#st)"/>
+      <path d="M0 0h200v104c-8-6-14 4-22-2s-12 6-20 0-12 6-20 0-12 6-20 0-12 6-20 0-12 6-20 0-12 6-20 0-12 4-18-2V0Z" fill="url(#st)" opacity=".55"/>
+    </g>
+    <g fill="none" stroke="#9A1B1F" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 152c0-54 30-92 74-92s74 38 74 92c-24 12-124 12-148 0Z" stroke-width="3.4"/>
+      <path d="M84 66c4-6 28-6 32 0" stroke-width="2.6"/>
+      <path d="M30 108c8 6 12-4 20 2s12-6 20 0 12-6 20 0 12-6 20 0 12-6 20 0 12-6 20 0 10-4 18 2" stroke-width="2.4"/>
+      <path d="M50 156c-2-30 4-58 18-82M76 160c-2-34 2-64 12-92M100 162V70M124 160c2-34-2-64-12-92M150 156c2-30-4-58-18-82" stroke-width="2"/>
+    </g>
+    <g fill="#9A1B1F"><circle cx="20" cy="176" r="1.4"/><circle cx="184" cy="170" r="1.2"/></g>
+  </g>
+</svg>

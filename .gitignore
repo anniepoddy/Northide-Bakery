@@ -1,0 +1,17 @@
+# Originals and references stay on this computer
+Northside bakery photos/
+pinterest references/
+
+# Installed tool packages (reinstall with: cd tools, npm install)
+node_modules/
+
+# Claude and design-tool working files
+.claude/
+.taste-skill/
+skills-lock.json
+
+# System files
+Thumbs.db
+desktop.ini
+.DS_Store
+.vercel

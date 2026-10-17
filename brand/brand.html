@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northside Brand Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #9A1B1F;
+      --red-deep: #741417;
+      --cream: #F3E6CF;
+      --paper: #FBF6EC;
+      --ink: #2B1D1E;
+      --font: "EB Garamond", Georgia, serif;
+      --display: "Bodoni Moda", Didot, Georgia, serif;
+      --radius: 6px;
+    }
+    h1, h2, h3, .tagline-main, .tagline-alt p:first-child, .specimen .big, .specimen .h, .specimen .pl, .pillar .pl { font-family: var(--display); letter-spacing: -0.01em !important; }
+    .specimen .pl, .pillar .pl { font-style: italic; }
+    * { box-sizing: border-box; margin: 0; }
+    body { background: var(--cream); color: var(--ink); font: 400 18px/1.55 var(--font); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+    section { padding: clamp(64px, 9vw, 120px) 0; }
+    section.alt { background: var(--paper); }
+    h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; line-height: 1.02; color: var(--red); text-wrap: balance; }
+    h2 { font-size: clamp(34px, 4.6vw, 56px); margin-bottom: 14px; }
+    h3 { font-size: 24px; margin-bottom: 8px; }
+    .lede { max-width: 60ch; font-size: 20px; margin-bottom: clamp(32px, 4vw, 48px); }
+    .note { font-size: 16px; }
+
+    /* Cover */
+    .cover { background: var(--red); color: var(--cream); padding: clamp(56px, 8vw, 104px) 0; }
+    .cover .wrap { display: grid; grid-template-columns: auto 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+    .cover img { width: clamp(200px, 24vw, 300px); }
+    .cover h1 { color: var(--cream); font-size: clamp(44px, 6vw, 80px); letter-spacing: -0.04em; }
+    .cover p { margin-top: 18px; font-size: 20px; max-width: 40ch; }
+    .band { display: flex; justify-content: space-between; gap: 20px; overflow: hidden; padding: 22px clamp(16px, 4vw, 40px); }
+    .band img { width: clamp(48px, 6vw, 80px); flex: none; }
+    .band img:nth-child(even) { transform: translateY(5px) rotate(6deg); }
+    .band img:nth-child(3n) { transform: rotate(-8deg); }
+    .band--red { background: var(--red); }
+    .band--paper { background: var(--paper); }
+
+    /* Tagline */
+    .tagline-main { font-size: clamp(44px, 7vw, 96px); font-weight: 800; letter-spacing: -0.04em; line-height: .95; color: var(--red); max-width: 12ch; }
+    .tagline-alts { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .tagline-alt { background: var(--paper); border-radius: var(--radius); padding: 28px; }
+    .tagline-alt p:first-child { font-size: clamp(26px, 3vw, 34px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; color: var(--red); margin-bottom: 12px; }
+
+    /* Pillars */
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pillar { background: var(--cream); border-radius: var(--radius); padding: 32px 28px; }
+    .pillar .pl { font-style: italic; color: var(--red); margin-bottom: 6px; }
+
+    /* Colors */
+    .swatches { display: grid; grid-template-columns: 2fr 1fr 1.4fr 1.4fr 1fr; gap: 12px; }
+    .swatch { border-radius: var(--radius); min-height: 220px; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 16px; }
+    .swatch strong { font-size: 19px; display: block; }
+    .swatch.light { box-shadow: inset 0 0 0 2px rgba(43, 29, 30, .1); }
+    .ratio { margin-top: 28px; display: flex; height: 28px; border-radius: 999px; overflow: hidden; }
+    .ratio span { display: block; }
+    .contrast { margin-top: 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .contrast div { border-radius: var(--radius); padding: 20px; font-weight: 700; font-size: 19px; }
+    .contrast small { display: block; font-weight: 400; font-size: 15px; margin-top: 4px; }
+
+    /* Type */
+    .specimen { background: var(--cream); border-radius: var(--radius); padding: clamp(28px, 4vw, 48px); }
+    .specimen .big { font-size: clamp(48px, 7vw, 92px); font-weight: 800; letter-spacing: -0.04em; line-height: .95; color: var(--red); }
+    .specimen .h { margin-top: 28px; font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; color: var(--red); }
+    .specimen .pl { font-style: italic; color: var(--red); font-size: 20px; margin-top: 4px; }
+    .specimen .body { margin-top: 16px; max-width: 58ch; font-size: 19px; }
+    .specimen .chars { margin-top: 24px; font-size: 26px; font-weight: 600; letter-spacing: .02em; }
+    .compare { margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .compare div { background: var(--cream); border-radius: var(--radius); padding: 24px; }
+    .compare .sample { font-size: 34px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--red); margin-bottom: 10px; }
+    .compare .sample + p { font-size: 17px; margin-bottom: 12px; }
+    .compare .label { font-size: 15px; font-weight: 700; font-family: var(--font); }
+
+    /* Logo */
+    .logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .logos figure { border-radius: var(--radius); padding: 36px 28px 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .logos img { width: 100%; max-width: 240px; }
+    .logos figcaption { font-size: 15px; font-weight: 600; }
+    .rules { margin-top: 28px; padding-left: 1.2em; max-width: 70ch; }
+    .rules li + li { margin-top: 6px; }
+
+    /* Illustrations */
+    .doodle-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .doodle-grid figure { background: var(--paper); border-radius: var(--radius); padding: 20px 12px 14px; text-align: center; font-size: 15px; }
+    .doodle-grid img { width: 72%; margin: 0 auto 10px; }
+    .on-red { margin-top: 24px; border-radius: var(--radius); overflow: hidden; }
+
+    /* Photography */
+    .photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); }
+
+    /* Voice */
+    .principles { counter-reset: p; display: grid; gap: 14px; max-width: 70ch; padding-left: 1.3em; }
+    .dodont { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .dodont h3 { font-size: 22px; }
+    .dodont ul { list-style: none; padding: 0; display: grid; gap: 10px; }
+    .dodont li { border-radius: var(--radius); padding: 16px 18px; font-size: 17px; }
+    .do li { background: var(--paper); }
+    .dont li { background: transparent; box-shadow: inset 0 0 0 2px rgba(154, 27, 31, .25); color: #5a4a4b; }
+    .formats { margin-top: 32px; font-size: 17px; }
+
+    footer { background: var(--red); color: var(--cream); }
+    footer .wrap { padding-top: 28px; padding-bottom: 32px; font-size: 15px; }
+
+    @media (max-width: 860px) {
+      .cover .wrap, .tagline-alts, .pillars, .compare, .logos, .dodont { grid-template-columns: 1fr; }
+      .swatches { grid-template-columns: 1fr 1fr; }
+      .swatch { min-height: 140px; }
+      .contrast { grid-template-columns: 1fr 1fr; }
+      .doodle-grid { grid-template-columns: repeat(3, 1fr); }
+      .photos { grid-template-columns: 1fr 1fr; }
+      .band img:nth-child(n+7) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="cover">
+    <div class="wrap">
+      <img src="../images/logo/logo-cream.png" alt="Northside Bakery, est. 1992">
+      <div>
+        <h1>Brand guide</h1>
+        <p>Northside Bakery, Brooklyn. Colors, type, voice and drawings for the website, bags, boxes, signs and social media.</p>
+      </div>
+    </div>
+  </header>
+  <div class="band band--paper" aria-hidden="true">
+    <img src="../images/doodles/baguette.svg" alt=""><img src="../images/doodles/wheat.svg" alt=""><img src="../images/doodles/pierogi.svg" alt=""><img src="../images/doodles/whisk.svg" alt=""><img src="../images/doodles/boule.svg" alt=""><img src="../images/doodles/paczek.svg" alt=""><img src="../images/doodles/rolling-pin.svg" alt=""><img src="../images/doodles/croissant.svg" alt=""><img src="../images/doodles/pretzel.svg" alt=""><img src="../images/doodles/golabek.svg" alt="">
+  </div>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>Tagline</h2>
+        <p class="lede">One line per surface. The primary line leads everywhere. The alternates suit specific places.</p>
+        <p class="tagline-main">Baked on North 8th since 1992.</p>
+        <div class="tagline-alts">
+          <div class="tagline-alt">
+            <p>Smacznego from North 8th.</p>
+            <p><strong>Playful.</strong> For bags, boxes, stickers and social media. <em>Smacznego</em> means "enjoy your meal."</p>
+          </div>
+          <div class="tagline-alt">
+            <p>A little bit of Poland on North 8th.</p>
+            <p><strong>Heritage.</strong> For the Our Story section, holiday campaigns and press.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <h2>Brand pillars</h2>
+        <p class="lede">Who we are, in three ideas. Every photo, post and sign should support at least one of them.</p>
+        <div class="pillars">
+          <div class="pillar">
+            <p class="pl">Rodzina</p>
+            <h3>Family-made since 1992</h3>
+            <p>Started by Richard and Teresa Podedworny and still run by the family. Every recipe has a person behind it.</p>
+          </div>
+          <div class="pillar">
+            <p class="pl">Tradycja</p>
+            <h3>Polish at heart, Brooklyn by address</h3>
+            <p>Pączki, pierogi and gołąbki are the soul of the shop, and the menu has grown to welcome the whole neighborhood.</p>
+          </div>
+          <div class="pillar">
+            <p class="pl">Świeżość</p>
+            <h3>Made fresh, every day</h3>
+            <p>Pastries and hot food are made in the shop daily. What's on the counter changes with the day and the season.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Colors</h2>
+        <p class="lede">Red and cream carry the brand. Everything else is a lighter or darker step of the two, plus a warm near-black for text. No other colors, no gradients.</p>
+        <div class="swatches">
+          <div class="swatch" style="background:#9A1B1F;color:#FBF6EC"><strong>Northside Red</strong>#9A1B1F<br>Headlines, buttons, drawings, logo</div>
+          <div class="swatch" style="background:#741417;color:#FBF6EC"><strong>Deep Red</strong>#741417<br>Hover, pressed</div>
+          <div class="swatch light" style="background:#F3E6CF"><strong>Cream</strong>#F3E6CF<br>Main background</div>
+          <div class="swatch light" style="background:#FBF6EC"><strong>Paper</strong>#FBF6EC<br>Cards, panels</div>
+          <div class="swatch" style="background:#2B1D1E;color:#FBF6EC"><strong>Ink</strong>#2B1D1E<br>Body text</div>
+        </div>
+        <div class="ratio" role="img" aria-label="Color balance: about 60 percent cream and paper, 30 percent red, 10 percent ink">
+          <span style="flex:60;background:#F3E6CF;box-shadow:inset 0 0 0 2px rgba(43,29,30,.1)"></span><span style="flex:30;background:#9A1B1F"></span><span style="flex:10;background:#2B1D1E"></span>
+        </div>
+        <p class="note" style="margin-top:10px">Balance: about 60% cream and paper, 30% red, 10% ink.</p>
+        <div class="contrast">
+          <div style="background:#F3E6CF;color:#9A1B1F;box-shadow:inset 0 0 0 2px rgba(43,29,30,.1)">Red on Cream<small>6.7:1, passes AA</small></div>
+          <div style="background:#F3E6CF;color:#2B1D1E;box-shadow:inset 0 0 0 2px rgba(43,29,30,.1)">Ink on Cream<small>13.1:1, passes AAA</small></div>
+          <div style="background:#9A1B1F;color:#FBF6EC">Paper on Red<small>7.6:1, passes AAA</small></div>
+          <div style="background:#9A1B1F;color:#F3E6CF">Cream on Red<small>6.7:1, passes AA</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <h2>Typography</h2>
+        <p class="lede">Bodoni Moda for headlines, with its italic for the motto and Polish dish names. EB Garamond for reading text, and in spaced small capitals for menus and buttons. Both free from Google Fonts. The script lives only in the logo.</p>
+        <div class="specimen">
+          <p class="big">Baked on North 8th since 1992.</p>
+          <p class="h">Stuffed cabbage rolls</p>
+          <p class="pl">Gołąbki</p>
+          <p class="body">Cabbage leaves wrapped around rice and meat, or buckwheat and mushroom. Hot from the counter every day, or by the pan for a family dinner.</p>
+          <p class="chars">Aa Bb Cc ą ć ę ł ń ó ś ź ż Ł Ż 0123456789 $1.65</p>
+        </div>
+        <div class="compare">
+          <div>
+            <p class="sample" style="font-family:var(--display);font-weight:600">Bodoni Moda</p>
+            <p class="label">Headlines and dish names. SemiBold 600.</p>
+          </div>
+          <div>
+            <p class="sample" style="font-family:var(--display);font-style:italic;font-weight:500">Bodoni Italic</p>
+            <p class="label">The motto and Polish dish names: <em>Gołąbki</em>, <em>Pączki</em>.</p>
+          </div>
+          <div>
+            <p class="sample" style="font-family:var(--font);font-weight:600;font-variant-caps:all-small-caps;letter-spacing:.12em">EB Garamond</p>
+            <p class="label">Reading text at 20px; spaced small capitals for menus and buttons.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Logo</h2>
+        <p class="lede">The wheat-and-script roundel is the only logo. Keep it exactly as drawn, in one of three versions.</p>
+        <div class="logos">
+          <figure style="background:#FBF6EC"><img src="../images/logo/logo-red.png" alt="Logo in red on paper"><figcaption>Red on Cream or Paper (default)</figcaption></figure>
+          <figure style="background:#9A1B1F;color:#F3E6CF"><img src="../images/logo/logo-cream.png" alt="Logo in cream on red"><figcaption>Cream on Red</figcaption></figure>
+          <figure style="background:#FBF6EC"><img src="../images/logo/logo-ink.png" alt="Logo in ink on paper"><figcaption>Ink on Paper (one-color print)</figcaption></figure>
+        </div>
+        <ul class="rules">
+          <li><strong>Clear space:</strong> at least the height of the "B" in BAKERY on every side.</li>
+          <li><strong>Minimum size:</strong> 120px wide on screen, 1 inch in print.</li>
+          <li>Don't stretch, rotate, outline, add shadows or recolor it, and don't place it on busy photos.</li>
+          <li><strong>To do:</strong> find the original vector file (.ai, .eps, .svg or .pdf). The current file is screen-only.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <h2>Illustrations</h2>
+        <p class="lede">Bakery objects drawn like old engravings, taken from the ink drawings on our paper bags. One color, hand-drawn line, hatch marks for shadow, flour-dust dots for texture.</p>
+        <div class="doodle-grid">
+          <figure><img src="../images/doodles/boule.svg" alt="">Round loaf</figure>
+          <figure><img src="../images/doodles/baguette.svg" alt="">Long loaf</figure>
+          <figure><img src="../images/doodles/pierogi.svg" alt="">Pierogi</figure>
+          <figure><img src="../images/doodles/paczek.svg" alt="">Pączek</figure>
+          <figure><img src="../images/doodles/golabek.svg" alt="">Gołąbek</figure>
+          <figure><img src="../images/doodles/croissant.svg" alt="">Croissant</figure>
+          <figure><img src="../images/doodles/pretzel.svg" alt="">Pretzel</figure>
+          <figure><img src="../images/doodles/wheat.svg" alt="">Wheat</figure>
+          <figure><img src="../images/doodles/whisk.svg" alt="">Whisk</figure>
+          <figure><img src="../images/doodles/rolling-pin.svg" alt="">Rolling pin</figure>
+        </div>
+        <h3 style="margin-top:48px">Characters</h3>
+        <p class="note" style="max-width:60ch;margin-bottom:20px">The playful side: the food comes to life with dot eyes, a small smile and stick legs. One or two per surface, next to headings, in the footer, on stickers and boxes.</p>
+        <div class="doodle-grid">
+          <figure><img src="../images/doodles/chlebek-character.svg" alt="">Chlebek</figure>
+          <figure><img src="../images/doodles/pierozek-character.svg" alt="">Pierożek</figure>
+          <figure><img src="../images/doodles/paczek-character.svg" alt="">Pączek</figure>        </div>
+        <div class="on-red">
+          <div class="band band--red" aria-hidden="true">
+            <img src="../images/doodles/cream/wheat.svg" alt=""><img src="../images/doodles/cream/croissant.svg" alt=""><img src="../images/doodles/cream/boule.svg" alt=""><img src="../images/doodles/cream/pretzel.svg" alt=""><img src="../images/doodles/cream/pierogi.svg" alt=""><img src="../images/doodles/cream/whisk.svg" alt=""><img src="../images/doodles/cream/paczek.svg" alt=""><img src="../images/doodles/cream/baguette.svg" alt="">
+          </div>
+        </div>
+        <ul class="rules">
+          <li><strong>Use as bands and borders</strong>, like the bottom of the bag, or scattered at the edges. Tilt ±10° at most.</li>
+          <li><strong>Red on Cream or Paper, or Cream on Red.</strong> Files: <code>images/doodles/</code> (red) and <code>images/doodles/cream/</code>.</li>
+          <li><strong>Never on top of</strong> food photos, the logo or text. Minimum 32px on screen, 0.5 inch in print.</li>
+          <li><strong>Next to draw:</strong> makowiec, a jar of pickles, a kielbasa ring, a mazurek, the storefront.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Photography</h2>
+        <p class="lede">Real photos of our food, shelves and shop. Close and generous, warm natural light, no stock photos. People only with their permission.</p>
+        <div class="photos">
+          <img src="../images/photos/bread-rack-loaves-sm.jpg" alt="Racks of crusty loaves">
+          <img src="../images/photos/paczki-powdered-sm.jpg" alt="Tray of powdered pączki">
+          <img src="../images/photos/pierogi-handmade-sm.jpg" alt="Handmade pierogi on a floured table">
+          <img src="../images/photos/storefront-evening-sm.jpg" alt="The bakery storefront at dusk">
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <h2>Tone of voice</h2>
+        <p class="lede">Like a regular behind the counter: warm, plain-spoken, a little proud, never pushy.</p>
+        <ol class="principles">
+          <li><strong>Say what it is.</strong> "Cabbage rolls stuffed with rice and meat", not "an elevated take on a classic".</li>
+          <li><strong>Polish names, explained once.</strong> "Gołąbki, stuffed cabbage rolls." Always with the correct Polish letters.</li>
+          <li><strong>Short sentences.</strong> Most things should fit on a chalkboard.</li>
+          <li><strong>Only say what's true.</strong> No invented awards, reviews or "best in town" claims.</li>
+          <li><strong>Calm and confident.</strong> One exclamation point per page, at most.</li>
+        </ol>
+        <div class="dodont">
+          <div class="do">
+            <h3>Do</h3>
+            <ul>
+              <li>Pączki day. Order them by the dozen and skip the line.</li>
+              <li>Pastries and hot food are made right here every day.</li>
+              <li>Some things rotate, so ask at the counter.</li>
+              <li>Gołąbki, stuffed cabbage rolls</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <h3>Don't</h3>
+            <ul>
+              <li>OMG!!! It's PĄCZKI DAY at Northside!!!</li>
+              <li>Artisanal handcrafted culinary experiences.</li>
+              <li>Product availability subject to change without notice.</li>
+              <li>Golabki (missing Polish letters)</li>
+            </ul>
+          </div>
+        </div>
+        <p class="formats"><strong>Formats:</strong> 7 am to 8 pm. $1.65 each. Small $4.25, large $7.95. (718) 782-5551.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Northside Bakery, 149 N 8th St, Brooklyn. Full written guide: brand.md</div>
+  </footer>
+</body>
+</html>

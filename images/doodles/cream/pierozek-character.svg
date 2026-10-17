@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <title>Pierożek, walking pierogi character</title>
+  <defs><filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="31"/><feDisplacementMap in="SourceGraphic" scale="1.8"/></filter></defs>
+  <g filter="url(#hand)" fill="none" stroke="#F3E6CF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 38c-6-7 6-11 0-18M82 34c-6-7 6-11 0-18M94 38c-6-7 6-11 0-18" stroke-width="2.4"/>
+    <path d="M28 112A52 56 0 0 1 132 112c-28 8-76 8-104 0Z"/>
+    <path d="M38 108A42 46 0 0 1 122 108" stroke-width="11" stroke-dasharray="2.2 8" stroke-linecap="butt"/>
+    <ellipse cx="68" cy="88" rx="3.4" ry="4.8" fill="#F3E6CF" stroke="none"/>
+    <ellipse cx="94" cy="88" rx="3.4" ry="4.8" fill="#F3E6CF" stroke="none"/>
+    <path d="M73 98q8 8 16 0"/>
+    <path d="M54 96l5-4M57 100l5-4M102 96l5-4M105 100l5-4" stroke-width="1.8"/>
+    <path d="M30 100c-12-3-17-12-14-22M16 76l-4-4M16 76l1-6" stroke-width="2.6"/>
+    <path d="M130 102c10 3 16-1 19-8M149 94l5-2M149 94l2 5" stroke-width="2.6"/>
+    <path d="M66 119l-5 21M96 119l4 21M52 141h13M98 141h13" stroke-width="3.2"/>
+    <g stroke-width="1.6"><path d="M44 112l4-4M52 115l4-4M106 115l4-4M114 112l4-4"/></g>
+    <g fill="#F3E6CF" stroke="none"><circle cx="58" cy="70" r="1"/><circle cx="102" cy="70" r="1"/><circle cx="80" cy="62" r="1"/><circle cx="90" cy="74" r=".9"/></g>
+  </g>
+</svg>

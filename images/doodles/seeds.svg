@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Scattered seeds</title>
+  <g fill="none" stroke="#9A1B1F" stroke-width="1.8" stroke-linecap="round">
+    <g transform="rotate(-30 30 30)"><ellipse cx="30" cy="30" rx="6" ry="4"/><path d="M25 30h10"/></g>
+    <g transform="rotate(20 58 22)"><ellipse cx="58" cy="22" rx="5" ry="3.4"/><path d="M54 22h8"/></g>
+    <g transform="rotate(60 46 54)"><ellipse cx="46" cy="54" rx="6" ry="4"/><path d="M41 54h10"/></g>
+    <g transform="rotate(-10 76 62)"><ellipse cx="76" cy="62" rx="5" ry="3.4"/><path d="M72 62h8"/></g>
+    <g transform="rotate(40 28 76)"><ellipse cx="28" cy="76" rx="4.4" ry="3"/><path d="M25 76h6"/></g>
+  </g>
+  <g fill="#9A1B1F"><circle cx="66" cy="40" r="1.6"/><circle cx="14" cy="48" r="1.4"/><circle cx="86" cy="30" r="1.2"/><circle cx="56" cy="84" r="1.6"/><circle cx="40" cy="12" r="1.2"/><circle cx="88" cy="84" r="1"/><circle cx="12" cy="20" r="1"/></g>
+</svg>

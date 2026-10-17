@@ -1,0 +1,23 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Kiełbasa ring</title>
+  <defs>
+    <filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="55"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <pattern id="st" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="#F3E6CF"/><circle cx="3.4" cy="3.4" r=".7" fill="#F3E6CF"/></pattern>
+    <mask id="ring" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+      <g fill="none" stroke-linecap="round">
+        <path d="M64 162C24 124 34 52 100 46c66 6 76 78 36 116" stroke="#fff" stroke-width="30"/>
+        <path d="M64 162C24 124 34 52 100 46c66 6 76 78 36 116" stroke="#000" stroke-width="23"/>
+      </g>
+    </mask>
+  </defs>
+  <g filter="url(#hand)" transform="rotate(-8 100 100)">
+    <rect width="200" height="200" fill="#F3E6CF" mask="url(#ring)"/>
+    <path d="M70 166C26 128 36 58 100 54c64 4 74 74 30 112" fill="none" stroke="url(#st)" stroke-width="9"/>
+    <g fill="none" stroke="#F3E6CF" stroke-linecap="round" stroke-width="1.6">
+      <path d="M44 120c6 2 10 0 14-4M48 86c6 4 10 4 14 0M70 60c4 6 8 8 14 6M116 60c4-6 8-8 14-6M140 86c4 4 8 4 14 0M144 120c4 4 8 6 14 4"/>
+    </g>
+    <g fill="none" stroke="#F3E6CF" stroke-linecap="round" stroke-width="2.4">
+      <path d="M58 174l-10 16M58 174l-14 8M142 174l10 16M142 174l14 8"/>
+    </g>
+  </g>
+</svg>

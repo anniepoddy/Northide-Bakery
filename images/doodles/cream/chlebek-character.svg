@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <title>Chlebek, walking bread loaf character</title>
+  <defs><filter id="hand"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="35"/><feDisplacementMap in="SourceGraphic" scale="1.8"/></filter></defs>
+  <g filter="url(#hand)" fill="none" stroke="#F3E6CF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 98c0-30 26-46 60-46s60 16 60 46c0 14-24 22-60 22s-60-8-60-22Z"/>
+    <path d="M46 70c7-7 16-9 24-5M70 62c7-7 16-9 24-5M94 66c6-5 13-6 19-2"/>
+    <path d="M48 72c6-3 12-3 17 0M72 64c6-3 12-3 17 0" stroke-width="1.8"/>
+    <ellipse cx="66" cy="94" rx="3.4" ry="4.8" fill="#F3E6CF" stroke="none"/>
+    <ellipse cx="94" cy="94" rx="3.4" ry="4.8" fill="#F3E6CF" stroke="none"/>
+    <path d="M71 104q9 9 18 0"/>
+    <path d="M52 102l5-4M55 106l5-4M102 102l5-4M105 106l5-4" stroke-width="1.8"/>
+    <path d="M22 98c-12 2-18 10-18 20M4 118l-3 4M4 118l4 3" stroke-width="2.6"/>
+    <path d="M138 96c12-4 18-14 16-24M154 72l4-3M154 72l-4-3" stroke-width="2.6"/>
+    <path d="M62 119l-9 20M98 119l7 20M42 140h13M103 140h13" stroke-width="3.2"/>
+    <g stroke-width="1.6"><path d="M32 108l4-4M40 112l4-4M48 115l4-4M108 115l4-4M116 112l4-4M124 108l4-4"/></g>
+    <g fill="#F3E6CF" stroke="none"><circle cx="40" cy="80" r="1"/><circle cx="120" cy="80" r="1"/><circle cx="58" cy="58" r=".9"/><circle cx="104" cy="56" r=".9"/><circle cx="82" cy="78" r=".8"/></g>
+  </g>
+</svg>
