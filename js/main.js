@@ -1,5 +1,5 @@
 // Northside Bakery, Brooklyn
-// 1. Header and mobile navigation  2. Today's hours  3. Hero spread
+// 1. Header and mobile navigation  2. Today's hours  3. Hero slideshow
 // 4. Scroll reveals and parallax  5. Menu (read from data/menu.json)
 
 (function () {
@@ -71,24 +71,31 @@
     }
   }
 
-  /* ---------- 3. Hero spread: foods drift a little with the mouse ---------- */
-  const stage = document.querySelector('[data-stage]');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (stage && finePointer && !reduceMotion) {
-    const foods = Array.from(stage.querySelectorAll('[data-depth]'));
-    stage.addEventListener('pointermove', (e) => {
-      const r = stage.getBoundingClientRect();
-      const x = (e.clientX - (r.left + r.width / 2)) / r.width;   // -0.5 .. 0.5 across the hero
-      const y = (e.clientY - (r.top + r.height / 2)) / r.height;
-      foods.forEach((food) => {
-        const depth = Number(food.dataset.depth) * 22;
-        food.style.setProperty('--px', `${(x * depth).toFixed(1)}px`);
-        food.style.setProperty('--py', `${(y * depth).toFixed(1)}px`);
-      });
-    });
-    stage.addEventListener('pointerleave', () => {
-      foods.forEach((food) => { food.style.setProperty('--px', '0px'); food.style.setProperty('--py', '0px'); });
-    });
+  /* ---------- 3. Hero slideshow: food photos crossfade every few seconds ---------- */
+  const show = document.querySelector('[data-show]');
+  if (show) {
+    const slides = Array.from(show.querySelectorAll('.slide'));
+    const dots = Array.from(show.querySelectorAll('.hero__bars button'));
+    let index = 0, timer = null;
+    const go = (next) => {
+      slides[index].classList.remove('is-active');
+      slides[index].setAttribute('aria-hidden', 'true');
+      dots[index].removeAttribute('aria-current');
+      index = (next + slides.length) % slides.length;
+      slides[index].classList.add('is-active');
+      slides[index].removeAttribute('aria-hidden');
+      dots[index].setAttribute('aria-current', 'true');
+    };
+    // Plays on its own unless the visitor asked for reduced motion; pauses while hovered or focused
+    const play = () => { if (!reduceMotion && !timer) timer = setInterval(() => go(index + 1), 5000); };
+    const pause = () => { clearInterval(timer); timer = null; };
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { go(i); pause(); play(); }));
+    show.addEventListener('pointerenter', pause);
+    show.addEventListener('pointerleave', play);
+    show.addEventListener('focusin', pause);
+    show.addEventListener('focusout', play);
+    document.addEventListener('visibilitychange', () => (document.hidden ? pause() : play()));
+    play();
   }
 
   /* ---------- 4. Scroll reveals and parallax ---------- */
@@ -163,7 +170,7 @@
     if (item.photo) {
       const img = el('img');
       img.src = item.photo;
-      img.alt = item.polish ? `${item.name} (${item.polish})` : item.name;
+      img.alt = item.name;
       img.loading = 'lazy';
       img.width = 800;
       img.height = 800;
@@ -176,11 +183,6 @@
     }
     const body = el('div', 'item__body');
     body.append(el('h3', 'item__name', item.name));
-    if (item.polish) {
-      const pl = el('p', 'item__polish', item.polish);
-      pl.lang = 'pl';
-      body.append(pl);
-    }
     if (item.description) body.append(el('p', 'item__desc', item.description));
     const meta = el('div', 'item__meta');
     if (showPrice(item)) meta.append(el('span', 'item__price', item.price));
@@ -212,11 +214,6 @@
       tab.id = `tab-${c.id}`;
       tab.dataset.id = c.id;
       tab.setAttribute('role', 'tab');
-      if (c.polish && c.polish !== c.name) {
-        const pl = el('span', '', c.polish);
-        pl.lang = 'pl';
-        tab.append(pl);
-      }
       tab.addEventListener('click', () => select(c.id));
       tabsEl.append(tab);
     });

@@ -66,14 +66,14 @@ Two colors carry the brand: **red and cream**. Everything else is a lighter or d
 
 | Role | Font | Settings |
 | --- | --- | --- |
-| Display (headlines, motto, dish names) | **Bodoni Moda**, SemiBold (600); Italic Medium (500) for the motto and Polish dish names | Tracking -0.015 to -0.03em, line height 0.95 to 1.05 |
+| Display (headlines, motto, dish names) | **Fraunces** (Soft 50), SemiBold (600); Italic Medium (500) for the motto and dish names | Tracking -0.01 to -0.02em, line height 0.95 to 1.05 |
 | Body (reading text) | **EB Garamond Regular (400)** | 20px on the web (Garamond runs small), line height 1.55, old-style numbers |
 | Menus, buttons, labels | **EB Garamond SemiBold, small capitals** | Letter spacing +0.12 to +0.14em, e.g. MENU, ORDER ON GRUBHUB, EVERY DAY |
-| Polish names in lists | **EB Garamond Italic**, in Red | e.g. *Chleb żytni* under "Rye bread" |
+| Polish names | **EB Garamond Italic**, in Red, smaller, always under the English name | e.g. *Chleb żytni* under "Rye bread", *Pączki* under "Polish doughnuts" |
 
 Both fonts are free from Google Fonts and handle every Polish letter (ą ć ę ł ń ó ś ź ż).
 
-**Why these:** Bodoni is the high-contrast serif of fine patisseries and fashion houses; its italic gives the motto and the Polish names a confident, expensive voice. EB Garamond is a classic book face, warm and easy to read, and set in spaced small capitals it makes menus and buttons feel like an engraved shop sign rather than an app.
+**Why these:** Fraunces is a soft, warm old-style serif that feels hand-made, like the ink drawings and the paper bag; its italic gives the motto and dish names a friendly, confident voice. EB Garamond is a classic book face, warm and easy to read, and set in spaced small capitals it makes menus and buttons feel like an engraved shop sign rather than an app.
 
 **Rules:**
 - Sentence case for headlines and text. Labels, menus and buttons use spaced small capitals, never shouty full-size capitals.
@@ -155,7 +155,7 @@ Based on the ink drawings on our current paper bags: bakery objects drawn like o
 
 **Principles:**
 1. **Say what it is.** "Cabbage rolls stuffed with rice and meat", not "an elevated take on a classic".
-2. **Polish names, explained once.** Write the Polish name with its English meaning the first time: "gołąbki, stuffed cabbage rolls". Always use the correct Polish letters (ł, ą, ż…).
+2. **English first, Polish second.** Lead with the English name most customers can read ("Stuffed cabbage rolls") and put the Polish name under it, smaller and in italic (*gołąbki*). Words customers already know, like pierogi and kielbasa, can stand alone. Always use the correct Polish letters (ł, ą, ż…).
 3. **Short sentences.** Most things fit on a chalkboard.
 4. **Only say what's true.** No invented awards, reviews or "best in town" claims beyond the real ones.
 5. **Calm and confident.** One exclamation point per page, at most.

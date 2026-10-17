@@ -12,7 +12,9 @@ Plain HTML, CSS and JavaScript. No framework, no build step.
 | `data/menu.json` | **The menu.** Edit items, prices and photos here. |
 | `images/photos/` | Web-ready photos (`name.jpg` large, `name-sm.jpg` small). |
 | `images/doodles/` | The ink drawings and characters, one SVG each (`cream/` has cream versions for red backgrounds). |
-| `images/cutouts/` | Whole foods cut out of their photos, used in the hero. |
+| `images/engravings/` | The engraved drawings in the hero corners, in the style of the paper bag. Made by `tools/engrave.mjs`: change a drawing there, then run `node tools/engrave.mjs`. |
+| `images/cutouts/` | Whole foods cut out of their photos (not used on the page right now). |
+| Hero slideshow | The food photos in the arched window are listed in `index.html` under "Food slideshow". Swap or add a `<figure class="slide">` and a matching dot button. |
 | `tools/cutout.mjs` | Makes a new cutout: `node tools/cutout.mjs <photo-name>`. Check the result; pale or busy photos don't cut cleanly. |
 | `images/logo/` | Logo in red, cream and dark ink, with a transparent background. |
 | `tools/prepare-photos.mjs` | Turns original photos into web photos. |
@@ -36,6 +38,7 @@ Open `data/menu.json`. Each item looks like this:
 { "name": "Challah", "polish": "Chałka", "category": "bread", "description": "Braided egg bread.", "photo": "images/photos/challah-sm.jpg", "price": "$6.00", "availability": "Every day" },
 ```
 
+- `polish` is kept for reference but no longer shown on the site.
 - `category` is one of: `bread`, `sweets`, `pierogi`, `hot`, `market`.
 - `photo`: use `""` for no photo; a drawing is shown instead.
 - `price`: use `""` for no price.
