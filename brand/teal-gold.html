@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northside Teal and Gold</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,50;1,9..144,400..700,50&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <style>
+    /* Northside Bakery, teal and gold brand package (proposal).
+       Colors come from the storefront paint at 149 N 8th St. */
+    :root {
+      --teal: #12A396;       /* North 8th Teal: the wall in sun */
+      --deep: #072E2B;       /* Deep Teal: replaces Ink for text and the logo */
+      --gold: #F7BE3A;       /* Glaze Gold: the sign lettering */
+      --flour: #FBF3E4;      /* Flour: main background */
+      --crust: #8E4F22;      /* Crust: small warm accent, only on Flour */
+      --line: rgba(7, 46, 43, .14);
+      --display: "Fraunces", Georgia, serif;
+      --body: "EB Garamond", Georgia, serif;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body { background: var(--flour); color: var(--deep); font: 400 19px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    ul { padding: 0; list-style: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+    section { padding: clamp(72px, 9vw, 128px) 0; border-top: 1px solid var(--line); }
+    h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.02em; line-height: 1; text-wrap: balance; }
+    h2 { font-size: clamp(40px, 5vw, 68px); }
+    h3 { font-size: 26px; margin-bottom: 8px; }
+    p { text-wrap: pretty; }
+    .label { font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .16em; font-size: 18px; }
+    .num { display: block; margin-bottom: 18px; color: var(--crust); }
+    .lede { max-width: 58ch; font-size: 21px; margin: 18px 0 clamp(36px, 5vw, 56px); }
+    .note { font-size: 16px; opacity: .8; }
+
+    /* Doodles and logo are single-color masks, so any brand color can fill them */
+    .dd { display: block; aspect-ratio: 1; background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+    .logo { display: block; aspect-ratio: 668 / 463; background: currentColor; -webkit-mask: url(../images/logo/logo-ink.png) center / contain no-repeat; mask: url(../images/logo/logo-ink.png) center / contain no-repeat; }
+
+    /* ---------- Cover ---------- */
+    .cover { position: relative; overflow: hidden; background: var(--deep); color: var(--flour); padding: clamp(96px, 12vw, 160px) 0 clamp(80px, 10vw, 136px); border: 0; }
+    .cover .wrap { position: relative; z-index: 1; }
+    .cover .logo { width: clamp(180px, 20vw, 260px); color: var(--flour); }
+    .cover h1 { margin-top: 44px; font-size: clamp(56px, 8vw, 116px); line-height: .92; letter-spacing: -0.035em; max-width: 6.2em; }
+    .cover h1 em { color: var(--gold); }
+    .cover p { margin-top: 28px; max-width: 46ch; font-size: 21px; opacity: .85; }
+    .cover .label { color: var(--gold); margin-top: 36px; }
+    .cover__band { position: absolute; right: -40px; top: 0; bottom: 0; width: min(34%, 420px); display: grid; grid-template-columns: repeat(3, 1fr); align-content: center; gap: 8px 18px; color: var(--gold); opacity: .9; }
+    .cover__band .dd:nth-child(odd) { rotate: -9deg; }
+    .cover__band .dd:nth-child(even) { rotate: 7deg; }
+    .cover__band .dd:nth-child(3n+2) { translate: 0 40%; }
+
+    /* ---------- Strategy ---------- */
+    .idea { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .idea li { padding: 30px 28px 32px; border-radius: 6px; background: #fff; border: 1px solid var(--line); }
+    .idea h3 { margin-top: 14px; }
+    .idea .dd { width: 52px; color: var(--teal); }
+
+    /* ---------- Color ---------- */
+    .swatches { display: grid; grid-template-columns: 2fr 2fr 1.4fr 1.4fr 1fr; gap: 12px; }
+    .sw { min-height: 300px; border-radius: 6px; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .sw b { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.05; }
+    .sw span { display: block; margin-top: 6px; font-size: 16px; }
+    .sw--deep { background: var(--deep); color: var(--flour); }
+    .sw--teal { background: var(--teal); color: var(--deep); }
+    .sw--gold { background: var(--gold); color: var(--deep); }
+    .sw--flour { background: var(--flour); color: var(--deep); box-shadow: inset 0 0 0 1px var(--line); }
+    .sw--crust { background: var(--crust); color: var(--flour); }
+    .ratio { display: flex; height: 18px; margin-top: 28px; border-radius: 3px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+    .ratio i:nth-child(1) { flex: 50; background: var(--flour); box-shadow: inset 0 0 0 1px rgba(7, 46, 43, .25); border-radius: 3px 0 0 3px; }
+    .ratio i:nth-child(2) { flex: 25; background: var(--deep); }
+    .ratio i:nth-child(3) { flex: 13; background: var(--teal); }
+    .ratio i:nth-child(4) { flex: 9; background: var(--gold); }
+    .ratio i:nth-child(5) { flex: 3; background: var(--crust); }
+    .ratio-key { display: flex; justify-content: space-between; margin-top: 10px; font-size: 16px; }
+    .pairs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 48px; }
+    .pair { border-radius: 6px; padding: 18px; min-height: 120px; display: flex; flex-direction: column; justify-content: space-between; font-size: 15px; }
+    .pair b { font-family: var(--display); font-size: 34px; font-weight: 600; line-height: 1; }
+    .pair--no { position: relative; }
+    .pair--no::after { content: "Don't"; position: absolute; top: 12px; right: 12px; font: 600 14px var(--body); font-variant-caps: all-small-caps; letter-spacing: .12em; background: var(--flour); color: var(--deep); padding: 2px 8px; border-radius: 99px; }
+
+    /* ---------- Balance (yummy vs. bright) ---------- */
+    .balance { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .plate { border-radius: 6px; overflow: hidden; display: grid; place-items: center; aspect-ratio: 4 / 3; position: relative; }
+    .plate img { width: 70%; filter: drop-shadow(0 18px 24px rgba(7, 46, 43, .28)); }
+    .plate--good { background: var(--flour); box-shadow: inset 0 0 0 14px var(--deep), inset 0 0 0 16px var(--gold); }
+    .plate--deep { background: var(--deep); }
+    .plate--bad { background: var(--teal); }
+    .plate--bad img { filter: saturate(.85) hue-rotate(-8deg); }
+    .plate figcaption { position: absolute; left: 0; bottom: 0; padding: 8px 14px; font-size: 16px; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .12em; }
+    .plate--good figcaption, .plate--deep figcaption { background: var(--gold); color: var(--deep); }
+    .plate--bad figcaption { background: var(--deep); color: var(--flour); }
+    .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 48px; margin-top: 40px; }
+    .rules li { padding-top: 14px; border-top: 1px solid var(--line); }
+    .rules b { font-family: var(--display); font-weight: 600; font-size: 21px; display: block; margin-bottom: 2px; }
+
+    /* ---------- Type ---------- */
+    .type { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+    .type__card { border-radius: 6px; padding: 40px; }
+    .type__card--a { background: var(--deep); color: var(--flour); }
+    .type__card--b { background: #fff; border: 1px solid var(--line); }
+    .type .big { font-family: var(--display); font-style: italic; font-weight: 600; font-size: clamp(64px, 7vw, 108px); line-height: .9; letter-spacing: -0.035em; }
+    .type .big em { color: var(--gold); }
+    .type .meta { margin-top: 26px; font-size: 16px; opacity: .8; }
+    .menu-line { display: flex; align-items: baseline; gap: 10px; margin-top: 14px; }
+    .menu-line .name { font-family: var(--display); font-weight: 600; font-size: 26px; }
+    .menu-line .dots { flex: 1; border-bottom: 2px dotted var(--line); translate: 0 -6px; }
+    .menu-line .price { font-weight: 600; font-size: 22px; font-feature-settings: "lnum"; }
+    .pl { font-style: italic; color: var(--crust); font-size: 19px; }
+
+    /* ---------- Logo ---------- */
+    .logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .logos li { aspect-ratio: 1; border-radius: 6px; display: grid; place-items: center; position: relative; }
+    .logos .logo { width: 66%; }
+    .logos small { position: absolute; left: 16px; bottom: 12px; font-size: 15px; }
+
+    /* ---------- Illustration ---------- */
+    .doodles { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0; border-radius: 6px; overflow: hidden; }
+    .doodles li { aspect-ratio: 1; display: grid; place-items: center; }
+    .doodles .dd { width: 64%; }
+    .doodles li:nth-child(16n+1), .doodles li:nth-child(16n+3), .doodles li:nth-child(16n+6), .doodles li:nth-child(16n+8),
+    .doodles li:nth-child(16n+10), .doodles li:nth-child(16n+12), .doodles li:nth-child(16n+13), .doodles li:nth-child(16n+15) { background: #fff; }
+    .doodles li { color: var(--deep); background: var(--flour); }
+    .doodles li.t { background: var(--teal); color: var(--deep); }
+    .doodles li.d { background: var(--deep); color: var(--gold); }
+    .doodles li.g { background: var(--gold); color: var(--deep); }
+    .chars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+    .chars li { border-radius: 6px; padding: 28px; display: flex; align-items: center; gap: 22px; }
+    .chars .dd { width: 120px; flex: none; }
+    .chars b { font-family: var(--display); font-weight: 600; font-size: 28px; display: block; }
+
+    /* Pattern: the bag border as a repeat */
+    .pattern { height: 260px; border-radius: 6px; margin-top: 20px; background: var(--deep); position: relative; overflow: hidden; }
+    .pattern__row { position: absolute; left: -40px; right: -40px; display: flex; justify-content: space-between; color: var(--gold); }
+    .pattern__row .dd { width: 96px; }
+    .pattern__row .dd:nth-child(odd) { rotate: -10deg; }
+    .pattern__row .dd:nth-child(even) { rotate: 8deg; color: var(--teal); }
+    .pattern__row--1 { top: 18px; }
+    .pattern__row--2 { top: 138px; left: 30px; }
+
+    /* ---------- Applications ---------- */
+    .apps { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .app { border-radius: 6px; overflow: hidden; position: relative; }
+    .app--bag { grid-column: span 4; background: #E9DDC7; display: grid; place-items: center; padding: 48px 0; }
+    .bag { width: 62%; aspect-ratio: 3 / 4.4; background: #C9A57A; position: relative; border-radius: 2px 2px 4px 4px; box-shadow: 0 30px 40px -20px rgba(7,46,43,.45); display: grid; place-items: center; color: var(--deep); overflow: hidden; }
+    .bag::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 9%; background: repeating-linear-gradient(90deg, transparent 0 7px, rgba(0,0,0,.08) 7px 8px); }
+    .bag .logo { width: 58%; }
+    .bag__band { position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: var(--teal); display: flex; justify-content: space-around; align-items: center; color: var(--deep); }
+    .bag__band .dd { width: 22%; }
+    .bag__band .dd:nth-child(odd) { rotate: -10deg; }
+    .app--box { grid-column: span 8; background: var(--teal); display: grid; place-items: center; padding: 48px; }
+    .box { width: 100%; max-width: 560px; aspect-ratio: 1.6; background: var(--flour); border-radius: 4px; box-shadow: 0 30px 40px -20px rgba(7,46,43,.5); position: relative; overflow: hidden; display: grid; place-items: center; }
+    .box__edge { position: absolute; inset: 0; border: 16px solid var(--deep); }
+    .box__ink { position: absolute; color: var(--deep); width: 15%; }
+    .box__seal { width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); display: grid; place-items: center; text-align: center; color: var(--deep); position: relative; }
+    .box__seal .logo { width: 78%; }
+    .app--post { grid-column: span 5; aspect-ratio: 4 / 5; background: var(--deep); color: var(--flour); padding: 34px; display: flex; flex-direction: column; }
+    .app--post .label { color: var(--gold); }
+    .app--post h3 { font-size: 46px; font-style: italic; margin-top: 10px; line-height: .95; }
+    .app--post img { width: 82%; margin: auto auto 0; filter: drop-shadow(0 20px 22px rgba(0,0,0,.45)); }
+    .app--post .tag { position: absolute; z-index: 2; right: 30px; bottom: 34%; width: 96px; aspect-ratio: 1; border-radius: 50%; background: var(--gold); color: var(--deep); display: grid; place-items: center; text-align: center; font: 600 15px/1.15 var(--body); font-variant-caps: all-small-caps; letter-spacing: .1em; rotate: 8deg; }
+    .app--post .tag b { display: block; font: italic 600 30px/1 var(--display); letter-spacing: -0.02em; font-variant-caps: normal; }
+    .app--board { grid-column: span 7; background: var(--deep); color: var(--flour); padding: 40px 44px; }
+    .app--board h3 { color: var(--gold); font-size: 40px; font-style: italic; }
+    .app--board .menu-line .dots { border-color: rgba(251,243,228,.3); }
+    .app--board .pl { color: var(--gold); opacity: .9; font-size: 18px; }
+    .app--board .board-ink { position: absolute; right: 34px; top: 30px; width: 80px; color: var(--teal); }
+    .app--web { grid-column: span 12; display: grid; grid-template-columns: 1.1fr 1fr; min-height: 420px; }
+    .web__text { background: var(--teal); padding: 48px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .web__nav { position: absolute; left: 0; right: 0; top: 0; height: 46px; background: var(--deep); display: flex; align-items: center; justify-content: space-between; padding: 0 22px; color: var(--flour); font-size: 14px; letter-spacing: .14em; font-variant-caps: all-small-caps; font-weight: 600; }
+    .web__nav .logo { width: 56px; color: var(--flour); }
+    .web__nav i { font-style: normal; background: var(--gold); color: var(--deep); padding: 5px 14px; border-radius: 99px; }
+    .web__text h3 { font-size: 64px; font-style: italic; line-height: .9; letter-spacing: -0.035em; margin-top: 30px; }
+    .web__text h3 em { background: var(--gold); padding: 0 .12em; display: inline-block; rotate: -2deg; font-style: inherit; }
+    .web__text p { margin-top: 16px; max-width: 30ch; }
+    .web__btn { margin-top: 22px; align-self: flex-start; background: var(--gold); padding: 12px 26px; border-radius: 99px; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .12em; }
+    .web__photo { background: url(../images/photos/paczki-glazed-nuts.jpg) center / cover; position: relative; }
+    .web__photo span { position: absolute; left: 0; bottom: 0; background: var(--gold); padding: 10px 18px; font: italic 600 22px var(--display); }
+    .caption { margin-top: 10px; font-size: 16px; opacity: .8; }
+
+    /* ---------- Do / Don't ---------- */
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .dos > div { border-radius: 6px; padding: 32px 34px; }
+    .dos .do { background: #fff; border: 1px solid var(--line); }
+    .dos .dont { background: var(--deep); color: var(--flour); }
+    .dos .dont h3 { color: var(--gold); }
+    .dos li { padding: 10px 0; border-top: 1px solid var(--line); }
+    .dos .dont li { border-color: rgba(251,243,228,.16); }
+
+    footer { background: var(--deep); color: var(--flour); padding: 56px 0; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    footer .logo { width: 110px; color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .idea, .balance, .rules, .type, .dos, .chars { grid-template-columns: 1fr; }
+      .swatches { grid-template-columns: 1fr 1fr; }
+      .sw { min-height: 160px; }
+      .pairs { grid-template-columns: repeat(3, 1fr); }
+      .logos { grid-template-columns: 1fr 1fr; }
+      .doodles { grid-template-columns: repeat(4, 1fr); }
+      .apps > * { grid-column: 1 / -1 !important; }
+      .app--web { grid-template-columns: 1fr; }
+      .web__photo { min-height: 300px; }
+      .cover__band { opacity: .25; width: 70%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cover -->
+<header class="cover">
+  <div class="cover__band" aria-hidden="true">
+    <i class="dd" style="--m:url(../images/doodles/paczek.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/wheat.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/pierogi.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/croissant.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/boule.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/pretzel.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/babka.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/rolling-pin.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/golabek.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/whisk.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/makowiec.svg)"></i>
+    <i class="dd" style="--m:url(../images/doodles/baguette.svg)"></i>
+  </div>
+  <div class="wrap">
+    <i class="logo" role="img" aria-label="Northside Bakery, established 1992"></i>
+    <h1>Teal and gold, <em>baked&nbsp;in.</em></h1>
+    <p>A brand package built from the colors already painted on 149 North 8th Street: the teal wall and the gold sign. Bright on the street, warm on the plate.</p>
+    <p class="label">Brand package · Proposal · 2026</p>
+  </div>
+</header>
+
+<!-- 01 Idea -->
+<section>
+  <div class="wrap">
+    <span class="label num">01 · The idea</span>
+    <h2>The building is the brand.</h2>
+    <p class="lede">For 30 years people have found us by the teal wall and the gold letters. The brand should look like the place you walk into. The trick is keeping those bright, man-made colors from making the food look anything but delicious.</p>
+    <ul class="idea">
+      <li><i class="dd" style="--m:url(../images/doodles/rolling-pin.svg)"></i><h3>Teal frames, food fills.</h3><p>Teal is the shopfront: bars, bands, borders and backgrounds for words. The food always sits on Flour or Deep Teal, never on bright teal.</p></li>
+      <li><i class="dd" style="--m:url(../images/doodles/paczek.svg)"></i><h3>Gold is the glaze.</h3><p>Gold is used the way glaze is: a thin, shiny layer on top. Buttons, prices, a highlighted word. Under a tenth of any layout, never a whole page.</p></li>
+      <li><i class="dd" style="--m:url(../images/doodles/wheat.svg)"></i><h3>Ink keeps it grown-up.</h3><p>Deep Teal, which is close to black, does the heavy lifting for text, the logo and the drawings. That's what makes the bright colors look deliberate instead of loud.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 02 Color -->
+<section>
+  <div class="wrap">
+    <span class="label num">02 · Color</span>
+    <h2>Five colors, used in this order.</h2>
+    <p class="lede">Flour and Deep Teal carry most of every surface. North 8th Teal and Glaze Gold are the signal colors, like the storefront. Crust is a small warm accent that brings back the bakery.</p>
+    <div class="swatches">
+      <div class="sw sw--flour"><b>Flour</b><span>#FBF3E4 · backgrounds, paper, boxes</span></div>
+      <div class="sw sw--deep"><b>Deep Teal</b><span>#072E2B · text, logo, drawings</span></div>
+      <div class="sw sw--teal"><b>North 8th Teal</b><span>#12A396 · the wall</span></div>
+      <div class="sw sw--gold"><b>Glaze Gold</b><span>#F7BE3A · the sign</span></div>
+      <div class="sw sw--crust"><b>Crust</b><span>#8E4F22</span></div>
+    </div>
+    <div class="ratio" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="ratio-key"><span>Flour 50%</span><span>Deep Teal 25%</span><span>Teal 13%</span><span>Gold 9%</span><span>Crust 3%</span></div>
+
+    <div class="pairs">
+      <div class="pair" style="background:var(--flour);color:var(--deep);box-shadow:inset 0 0 0 1px var(--line)"><b>Aa</b>Deep Teal on Flour · 13:1</div>
+      <div class="pair" style="background:var(--deep);color:var(--flour)"><b>Aa</b>Flour on Deep Teal · 13:1</div>
+      <div class="pair" style="background:var(--deep);color:var(--gold)"><b>Aa</b>Gold on Deep Teal · 8.6:1</div>
+      <div class="pair" style="background:var(--gold);color:var(--deep)"><b>Aa</b>Deep Teal on Gold · 8.6:1</div>
+      <div class="pair" style="background:var(--teal);color:var(--deep)"><b>Aa</b>Deep Teal on Teal · 4.7:1</div>
+      <div class="pair pair--no" style="background:var(--teal);color:var(--flour)"><b>Aa</b>Flour or Gold on Teal · too faint</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 Keeping it yummy -->
+<section>
+  <div class="wrap">
+    <span class="label num">03 · Keeping it yummy</span>
+    <h2>Bright colors, warm food.</h2>
+    <p class="lede">Teal sits opposite golden-brown on the color wheel, so a little teal makes crusts and glazes look richer. Too much, sitting right against the food, makes it look cold. These rules keep it on the right side.</p>
+    <div class="balance">
+      <figure class="plate plate--good"><img src="../images/cutouts/paczki-chocolate-orange.webp" alt="Chocolate and orange pączek on Flour inside a Deep Teal frame"><figcaption>Do · Flour inside a teal frame</figcaption></figure>
+      <figure class="plate plate--deep"><img src="../images/cutouts/challah.webp" alt="Braided challah on Deep Teal"><figcaption>Do · Deep Teal, like a dark shelf</figcaption></figure>
+    </div>
+    <ul class="rules">
+      <li><b>Food touches Flour or Deep Teal.</b>Bright teal belongs at least one step away, as a frame, band or bar.</li>
+      <li><b>Never tint the food.</b>No teal or gold filters, overlays or duotones on photos. Keep the light warm and natural.</li>
+      <li><b>Pick photos with golden-brown in them.</b>Crusts, glazes, fried onions and toasted tops look best against teal. Pale or green foods go on Flour.</li>
+      <li><b>Gold stays under a tenth.</b>Buttons, prices, stickers, one highlighted word. If everything is gold, nothing looks special.</li>
+      <li><b>Flat color, no gradients.</b>Solid blocks, like painted signage. No glows, shadows on text or shine effects.</li>
+      <li><b>Paper texture is fine.</b>A faint paper grain on Flour keeps it feeling like a bag, not a screen.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 04 Type -->
+<section>
+  <div class="wrap">
+    <span class="label num">04 · Typography</span>
+    <h2>Same fonts, set bigger and bolder.</h2>
+    <p class="lede">Fraunces and EB Garamond stay. Headlines get larger and tighter so they hold their own against flat color.</p>
+    <div class="type">
+      <div class="type__card type__card--a">
+        <p class="label" style="color:var(--gold)">Display · Fraunces SemiBold Italic</p>
+        <p class="big" style="margin-top:18px">Baked on North 8th since <em>1992.</em></p>
+        <p class="meta">Tight tracking (−0.035em), line height 0.9. One gold word at most.</p>
+      </div>
+      <div class="type__card type__card--b">
+        <p class="label">Body and menus · EB Garamond</p>
+        <p style="margin-top:18px;font-size:21px">A Polish family bakery, hot food bar and European market. Pastries and hot food are made right here every day.</p>
+        <div class="menu-line"><span class="name">Polish doughnuts</span><span class="dots"></span><span class="price">$1.65</span></div>
+        <p class="pl">Pączki</p>
+        <div class="menu-line"><span class="name">Stuffed cabbage rolls</span><span class="dots"></span><span class="price">$12.95</span></div>
+        <p class="pl">Gołąbki</p>
+        <p class="meta">Labels in spaced small capitals. Polish names in italic, in Crust, under the English.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Logo -->
+<section>
+  <div class="wrap">
+    <span class="label num">05 · Logo</span>
+    <h2>The roundel, in four colorways.</h2>
+    <p class="lede">The drawing doesn't change. It's always one solid color, chosen for the background behind it.</p>
+    <ul class="logos">
+      <li style="background:var(--flour);box-shadow:inset 0 0 0 1px var(--line);color:var(--deep)"><i class="logo"></i><small>Primary · Deep Teal on Flour</small></li>
+      <li style="background:var(--deep);color:var(--flour)"><i class="logo"></i><small style="color:var(--flour)">Flour on Deep Teal</small></li>
+      <li style="background:var(--deep);color:var(--gold)"><i class="logo"></i><small style="color:var(--gold)">Gold on Deep Teal · special</small></li>
+      <li style="background:var(--teal);color:var(--deep)"><i class="logo"></i><small>Deep Teal on Teal · signage</small></li>
+    </ul>
+    <p class="note" style="margin-top:16px">Never Gold on Teal or Flour on Teal: the contrast is too low. Clear space stays the height of the "B" in BAKERY.</p>
+  </div>
+</section>
+
+<!-- 06 Illustration -->
+<section>
+  <div class="wrap">
+    <span class="label num">06 · Illustration</span>
+    <h2>The ink drawings, now in teal ink.</h2>
+    <p class="lede">The same hand-drawn library, always one color. Deep Teal on light grounds, Gold on Deep Teal, Deep Teal on Teal or Gold.</p>
+    <ul class="doodles" aria-label="Doodle library">
+      <li><i class="dd" style="--m:url(../images/doodles/boule.svg)"></i></li>
+      <li class="t"><i class="dd" style="--m:url(../images/doodles/pierogi.svg)"></i></li>
+      <li><i class="dd" style="--m:url(../images/doodles/croissant.svg)"></i></li>
+      <li class="d"><i class="dd" style="--m:url(../images/doodles/paczek.svg)"></i></li>
+      <li><i class="dd" style="--m:url(../images/doodles/pretzel.svg)"></i></li>
+      <li class="g"><i class="dd" style="--m:url(../images/doodles/golabek.svg)"></i></li>
+      <li><i class="dd" style="--m:url(../images/doodles/wheat.svg)"></i></li>
+      <li class="t"><i class="dd" style="--m:url(../images/doodles/babka.svg)"></i></li>
+      <li class="d"><i class="dd" style="--m:url(../images/doodles/makowiec.svg)"></i></li>
+      <li><i class="dd" style="--m:url(../images/doodles/whisk.svg)"></i></li>
+      <li class="g"><i class="dd" style="--m:url(../images/doodles/baguette.svg)"></i></li>
+      <li><i class="dd" style="--m:url(../images/doodles/rolling-pin.svg)"></i></li>
+      <li class="t"><i class="dd" style="--m:url(../images/doodles/kielbasa.svg)"></i></li>
+      <li><i class="dd" style="--m:url(../images/doodles/egg.svg)"></i></li>
+      <li class="d"><i class="dd" style="--m:url(../images/doodles/toast.svg)"></i></li>
+      <li><i class="dd" style="--m:url(../images/doodles/loaf-oval.svg)"></i></li>
+    </ul>
+    <ul class="chars">
+      <li style="background:var(--gold)"><i class="dd" style="--m:url(../images/doodles/chlebek-character.svg);color:var(--deep)"></i><div><b>Chlebek</b>The loaf. Friendly, a little proud.</div></li>
+      <li style="background:var(--teal)"><i class="dd" style="--m:url(../images/doodles/pierozek-character.svg);color:var(--deep)"></i><div><b>Pierożek</b>The pierogi. Always waving.</div></li>
+      <li style="background:var(--deep);color:var(--flour)"><i class="dd" style="--m:url(../images/doodles/paczek-character.svg);color:var(--gold)"></i><div><b>Pączek</b>The doughnut. Shows up on Fat Thursday.</div></li>
+    </ul>
+    <div class="pattern" aria-label="Pattern: the bag border as a repeat">
+      <div class="pattern__row pattern__row--1">
+        <i class="dd" style="--m:url(../images/doodles/paczek.svg)"></i><i class="dd" style="--m:url(../images/doodles/wheat.svg)"></i><i class="dd" style="--m:url(../images/doodles/pierogi.svg)"></i><i class="dd" style="--m:url(../images/doodles/croissant.svg)"></i><i class="dd" style="--m:url(../images/doodles/boule.svg)"></i><i class="dd" style="--m:url(../images/doodles/pretzel.svg)"></i><i class="dd" style="--m:url(../images/doodles/babka.svg)"></i><i class="dd" style="--m:url(../images/doodles/whisk.svg)"></i><i class="dd" style="--m:url(../images/doodles/golabek.svg)"></i><i class="dd" style="--m:url(../images/doodles/makowiec.svg)"></i><i class="dd" style="--m:url(../images/doodles/egg.svg)"></i><i class="dd" style="--m:url(../images/doodles/baguette.svg)"></i>
+      </div>
+      <div class="pattern__row pattern__row--2">
+        <i class="dd" style="--m:url(../images/doodles/rolling-pin.svg)"></i><i class="dd" style="--m:url(../images/doodles/toast.svg)"></i><i class="dd" style="--m:url(../images/doodles/kielbasa.svg)"></i><i class="dd" style="--m:url(../images/doodles/loaf-oval.svg)"></i><i class="dd" style="--m:url(../images/doodles/paczek.svg)"></i><i class="dd" style="--m:url(../images/doodles/wheat.svg)"></i><i class="dd" style="--m:url(../images/doodles/pierogi.svg)"></i><i class="dd" style="--m:url(../images/doodles/croissant.svg)"></i><i class="dd" style="--m:url(../images/doodles/boule.svg)"></i><i class="dd" style="--m:url(../images/doodles/pretzel.svg)"></i><i class="dd" style="--m:url(../images/doodles/babka.svg)"></i><i class="dd" style="--m:url(../images/doodles/seeds.svg)"></i>
+      </div>
+    </div>
+    <p class="caption">Pattern for tissue paper, box liners and the website footer: Gold and Teal drawings on Deep Teal.</p>
+  </div>
+</section>
+
+<!-- 07 Applications -->
+<section>
+  <div class="wrap">
+    <span class="label num">07 · In use</span>
+    <h2>On the counter and online.</h2>
+    <p class="lede">How the pieces come together. Notice how much of each surface is still Flour or Deep Teal.</p>
+    <div class="apps">
+      <div class="app app--bag">
+        <div class="bag"><i class="logo"></i>
+          <div class="bag__band"><i class="dd" style="--m:url(../images/doodles/boule.svg)"></i><i class="dd" style="--m:url(../images/doodles/pierogi.svg)"></i><i class="dd" style="--m:url(../images/doodles/paczek.svg)"></i><i class="dd" style="--m:url(../images/doodles/croissant.svg)"></i></div>
+        </div>
+      </div>
+      <div class="app app--box">
+        <div class="box">
+          <div class="box__edge"></div>
+          <i class="dd box__ink" style="--m:url(../images/doodles/wheat.svg);left:7%;top:12%;rotate:-14deg"></i>
+          <i class="dd box__ink" style="--m:url(../images/doodles/paczek.svg);left:9%;bottom:12%;rotate:8deg"></i>
+          <i class="dd box__ink" style="--m:url(../images/doodles/croissant.svg);right:8%;top:14%;rotate:10deg"></i>
+          <i class="dd box__ink" style="--m:url(../images/doodles/pretzel.svg);right:9%;bottom:12%;rotate:-8deg"></i>
+          <div class="box__seal"><i class="logo"></i></div>
+        </div>
+      </div>
+      <div class="app app--post">
+        <p class="label">Tłusty Czwartek · Feb 12</p>
+        <h3>Pączki day. Order by the dozen.</h3>
+        <div class="tag"><div>From<b>$1.65</b>each</div></div>
+        <img src="../images/cutouts/paczki-chocolate-orange.webp" alt="Chocolate and orange pączek">
+      </div>
+      <div class="app app--board">
+        <i class="dd board-ink" style="--m:url(../images/doodles/pierozek-character.svg)"></i>
+        <p class="label" style="color:var(--teal)">Hot food bar</p>
+        <h3>Today at the counter</h3>
+        <div class="menu-line"><span class="name">Handmade pierogi</span><span class="dots"></span><span class="price">$10.95</span></div>
+        <p class="pl">Pierogi ruskie</p>
+        <div class="menu-line"><span class="name">Stuffed cabbage rolls</span><span class="dots"></span><span class="price">$12.95</span></div>
+        <p class="pl">Gołąbki</p>
+        <div class="menu-line"><span class="name">Kielbasa with onions</span><span class="dots"></span><span class="price">$11.50</span></div>
+        <p class="pl">Kiełbasa z cebulą</p>
+        <div class="menu-line"><span class="name">Polish doughnuts</span><span class="dots"></span><span class="price">$1.65</span></div>
+        <p class="pl">Pączki</p>
+      </div>
+      <div class="app app--web">
+        <div class="web__text">
+          <div class="web__nav"><i class="logo" style="font-style:normal"></i><span>Menu · Hot food · Holidays · Visit</span><i>Order</i></div>
+          <h3>Baked on North 8th since <em>1992.</em></h3>
+          <p>A Polish family bakery, hot food bar and European market in Williamsburg.</p>
+          <span class="web__btn">Order on Grubhub</span>
+        </div>
+        <div class="web__photo"><span>Glazed every morning</span></div>
+      </div>
+    </div>
+    <p class="caption">Prices on the board and social post are placeholders. Use the real menu.</p>
+  </div>
+</section>
+
+<!-- 08 Do / Don't -->
+<section>
+  <div class="wrap">
+    <span class="label num">08 · Quick rules</span>
+    <h2>Keep it sharp.</h2>
+    <div class="dos" style="margin-top:40px">
+      <div class="do"><h3>Do</h3><ul>
+        <li>Use big flat blocks of color, like painted signs.</li>
+        <li>Keep most of every surface in Flour or Deep Teal.</li>
+        <li>Keep gold to small touches: buttons, prices, one word.</li>
+        <li>Put food photos on Flour or Deep Teal, in warm light.</li>
+        <li>Draw in one color only, with plenty of space around.</li>
+      </ul></div>
+      <div class="dont"><h3>Don't</h3><ul>
+        <li>Put Flour or Gold text on bright Teal.</li>
+        <li>Use gradients, glows or drop shadows on text.</li>
+        <li>Tint, filter or duotone the food.</li>
+        <li>Bring back the old red next to the teal. It reads as Christmas.</li>
+        <li>Crowd a layout with drawings, stickers and badges at once.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <i class="logo"></i>
+    <p>Northside Bakery · 149 N 8th St, Brooklyn · Teal and gold brand package, proposal</p>
+  </div>
+</footer>
+
+</body>
+</html>
