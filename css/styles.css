@@ -5,6 +5,8 @@
 :root {
   --red: #9A1B1F;
   --red-deep: #741417;
+  --mint: #A3D5C9;       /* the storefront's painted teal */
+  --mint-ink: #173E3B;   /* dark teal for words and the logo on mint */
   --cream: #F3E6CF;
   --paper: #FBF6EC;
   --ink: #2B1D1E;
@@ -105,16 +107,22 @@ p { text-wrap: pretty; }
 /* ---------- Header ---------- */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  background: var(--red-deep); color: var(--cream);
-  transition: transform .5s var(--ease-expo), box-shadow .3s ease;
+  background: transparent; color: var(--paper);
+  transition: transform .5s var(--ease-expo), background-color .35s ease, color .35s ease, box-shadow .3s ease;
 }
-.site-header.is-scrolled { box-shadow: 0 6px 24px rgba(43, 29, 30, .22); }
-.site-header a:hover { color: var(--paper); }
-/* On the dark bar the order button turns cream, with a thin cream outline on hover */
-.site-header .button { background: var(--cream); color: var(--red-deep); border-color: var(--cream); }
-.site-header .button:hover { color: var(--cream); border-color: var(--cream); }
+/* No bar over the food photos; past the hero (or with the phone menu open) a storefront-mint bar comes in */
+.site-header.is-past, .site-header.is-open { background: var(--mint); color: var(--mint-ink); }
+.site-header.is-past { box-shadow: 0 6px 24px rgba(23, 62, 59, .16); }
+.site-header a:hover { color: inherit; }
+/* Order button: mint over the photos, dark teal on the mint bar */
+.site-header .button { background: var(--mint); color: var(--mint-ink); border-color: var(--mint); }
+.site-header .button::before { background: var(--paper); }
+.site-header .button:hover { color: var(--mint-ink); border-color: var(--paper); }
+.site-header.is-past .button, .site-header.is-open .button { background: var(--mint-ink); color: var(--paper); border-color: var(--mint-ink); }
+.site-header.is-past .button:hover, .site-header.is-open .button:hover { color: var(--mint-ink); border-color: var(--mint-ink); }
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: var(--header-height); padding: 0 var(--gutter); }
-.site-header__logo img { height: 50px; width: auto; }
+/* The logo takes the header's text color: cream over the photos, dark teal on the mint bar */
+.site-header__logo { display: block; height: 50px; aspect-ratio: 668 / 463; background: currentColor; -webkit-mask: url(../images/logo/logo-ink.png) center / contain no-repeat; mask: url(../images/logo/logo-ink.png) center / contain no-repeat; }
 .site-nav { display: flex; align-items: center; gap: 36px; }
 .site-nav ul { display: flex; gap: 30px; }
 .site-nav ul a { position: relative; font-weight: 500; font-size: 21px; font-variant-caps: all-small-caps; letter-spacing: .14em; text-decoration: none; padding: 8px 0; }
@@ -126,7 +134,7 @@ p { text-wrap: pretty; }
 .nav-toggle { display: none; }
 
 @media (max-width: 960px) {
-  .nav-toggle { display: grid; place-items: center; width: 48px; height: 48px; background: none; border: 0; color: var(--cream); cursor: pointer; }
+  .nav-toggle { display: grid; place-items: center; width: 48px; height: 48px; background: none; border: 0; color: inherit; cursor: pointer; }
   .nav-toggle__bars, .nav-toggle__bars::before, .nav-toggle__bars::after {
     display: block; width: 26px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .3s var(--ease), background-color .2s;
   }
@@ -153,82 +161,109 @@ p { text-wrap: pretty; }
 }
 
 /* ---------- Hero ----------
-   Words on the left, a full-height food slideshow on the right. */
+   The food slideshow fills the whole hero behind everything, under a dark wash so the words read.
+   Words on the left, bag drawings down the left edge in light ink. */
 .hero {
-  display: grid; grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
+  position: relative; overflow: hidden; isolation: isolate;
   height: 100svh; min-height: 640px; padding-top: var(--header-height);
-  background: var(--paper);
+  background: var(--ink); color: var(--paper);
 }
 .hero__text {
-  position: relative; overflow: hidden;
+  position: relative; z-index: 1; height: 100%; max-width: 980px; overflow: hidden;
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
   /* The words sit in from the left so the drawings get their own band down the edge, like the side of the bag */
   padding: 3vh clamp(28px, 3vw, 56px) 3vh clamp(130px, 13vw, 250px);
 }
 .hero__text > :not(.hero__ink) { position: relative; z-index: 1; }
 .hero__logo { align-self: flex-start; margin-left: -6px; } /* on the same left edge as the words (-6px makes up for the logo artwork's own margin) */
-.hero__logo img { width: clamp(180px, min(16.7vw, 27vh), 300px); } /* about 70% of the headline width */
-.hero__eyebrow { margin-top: clamp(14px, 2.2vh, 24px); font-weight: 600; font-size: 19px; font-variant-caps: all-small-caps; letter-spacing: .18em; color: var(--red); }
-.hero__eyebrow span { margin: 0 .55em; opacity: .5; }
+/* The logo in cream, cut from the one-color logo file */
+.hero__logo-mark {
+  display: block; width: clamp(180px, min(16.7vw, 27vh), 300px); aspect-ratio: 668 / 463; background: var(--paper);
+  -webkit-mask: url(../images/logo/logo-ink.png) center / contain no-repeat; mask: url(../images/logo/logo-ink.png) center / contain no-repeat;
+}
+.hero__eyebrow { margin-top: clamp(14px, 2.2vh, 24px); font-weight: 600; font-size: 19px; font-variant-caps: all-small-caps; letter-spacing: .18em; color: var(--cream); }
+.hero__eyebrow span { margin: 0 .55em; opacity: .6; }
 .hero__motto {
   margin-top: 10px; max-width: 8.5em;
   font-family: var(--font-display); font-style: italic; font-weight: 600;
-  font-size: clamp(46px, min(5.2vw, 9.4vh), 92px); line-height: .98; letter-spacing: -0.025em; color: var(--red);
+  font-size: clamp(46px, min(5.2vw, 9.4vh), 92px); line-height: .98; letter-spacing: -0.025em; color: var(--paper);
 }
 .hero__lede { margin-top: clamp(16px, 2.6vh, 26px); max-width: 25em; font-size: clamp(19px, 1.45vw, 22px); }
 .hero__actions { margin-top: clamp(22px, 3.6vh, 34px); display: flex; flex-wrap: wrap; gap: 12px; }
-.hero__info {
-  margin-top: clamp(24px, 4vh, 40px); padding-top: 16px; border-top: 1px solid rgba(43, 29, 30, .16);
-  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 18px; max-width: 32em;
+.hero__actions .button:not(.button--ghost) { background: var(--mint); color: var(--mint-ink); border-color: var(--mint); }
+.hero__actions .button:not(.button--ghost)::before { background: var(--paper); }
+.hero__actions .button:not(.button--ghost):hover { color: var(--mint-ink); border-color: var(--paper); }
+.hero .button--ghost { color: var(--paper); border-color: var(--paper); }
+.hero .button--ghost::before { background: var(--paper); }
+.hero .button--ghost:hover { color: var(--red); border-color: var(--paper); }
+/* Where to find us: bottom-right corner, address and hours beside a tilted print of the shop */
+.hero__visit {
+  position: absolute; z-index: 2; right: clamp(28px, 3vw, 56px); bottom: clamp(28px, 5vh, 56px);
+  display: flex; align-items: flex-end; gap: clamp(18px, 1.8vw, 28px);
 }
-.hero__info a { text-decoration: none; font-weight: 600; }
-.hero__today { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
-.hero__today .status { display: inline-flex; align-items: center; gap: 8px; color: var(--red); font-style: italic; }
+.hero__where { display: grid; gap: 6px; justify-items: end; text-align: right; padding-bottom: 10px; font-size: clamp(18px, 1.3vw, 21px); }
+.hero__where a { text-decoration: none; font-weight: 600; font-size: clamp(21px, 1.6vw, 26px); }
+.hero__where a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.hero__print { display: block; flex: none; width: clamp(160px, min(12.5vw, 25vh), 240px); rotate: 3deg; transition: rotate .5s var(--ease-back), scale .5s var(--ease-back); }
+.hero__print img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 40%; border: clamp(7px, .6vw, 10px) solid var(--paper); border-radius: 3px; }
+.hero__print:hover { rotate: 0deg; scale: 1.04; }
+.hero__print:focus-visible { outline-color: var(--paper); outline-offset: 6px; }
+.hero__today { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px 12px; }
+.hero__today .status { display: inline-flex; align-items: center; gap: 8px; color: var(--cream); font-style: italic; }
 .hero__today .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
 .hero__today .status:not(.is-closed)::before { animation: pulse 2.4s ease-in-out infinite; }
-.hero__today .status.is-closed { color: var(--ink); }
+.hero__today .status.is-closed { color: rgba(251, 246, 236, .75); }
 
-/* Three clusters of engraved drawings down the left edge, partly cut off like the bag print */
+/* Three clusters of engraved drawings down the left edge, partly cut off like the bag print. Light lines on the photos. */
 .hero__ink { position: absolute; aspect-ratio: 1; pointer-events: none; }
 .hero__ink--top { left: 0; top: 0; width: clamp(200px, 17vw, 310px); translate: -16% -6%; }
 .hero__ink--mid { left: 0; top: 50%; width: clamp(180px, 15vw, 280px); translate: -22% -46%; }
 .hero__ink--bottom { left: 0; bottom: 0; width: clamp(210px, 18vw, 330px); translate: -18% 8%; }
-.hero__ink .d { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; rotate: var(--r, 0deg); color: var(--ink); opacity: .85; }
+.hero__ink .d { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; rotate: var(--r, 0deg); color: var(--paper); opacity: .9; }
 .hero__ink .d > .doodle { position: relative; width: 100%; }
-/* A paper-colored silhouette under each drawing, so the ones in front hide the ones behind */
+/* A dark silhouette under each drawing, so the ones in front hide the ones behind */
 .hero__ink .d::before {
-  content: ""; position: absolute; inset: 0; background: var(--paper);
+  content: ""; position: absolute; inset: 0; background: rgba(30, 18, 18, .6);
   -webkit-mask: var(--fill, none) center / contain no-repeat; mask: var(--fill, none) center / contain no-repeat;
 }
 .hero__ink .e-seeds::before, .hero__ink .e-rosemary::before { content: none; } /* too fine to need a backing */
 
-/* Full-height food slideshow */
-.hero__show { position: relative; overflow: hidden; background: var(--ink); }
-.hero__show .slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.4s var(--ease); }
+/* Food slideshow across the whole hero, behind the words */
+.hero__show { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--ink); }
+.hero__show .slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.8s var(--ease); }
 .hero__show .slide.is-active { opacity: 1; }
 .hero__show img { width: 100%; height: 100%; object-fit: cover; }
-.hero__show::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(30, 18, 18, .55)); pointer-events: none; }
+/* Dark wash: strongest behind the words on the left, lighter on the right so the food still shows */
+.hero__show::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(30, 18, 18, .86), rgba(30, 18, 18, .66) 42%, rgba(30, 18, 18, .2) 78%, rgba(30, 18, 18, .12)),
+              linear-gradient(rgba(30, 18, 18, .45), transparent 26%, transparent 66%, rgba(30, 18, 18, .6));
+}
 .hero__show figcaption {
-  position: absolute; z-index: 2; left: 36px; right: 240px; bottom: 30px; color: var(--paper);
+  position: absolute; z-index: 2; right: 30px; top: calc(var(--header-height) + 56px); max-width: 18em; text-align: right; color: var(--paper);
   font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: clamp(22px, 1.8vw, 30px); line-height: 1.1;
 }
-.hero__bars { position: absolute; z-index: 2; right: 30px; bottom: 30px; display: flex; gap: 6px; }
+.hero__bars { position: absolute; z-index: 2; right: 30px; top: calc(var(--header-height) + 22px); display: flex; gap: 6px; }
 .hero__bars button { width: 26px; height: 22px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; align-items: center; }
 .hero__bars button::before { content: ""; height: 2px; background: rgba(251, 246, 236, .45); transition: background-color .3s; }
 .hero__bars button[aria-current="true"]::before { background: var(--paper); }
 .hero__bars button:focus-visible { outline-color: var(--paper); }
 
 @media (max-width: 1180px) {
-  /* Tablets and phones: photos on top, words underneath */
-  .hero { grid-template-columns: 1fr; height: auto; min-height: 0; }
-  .hero__show { order: -1; height: 58svh; min-height: 340px; }
-  .hero__show figcaption { left: 20px; right: 20px; bottom: 52px; font-size: 22px; }
-  .hero__bars { left: 14px; right: auto; bottom: 16px; }
-  .hero__text { padding: 48px var(--gutter) 96px; }
-  .hero__logo img { width: clamp(170px, 34vw, 240px); }
+  /* Tablets and phones: words over the photos, a stronger wash all over */
+  .hero { height: auto; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+  .hero__text { height: auto; max-width: none; padding: 56px var(--gutter) 32px; }
+  .hero__visit { position: relative; right: auto; bottom: auto; flex-direction: row-reverse; justify-content: flex-end; align-items: center; gap: 18px; padding: 0 var(--gutter) 96px; }
+  .hero__where { justify-items: start; text-align: left; padding-bottom: 0; }
+  .hero__today { justify-content: flex-start; }
+  .hero__print { width: 104px; rotate: -4deg; }
+  .hero__show::after { background: linear-gradient(rgba(30, 18, 18, .55), rgba(30, 18, 18, .72) 40%, rgba(30, 18, 18, .82)); }
+  .hero__show figcaption { display: none; }
+  .hero__bars { left: 14px; right: auto; top: auto; bottom: 16px; }
+  .hero__logo-mark { width: clamp(170px, 34vw, 240px); }
   .hero__ink--mid { display: none; }
   .hero__ink--top { left: auto; right: 0; width: clamp(150px, 26vw, 220px); translate: 2% -6%; }
-  .hero__ink--bottom { left: auto; right: 0; width: clamp(150px, 26vw, 230px); translate: 8% 34%; }
+  .hero__ink--bottom { left: auto; right: 0; width: clamp(150px, 26vw, 230px); translate: 8% 50%; }
 }
 
 /* ---------- Marquee band (like the border on our bags) ---------- */
@@ -455,6 +490,7 @@ img[data-parallax] { scale: 1.16; }
   .site-footer__inner { grid-template-columns: 1fr; }
   .site-footer__sign { font-size: 12.5vw; }
   .hero__actions .button { flex: 1 1 auto; }
+  .hero__ink--bottom { display: none; } /* would sit on the address on narrow phones */
   .visit__address { font-size: 23px; }
   .menu__tab { min-height: 44px; padding: 0 16px; font-size: 15px; }
   /* Compact menu rows on phones: photo left, text right */
@@ -494,14 +530,14 @@ img[data-parallax] { scale: 1.16; }
   .js [data-reveal="image"].is-in img { clip-path: inset(0 0 0 0); scale: 1; }
   .js [data-reveal="image"].is-in img[data-parallax] { scale: 1.16; }
 
-  .js .hero__logo, .js .hero__eyebrow, .js .hero__motto, .js .hero__lede, .js .hero__actions, .js .hero__info {
+  .js .hero__logo, .js .hero__eyebrow, .js .hero__motto, .js .hero__lede, .js .hero__actions, .js .hero__visit {
     animation: rise 1s var(--ease-expo) both;
   }
   .js .hero__motto { animation-delay: .1s; }
   .js .hero__lede { animation-delay: .2s; }
   .js .hero__actions { animation-delay: .3s; }
   .js .hero__eyebrow { animation-delay: .05s; }
-  .js .hero__info { animation-delay: .4s; }
+  .js .hero__visit { animation-delay: .45s; }
 
   /* The corner drawings ink in softly after the words */
   .js .hero__ink .d { animation: ink-in 1.2s var(--ease-expo) both; animation-delay: calc(.5s + var(--n, 0) * 90ms); }

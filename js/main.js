@@ -18,6 +18,7 @@
       navOpen = open;
       toggle.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('is-open', open);
+      header.classList.toggle('is-open', open);
       document.body.style.overflow = open ? 'hidden' : '';
     };
     toggle.addEventListener('click', () => setOpen(!navOpen));
@@ -25,9 +26,11 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navOpen) { setOpen(false); toggle.focus(); } });
   }
 
-  // Header stays put; it just gains a fine line once the page scrolls
+  // No header bar over the hero photos; the mint bar comes in once the hero has scrolled past
+  const hero = document.querySelector('.hero');
   function updateHeader() {
     header.classList.toggle('is-scrolled', window.scrollY > 8);
+    header.classList.toggle('is-past', !hero || window.scrollY > hero.offsetHeight - header.offsetHeight);
   }
 
   const year = document.querySelector('[data-year]');

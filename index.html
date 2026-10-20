@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Northside Bakery | Polish bakery in Williamsburg, Brooklyn since 1992</title>
   <meta name="description" content="Family-run Polish bakery, hot food bar and European market at 149 N 8th St in Williamsburg, Brooklyn. Pączki, handmade pierogi, gołąbki and fresh bread every day since 1992.">
-  <meta name="theme-color" content="#9A1B1F">
+  <meta name="theme-color" content="#A3D5C9">
   <meta property="og:title" content="Northside Bakery, Williamsburg">
   <meta property="og:description" content="Baked on North 8th since 1992. Polish bakery, hot food bar and European market.">
   <meta property="og:type" content="website">
@@ -38,9 +38,7 @@
 
   <header class="site-header" data-header>
     <div class="site-header__inner">
-      <a class="site-header__logo" href="#top" aria-label="Northside Bakery, back to top">
-        <img src="images/logo/logo-cream.png" alt="" width="668" height="463">
-      </a>
+      <a class="site-header__logo" href="#top" aria-label="Northside Bakery, back to top"></a>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
           <li><a href="#menu">Menu</a></li>
@@ -59,7 +57,7 @@
   </header>
 
   <main id="main">
-    <!-- HERO: words on the left, a full-height slideshow of real food on the right.
+    <!-- HERO: a slideshow of real food fills the whole hero behind the words.
          Engraved drawings (like the paper bag) run down the left edge in three clusters; the logo sits by the photos.
          Each drawing is placed with --x / --y / --w (% of its cluster). -->
     <section class="hero" id="top">
@@ -87,7 +85,7 @@
           <span class="d e-croissant" style="--x:40%;--y:64%;--w:40%;--r:8deg"><i class="doodle eng--croissant"></i></span>
         </div>
 
-        <h1 class="hero__logo"><img src="images/logo/logo-red.png" alt="Northside Bakery, established 1992" width="668" height="463"></h1>
+        <h1 class="hero__logo"><span class="hero__logo-mark" role="img" aria-label="Northside Bakery, established 1992"></span></h1>
         <p class="hero__eyebrow">Polish bakery<span aria-hidden="true">·</span>Williamsburg</p>
         <p class="hero__motto">Baked on North&nbsp;8th since&nbsp;1992.</p>
         <p class="hero__lede">A Polish family bakery, hot food bar and European market in the heart of Williamsburg.</p>
@@ -95,7 +93,12 @@
           <a class="button" href="https://www.grubhub.com/restaurant/northside-bakery-149-n-8th-st-brooklyn/11010432" target="_blank" rel="noopener">Order on Grubhub</a>
           <a class="button button--ghost" href="#menu">See the menu</a>
         </div>
-        <p class="hero__info"><a href="#visit">149 N 8th St, Brooklyn</a><span class="hero__today" data-today>Open daily. See hours below.</span></p>
+      </div>
+
+      <!-- Where to find us: address and today's hours beside a print of the shop, in the bottom-right corner -->
+      <div class="hero__visit">
+        <div class="hero__where"><a href="#visit">149 N 8th St, Brooklyn</a><span class="hero__today" data-today>Open daily. See hours below.</span></div>
+        <a class="hero__print" href="#visit"><img src="images/photos/storefront-evening-sm.jpg" alt="The teal Northside Bakery building on North 8th Street, windows lit at dusk" width="800" height="1067"></a>
       </div>
 
       <!-- Food slideshow: crossfades on its own, pauses on hover. Add or swap photos here (images/photos), with a matching button below. -->
