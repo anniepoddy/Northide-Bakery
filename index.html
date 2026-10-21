@@ -44,6 +44,7 @@
           <li><a href="#menu">Menu</a></li>
           <li><a href="#hot-food">Hot food</a></li>
           <li><a href="#holidays">Holidays</a></li>
+          <li><a href="#catering">Catering</a></li>
           <li><a href="#story">Our story</a></li>
           <li><a href="#visit">Visit</a></li>
         </ul>
@@ -126,56 +127,60 @@
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
         <div class="marquee__group">
-          <span>Fresh bread</span><i class="doodle doodle--boule"></i><span>Doughnuts</span><i class="doodle doodle--paczek"></i><span>Pierogi</span><i class="doodle doodle--pierogi"></i><span>Cabbage rolls</span><i class="doodle doodle--golabek"></i><span>Cheesecake</span><i class="doodle doodle--croissant"></i><span>Angel wings</span><i class="doodle doodle--wheat"></i><span>Kielbasa</span><i class="doodle doodle--pretzel"></i>
+          <span>Fresh bread</span><i class="doodle doodle--boule"></i><span>Polish donuts</span><i class="doodle doodle--paczek"></i><span>Pierogi</span><i class="doodle doodle--pierogi"></i><span>Cabbage rolls</span><i class="doodle doodle--golabek"></i><span>Cheesecakes</span><i class="doodle doodle--croissant"></i><span>Blintzes</span><i class="doodle doodle--wheat"></i><span>Kielbasa</span><i class="doodle doodle--pretzel"></i>
         </div>
         <div class="marquee__group">
-          <span>Fresh bread</span><i class="doodle doodle--boule"></i><span>Doughnuts</span><i class="doodle doodle--paczek"></i><span>Pierogi</span><i class="doodle doodle--pierogi"></i><span>Cabbage rolls</span><i class="doodle doodle--golabek"></i><span>Cheesecake</span><i class="doodle doodle--croissant"></i><span>Angel wings</span><i class="doodle doodle--wheat"></i><span>Kielbasa</span><i class="doodle doodle--pretzel"></i>
+          <span>Fresh bread</span><i class="doodle doodle--boule"></i><span>Polish donuts</span><i class="doodle doodle--paczek"></i><span>Pierogi</span><i class="doodle doodle--pierogi"></i><span>Cabbage rolls</span><i class="doodle doodle--golabek"></i><span>Cheesecakes</span><i class="doodle doodle--croissant"></i><span>Blintzes</span><i class="doodle doodle--wheat"></i><span>Kielbasa</span><i class="doodle doodle--pretzel"></i>
         </div>
       </div>
     </div>
 
-    <!-- SIGNATURES -->
+    <!-- SIGNATURES: five favorites. Compact cards so they all fit on one screen on a computer; a swipe row on phones. -->
     <section class="section signatures" aria-labelledby="signatures-title">
       <div class="container">
-        <div class="section__head section__head--char" data-reveal>
+        <div class="section__head section__head--row section__head--char" data-reveal>
           <span class="head-char doodle doodle--paczek" aria-hidden="true"></span>
           <h2 id="signatures-title">What we're known for</h2>
-          <p>Four favorites from the counter. Pastries and hot food are made right here, every day.</p>
+          <p>Five favorites from the counter, made right here every day. The Polish name is underneath, with how to say it.</p>
         </div>
-        <div class="signatures__grid">
-          <a class="signature" href="#menu" data-show-category="sweets">
-            <div class="signature__media" data-reveal="image"><img src="images/photos/paczki-glazed-nuts.jpg" alt="Glazed pączki sprinkled with chopped nuts" width="1600" height="2133" loading="lazy"></div>
-            <div class="signature__text" data-reveal>
-              <h3>Polish doughnuts</h3>
-              <p class="dish-sub" lang="pl">Pączki</p>
-              <p>Pillowy, filled and glazed. Every day, and by the dozen on Fat Thursday.</p>
-            </div>
-          </a>
-          <a class="signature signature--offset" href="#menu" data-show-category="pierogi">
-            <div class="signature__media" data-reveal="image"><img src="images/photos/pierogi-handmade.jpg" alt="Rows of handmade pierogi on a floured table" width="1600" height="2133" loading="lazy"></div>
-            <div class="signature__text" data-reveal>
-              <h3>Handmade pierogi</h3>
-              <p class="dish-sub">Filled dumplings</p>
-              <p>Pinched by hand and sold by the piece. Eight fillings, from ruskie to blueberry.</p>
-            </div>
-          </a>
-          <a class="signature" href="#menu" data-show-category="hot">
-            <div class="signature__media" data-reveal="image"><img src="images/photos/golabki.jpg" alt="A tray of gołąbki, stuffed cabbage rolls" width="1600" height="2133" loading="lazy"></div>
-            <div class="signature__text" data-reveal>
-              <h3>Stuffed cabbage rolls</h3>
-              <p class="dish-sub" lang="pl">Gołąbki</p>
-              <p>Tender cabbage around rice and meat, or buckwheat and mushroom. Straight from the hot bar.</p>
-            </div>
-          </a>
-          <a class="signature signature--offset" href="#menu" data-show-category="sweets">
-            <div class="signature__media" data-reveal="image"><img src="images/photos/cheesecake-strawberry.jpg" alt="Polish cheesecake with a glossy strawberry topping" width="1600" height="2133" loading="lazy"></div>
-            <div class="signature__text" data-reveal>
-              <h3>Polish cheesecake</h3>
-              <p class="dish-sub" lang="pl">Sernik</p>
-              <p>Creamy cake made with farmer's cheese. By the slice, plain or with fruit.</p>
-            </div>
-          </a>
-        </div>
+        <ul class="signatures__grid">
+          <li><a class="signature" href="#menu" data-show-category="sweets">
+            <div class="signature__media" data-reveal="image"><img src="images/photos/paczki-glazed-nuts-sm.jpg" alt="Glazed pączki sprinkled with chopped nuts" width="800" height="1067" loading="lazy"></div>
+            <h3>Polish donuts</h3>
+            <p class="dish-sub" lang="pl">Pączki</p>
+            <p class="say"><span class="visually-hidden">Say it: </span>POHNCH-kee</p>
+            <p class="signature__desc">Pillowy, filled and glazed. By the dozen on Fat Thursday.</p>
+          </a></li>
+          <li><a class="signature" href="#menu" data-show-category="pierogi">
+            <div class="signature__media" data-reveal="image"><img src="images/photos/pierogi-handmade-sm.jpg" alt="Rows of handmade pierogi on a floured table" width="800" height="1067" loading="lazy"></div>
+            <h3>Handmade pierogi</h3>
+            <p class="dish-sub" lang="pl">Pierogi</p>
+            <p class="say"><span class="visually-hidden">Say it: </span>pyeh-ROH-gee</p>
+            <p class="signature__desc">Pinched by hand, sold by the piece. Eight fillings.</p>
+          </a></li>
+          <li><a class="signature" href="#menu" data-show-category="hot">
+            <div class="signature__media" data-reveal="image"><img src="images/photos/golabki-sm.jpg" alt="A tray of gołąbki, stuffed cabbage rolls" width="800" height="1067" loading="lazy"></div>
+            <h3>Cabbage rolls</h3>
+            <p class="dish-sub" lang="pl">Gołąbki</p>
+            <p class="say"><span class="visually-hidden">Say it: </span>gaw-WOHMP-kee</p>
+            <p class="signature__desc">Rice and meat wrapped in cabbage, hot from the food bar.</p>
+          </a></li>
+          <li><a class="signature" href="#menu" data-show-category="sweets">
+            <div class="signature__media" data-reveal="image"><img src="images/photos/cheesecake-strawberry-sm.jpg" alt="Cheesecake with a glossy strawberry topping" width="800" height="1067" loading="lazy"></div>
+            <h3>Cheesecakes</h3>
+            <p class="dish-sub" lang="pl">Sernik</p>
+            <p class="say"><span class="visually-hidden">Say it: </span>SEHR-neek</p>
+            <p class="signature__desc">Made with farmer's cheese. Plain, with fruit, or Oreo.</p>
+          </a></li>
+          <li><a class="signature" href="#menu" data-show-category="pierogi">
+            <!-- PLACEHOLDER: no blintz photo yet. Swap this div for <img src="images/photos/your-blintz-photo.jpg" ...> like the others. -->
+            <div class="signature__media signature__media--soon" data-reveal><span class="doodle doodle--toast" aria-hidden="true"></span><span>Photo coming soon</span></div>
+            <h3>Blintzes</h3>
+            <p class="dish-sub" lang="pl">Naleśniki</p>
+            <p class="say"><span class="visually-hidden">Say it: </span>nah-lesh-NEE-kee</p>
+            <p class="signature__desc">Thin crêpes rolled around sweet cheese, apple, or cheese and fruit.</p>
+          </a></li>
+        </ul>
       </div>
     </section>
 
@@ -196,58 +201,88 @@
       </div>
     </section>
 
-    <!-- HOT FOOD BAR -->
+    <!-- HOT FOOD BAR: our best seller. Polish home cooking by the pound, behind the glass. -->
     <section class="hot-food" id="hot-food" aria-labelledby="hot-title">
-      <div class="hot-food__media" data-reveal="image">
-        <img src="images/photos/kielbasa-tray.jpg" alt="Grilled kielbasa glistening in a hot bar tray" width="1024" height="1024" loading="lazy" data-parallax="0.08">
-      </div>
-      <div class="hot-food__text">
-        <h2 id="hot-title" data-reveal>The hot food bar</h2>
-        <p class="hot-food__lede" data-reveal>Home cooking for lunch and dinner. Gołąbki, pierogi with fried onions, kielbasa, cutlets and a different soup every day.</p>
-        <dl class="hot-food__list">
-          <div data-reveal><dt>Build your own plate</dt><dd>Any mix of proteins, sides and vegetables, by the pound</dd></div>
-          <div data-reveal><dt>Soup of the day</dt><dd>Small $4.25, large $7.95</dd></div>
-          <div data-reveal><dt>Pierogi by the piece</dt><dd>From $1.65 each, eight fillings</dd></div>
-        </dl>
-        <a class="button button--light" href="#menu" data-show-category="hot" data-reveal>See the hot food menu</a>
+      <div class="container hot-food__inner">
+        <div class="hot-food__text">
+          <h2 id="hot-title" data-reveal>The hot food bar</h2>
+          <p class="hot-food__lede" data-reveal>Polish home cooking by the pound, all out behind the glass so you can point to what looks good. Grab it for lunch, or pick up dinner on the way home.</p>
+          <dl class="hot-food__list">
+            <div data-reveal><dt>Build your own plate</dt><dd>Any mix of mains, sides and vegetables, as much or as little as you like. $10.50 per lb.</dd></div>
+            <div data-reveal><dt>Soup of the day</dt><dd>A different one every day. Small $4.25, large $7.95.</dd></div>
+          </dl>
+          <div class="hot-food__actions" data-reveal>
+            <a class="button button--deep" href="#menu" data-show-category="hot">See the hot food menu</a>
+            <a class="button button--outline-deep" href="https://www.grubhub.com/restaurant/northside-bakery-149-n-8th-st-brooklyn/11010432" target="_blank" rel="noopener">Order on Grubhub</a>
+          </div>
+        </div>
+        <div class="hot-food__media">
+          <!-- PLACEHOLDER: swap for a top-down photo of the hot food bar through the glass -->
+          <figure class="hot-food__photo hot-food__photo--main" data-reveal="image"><img src="images/photos/kielbasa-tray.jpg" alt="Grilled kielbasa glistening in a hot bar tray" width="1024" height="1024" loading="lazy"></figure>
+          <figure class="hot-food__photo hot-food__photo--a" data-reveal="image"><img src="images/photos/golabki-sm.jpg" alt="Gołąbki in tomato sauce" width="800" height="1067" loading="lazy"></figure>
+          <figure class="hot-food__photo hot-food__photo--b" data-reveal="image"><img src="images/photos/cutlet-plate-sm.jpg" alt="A plate with a breaded pork cutlet and sides" width="800" height="1067" loading="lazy"></figure>
+        </div>
       </div>
     </section>
 
-    <!-- HOLIDAYS -->
+    <!-- HOLIDAYS: the countdown picks the next holiday on its own (js/main.js, section 6). -->
     <section class="section holidays" id="holidays" aria-labelledby="holidays-title">
       <div class="container">
         <div class="section__head section__head--row" data-reveal>
-          <h2 id="holidays-title">Polish holidays at Northside</h2>
-          <p>Our busiest days of the year. Preorders open a few weeks before each holiday.</p>
+          <h2 id="holidays-title">Holidays at Northside</h2>
+          <p>Our busiest days of the year. Holiday food is made to order, so preorder ahead.</p>
         </div>
+
+        <div class="countdown" data-countdown data-reveal>
+          <div class="countdown__text">
+            <p class="countdown__now" data-cd-title>Now taking Thanksgiving orders</p>
+            <p class="countdown__line" data-cd-line>Whole turkeys, pies, pierogi and sides. Order by a week before Thanksgiving.</p>
+          </div>
+          <div class="countdown__clock" aria-live="polite">
+            <p class="countdown__label" data-cd-label>Preorder deadline in</p>
+            <p class="countdown__units"><span><b data-cd-days>–</b>days</span><span><b data-cd-hours>–</b>hours</span><span><b data-cd-mins>–</b>minutes</span></p>
+          </div>
+          <a class="button button--butter" href="tel:+17187825551">Call to preorder</a>
+        </div>
+
         <ul class="holidays__grid">
           <li class="holiday">
-            <div class="holiday__media" data-reveal="image"><img src="images/photos/paczki-powdered.jpg" alt="Trays of powdered pączki" width="1600" height="2133" loading="lazy"></div>
+            <div class="holiday__media" data-reveal="image"><img src="images/photos/pumpkin-pie-sm.jpg" alt="A pumpkin pie" width="800" height="1067" loading="lazy"></div>
+            <div data-reveal>
+              <h3>Thanksgiving</h3>
+              <p class="holiday__date" data-holiday-date="Thanksgiving">Thursday, November 26, 2026</p>
+              <p class="holiday__when" data-holiday-deadline="Thanksgiving">Order by Thursday, November 19</p>
+              <p>Whole turkeys, pumpkin and apple pies, pierogi and sides. One of our biggest days.</p>
+            </div>
+          </li>
+          <li class="holiday">
+            <div class="holiday__media" data-reveal="image"><img src="images/photos/chrusciki-sm.jpg" alt="Chruściki dusted with powdered sugar" width="800" height="1067" loading="lazy"></div>
+            <div data-reveal>
+              <h3>Christmas Eve</h3>
+              <p class="dish-sub" lang="pl">Wigilia</p>
+              <p class="holiday__date" data-holiday-date="Christmas Eve">Thursday, December 24, 2026</p>
+              <p>Pierogi by the tray and holiday cakes for the Christmas Eve table.</p>
+            </div>
+          </li>
+          <li class="holiday">
+            <div class="holiday__media" data-reveal="image"><img src="images/photos/paczki-powdered-sm.jpg" alt="Trays of powdered pączki" width="800" height="1067" loading="lazy"></div>
             <div data-reveal>
               <h3>Fat Thursday</h3>
               <p class="dish-sub" lang="pl">Tłusty Czwartek</p>
-              <p class="holiday__when">The last Thursday before Lent</p>
+              <p class="holiday__date" data-holiday-date="Fat Thursday">Thursday, February 4, 2027</p>
               <p>Pączki day. Order them by the dozen ahead of time and skip the line.</p>
             </div>
           </li>
           <li class="holiday">
-            <div class="holiday__media" data-reveal="image"><img src="images/photos/babka-chocolate.jpg" alt="Chocolate-covered babka cakes" width="1600" height="2133" loading="lazy"></div>
+            <div class="holiday__media" data-reveal="image"><img src="images/photos/babka-chocolate-sm.jpg" alt="Chocolate-covered babka cakes" width="800" height="1067" loading="lazy"></div>
             <div data-reveal>
               <h3>Easter</h3>
               <p class="dish-sub" lang="pl">Wielkanoc</p>
-              <p>Babka, sernik and bread for the Easter table. Ask us about this year's Easter specials.</p>
-            </div>
-          </li>
-          <li class="holiday">
-            <div class="holiday__media" data-reveal="image"><img src="images/photos/chrusciki.jpg" alt="Chruściki dusted with powdered sugar" width="1600" height="2133" loading="lazy"></div>
-            <div data-reveal>
-              <h3>Christmas Eve</h3>
-              <p class="dish-sub" lang="pl">Wigilia</p>
-              <p>Pierogi by the tray and holiday cakes for the Christmas Eve table.</p>
+              <p class="holiday__date" data-holiday-date="Easter">Sunday, March 28, 2027</p>
+              <p>Babka, sernik and bread for the Easter table.</p>
             </div>
           </li>
         </ul>
-        <p class="holidays__cta" data-reveal><a class="button" href="tel:+17187825551">Call to preorder: (718) 782-5551</a></p>
       </div>
     </section>
 
@@ -259,38 +294,161 @@
           <p class="story__pull" data-reveal>Three brothers, a sister and their parents. Still family, still on North&nbsp;8th.</p>
           <p data-reveal>Richard and Teresa Podedworny opened Northside Bakery in 1992 in Greenpoint, for a neighborhood that missed the taste of home. Within a year the bakery had outgrown its space and moved to the North Side of Williamsburg, which gave us our name.</p>
           <p data-reveal>The family put their talents together and earned "The Best Bread in Brooklyn." We still run the bakery today.</p>
-          <p data-reveal>The neighborhood has changed a lot since then, and so have we. Alongside the rye and the pączki you'll now find a hot food bar, American cakes and a market full of European groceries.</p>
+          <p data-reveal>The neighborhood has changed a lot since then, and so have we. Alongside the rye and the pączki you'll now find a hot food bar, American cakes and a market full of European groceries. And the stoop out front is still where the neighborhood likes to sit.</p>
         </div>
         <figure class="story__poster" data-reveal>
-          <img src="images/photos/old-poster-sm.jpg" alt="Old Northside Bakery poster: a girl in Polish folk dress holding a big loaf of bread against a brick wall" width="800" height="1692" loading="lazy" data-parallax="-0.05">
+          <img src="images/photos/old-poster-sm.jpg" alt="Old Northside Bakery poster: a girl in Polish folk dress holding a big loaf of bread against a brick wall" width="800" height="1692" loading="lazy">
           <figcaption>Our first poster. The girl with the loaf grew up in the bakery.</figcaption>
+        </figure>
+      </div>
+      <!-- The storefront drawing gets its own wide spot under the story -->
+      <div class="container">
+        <figure class="story__drawing" data-reveal>
+          <img src="images/illustrations/storefront-drawing.jpg" alt="Drawing of the Northside Bakery storefront on North 8th Street, two neighbors sitting on the stoop out front" width="1000" height="751" loading="lazy">
+          <figcaption>Our stoop on North 8th. Pull up a seat.</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- CATERING -->
+    <!-- CATERING. SAMPLE sizes and servings below: confirm or change them before launch. -->
     <section class="section catering" id="catering" aria-labelledby="catering-title">
-      <div class="container catering__inner">
-        <div class="catering__media">
-          <div class="catering__photo catering__photo--main" data-reveal="image"><img src="images/photos/macaroons-trays.jpg" alt="Rack of baking trays filled with coconut macaroons" width="1600" height="2133" loading="lazy"></div>
-          <div class="catering__photo catering__photo--small" data-reveal="image"><img src="images/photos/pierogi-kielbasa-plate-sm.jpg" alt="A platter of pierogi with fried onions and grilled kielbasa" width="800" height="640" loading="lazy"></div>
+      <div class="container">
+        <div class="section__head section__head--row" data-reveal>
+          <h2 id="catering-title">Feeding a crowd?</h2>
+          <p>We cater birthdays, christenings, showers, office lunches and family dinners, and we bake custom cakes for any occasion. </p>
         </div>
-        <div class="catering__text">
-          <h2 id="catering-title" data-reveal>Feeding a crowd?</h2>
-          <p data-reveal>We make party trays for birthdays, office lunches, christenings and family dinners.</p>
-          <ul class="catering__list">
-            <li data-reveal>Pierogi trays</li>
-            <li data-reveal>Gołąbki and kielbasa by the pan</li>
-            <li data-reveal>Pastry, cookie and chruściki platters</li>
-            <li data-reveal>Cakes for any occasion</li>
-          </ul>
-          <p data-reveal>Tell us the date, how many people and what you're craving. We'll put it together.</p>
+        <div class="events__head" data-reveal>
+          <h3>Popular packages</h3>
+          <p>The spreads people order most. Mix and match anything, or <a href="catering.html">see the full catering menu</a> for every tray, platter and cake.</p>
+        </div>
+        <ul class="events">
+          <li class="event" data-reveal>
+            <h3>Office lunch</h3>
+            <p class="event__feeds">Feeds 15 to 20</p>
+            <ul>
+              <li>Full tray of pierogi with fried onions</li>
+              <li>Half tray of chicken and broccoli</li>
+              <li>Half tray of sides</li>
+              <li>Small cookie platter</li>
+            </ul>
+          </li>
+          <li class="event" data-reveal>
+            <h3>Birthday party</h3>
+            <p class="event__feeds">Feeds 25 to 30</p>
+            <ul>
+              <li>Full tray of gołąbki</li>
+              <li>Full tray of pierogi</li>
+              <li>Half tray of kielbasa with onions</li>
+              <li>Half sheet custom cake</li>
+            </ul>
+          </li>
+          <li class="event" data-reveal>
+            <h3>Christening or communion</h3>
+            <p class="event__feeds">Feeds 40 to 50</p>
+            <ul>
+              <li>Full trays of gołąbki, pierogi and pork cutlets</li>
+              <li>Large smoked meats platter</li>
+              <li>Bread and rolls basket</li>
+              <li>Full sheet custom cake</li>
+            </ul>
+          </li>
+          <li class="event" data-reveal>
+            <h3>Baby or bridal shower</h3>
+            <p class="event__feeds">Feeds 20 to 25</p>
+            <ul>
+              <li>Large smoked meats platter</li>
+              <li>Half tray of pierogi</li>
+              <li>Large pastry platter</li>
+              <li>10 inch layer cake</li>
+            </ul>
+          </li>
+          <li class="event" data-reveal>
+            <h3>Family dinner at home</h3>
+            <p class="event__feeds">Feeds 8 to 10</p>
+            <ul>
+              <li>Half tray of gołąbki</li>
+              <li>Half tray of pierogi</li>
+              <li>Half tray of sides</li>
+              <li>Whole cheesecake</li>
+            </ul>
+          </li>
+          <li class="event" data-reveal>
+            <h3>Holiday gathering</h3>
+            <p class="event__feeds">Feeds 15 to 20</p>
+            <ul>
+              <li>Full tray of kielbasa with onions</li>
+              <li>Full tray of pierogi</li>
+              <li>Polish cakes by the tray</li>
+              <li>Pączki by the dozen</li>
+            </ul>
+          </li>
+        </ul>
+        <!-- PLACEHOLDER photos: replace with photos from events we catered -->
+        <ul class="catering__photos">
+          <li class="catering__photo" data-reveal="image"><img src="images/photos/berry-layer-cake-sm.jpg" alt="A layer cake topped with fresh berries" width="800" height="1067" loading="lazy"></li>
+          <li class="catering__photo" data-reveal="image"><img src="images/photos/pierogi-kielbasa-plate-sm.jpg" alt="A platter of pierogi with fried onions and grilled kielbasa" width="800" height="640" loading="lazy"></li>
+          <li class="catering__photo" data-reveal="image"><img src="images/photos/cake-trays-sm.jpg" alt="Trays of sheet cakes" width="800" height="1067" loading="lazy"></li>
+          <li class="catering__photo" data-reveal="image"><img src="images/photos/macaroons-trays-sm.jpg" alt="Baking trays filled with coconut macaroons" width="800" height="1067" loading="lazy"></li>
+        </ul>
+        <div class="catering__foot" data-reveal>
+          <p>Every order is made to fit. Tell us the date, how many people and what you're craving, and we'll put it together.</p>
           <!-- PLACEHOLDER EMAIL: replace hello@example.com everywhere on this page once the new domain is set up -->
-          <div class="catering__actions" data-reveal>
-            <a class="button" href="tel:+17187825551">Call (718) 782-5551</a>
-            <a class="button button--ghost" href="mailto:hello@example.com?subject=Catering%20inquiry">Email us</a>
+          <div class="catering__actions">
+            <a class="button" href="catering.html">See the full catering menu</a>
+            <a class="button button--ghost" href="#inquire">Ask about your event</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- INQUIRIES: the form opens the visitor's email app with everything filled in (no server needed).
+         PLACEHOLDER EMAIL: change data-to to the bakery's real address once the new domain is set up. -->
+    <section class="section inquire" id="inquire" aria-labelledby="inquire-title">
+      <div class="container inquire__inner">
+        <div class="inquire__intro" data-reveal>
+          <h2 id="inquire-title">Send us a note</h2>
+          <p>Catering, a custom cake, a holiday preorder, or just a question. Tell us a little and we'll get back to you.</p>
+          <p class="inquire__call">Rather talk? Call <a href="tel:+17187825551">(718) 782-5551</a>.</p>
+        </div>
+        <form class="inquire__form" data-inquiry data-to="hello@example.com" data-reveal>
+          <fieldset class="inquire__kind">
+            <legend>What's it about?</legend>
+            <label><input type="radio" name="kind" value="Catering" checked> Catering</label>
+            <label><input type="radio" name="kind" value="Custom cake"> Custom cake</label>
+            <label><input type="radio" name="kind" value="Holiday preorder"> Holiday preorder</label>
+            <label><input type="radio" name="kind" value="General question"> General question</label>
+          </fieldset>
+          <div class="inquire__row">
+            <label class="field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+            <label class="field"><span>Phone</span><input type="tel" name="phone" autocomplete="tel"></label>
+          </div>
+          <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+          <!-- Holiday preorders: the items for each holiday are listed in js/main.js (section 7, PREORDER) -->
+          <div class="inquire__holiday" data-holiday-fields hidden>
+            <label class="field"><span>Which holiday?</span>
+              <select name="holiday" data-holiday-select>
+                <option value="Thanksgiving">Thanksgiving</option>
+                <option value="Christmas Eve">Christmas Eve (Wigilia)</option>
+                <option value="Fat Thursday">Fat Thursday (Tłusty Czwartek)</option>
+                <option value="Easter">Easter (Wielkanoc)</option>
+              </select>
+            </label>
+            <p class="inquire__deadline" data-holiday-note></p>
+            <fieldset class="inquire__items">
+              <legend>What would you like? Enter how many.</legend>
+              <div data-holiday-items></div>
+            </fieldset>
+          </div>
+          <div class="inquire__row" data-event-fields>
+            <label class="field"><span data-date-label>Date you need it</span><input type="date" name="date"></label>
+            <label class="field" data-people-field><span>How many people</span><input type="number" name="people" min="1" inputmode="numeric"></label>
+          </div>
+          <label class="field"><span>Message</span><textarea name="message" rows="5" placeholder="What you're craving, the occasion, any allergies..." data-message></textarea></label>
+          <div class="inquire__send">
+            <button class="button" type="submit">Send</button>
+            <p class="inquire__note" data-inquiry-note>This opens your email app with your note ready to send.</p>
+          </div>
+        </form>
       </div>
     </section>
 
