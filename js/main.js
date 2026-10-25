@@ -219,8 +219,47 @@
       });
     }
     fillDates();
+
+    // Thanksgiving order section: real dates, the Square link once it's added, hidden once Thanksgiving has passed
+    const tg = document.querySelector('#thanksgiving-order');
+    const cdButton = countdown.querySelector('[data-cd-button]');
+    if (tg) {
+      const now = new Date();
+      const hol = HOLIDAYS.find((x) => x.name === 'Thanksgiving');
+      let day = hol.date(now.getFullYear());
+      if (nyTime(...ymd(day), 23) < now) day = hol.date(now.getFullYear() + 1);
+      const deadline = shift(day, -hol.deadlineDays);
+      const ordersOpen = nyTime(...ymd(deadline), 20) > now;
+      tg.querySelector('[data-tg-deadline]').textContent = fmtDay.format(deadline);
+      tg.querySelector('[data-tg-pies]').textContent = fmtDay.format(shift(day, -10)); // pies from the Monday 10 days before
+      tg.querySelector('[data-tg-day]').textContent = fmtDay.format(day);
+      const url = (tg.dataset.squareUrl || '').trim();
+      const btn = tg.querySelector('[data-square-button]');
+      const note = tg.querySelector('[data-square-note]');
+      if (!ordersOpen) {
+        // Orders have closed: keep it simple until next year
+        btn.textContent = 'Call the bakery';
+        note.textContent = 'Thanksgiving orders are closed for this year. Call us and we\'ll see what we can do.';
+      } else if (url) {
+        btn.href = url;
+        btn.target = '_blank';
+        btn.rel = 'noopener';
+        btn.textContent = 'Order on Square';
+        note.textContent = 'Secure checkout through Square. Questions? Call (718) 782-5551.';
+      }
+      // Show the section from October until Thanksgiving
+      const oct1 = new Date(Date.UTC(day.getUTCFullYear(), 9, 1));
+      tg.hidden = now < oct1;
+    }
+    // The countdown button goes to the Thanksgiving order section while Thanksgiving is next; otherwise it calls
+    const cdSync = () => {
+      const showingTg = /Thanksgiving/.test(countdown.querySelector('[data-cd-title]').textContent) && tg && !tg.hidden;
+      cdButton.href = showingTg ? '#thanksgiving-order' : 'tel:+17187825551';
+      cdButton.textContent = showingTg ? 'Order Thanksgiving' : 'Call to preorder';
+    };
     tick();
-    setInterval(tick, 30 * 1000);
+    cdSync();
+    setInterval(() => { tick(); cdSync(); }, 30 * 1000);
   }
 
   /* ---------- 7. Inquiry form ----------

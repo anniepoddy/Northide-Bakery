@@ -453,6 +453,28 @@ img[data-parallax] { scale: 1.16; }
 .holiday__when { margin: 4px 0 6px; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .12em; font-size: 19px; color: var(--teal); }
 .holiday p:last-child { margin-top: 6px; font-size: 18px; }
 
+/* ---------- Thanksgiving orders (Square) ---------- */
+.tg { background: var(--teal-deep); color: var(--cream); padding: clamp(64px, 7vw, 104px) 0; }
+.tg[hidden] { display: none; }
+.tg h2 { color: var(--butter); font-size: clamp(40px, 4.4vw, 64px); }
+.tg__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.tg__lede { margin-top: 20px; font-size: clamp(19px, 1.5vw, 22px); max-width: 30em; }
+.tg__facts { list-style: none; padding: 0; margin: 22px 0 26px; display: grid; gap: 10px; }
+.tg__facts li { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(243, 230, 207, .25); font-size: 19px; }
+.tg__facts b { font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .12em; color: var(--mint); }
+.tg__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+.tg .button { background: var(--butter); border-color: var(--butter); color: var(--teal-deep); }
+.tg .button::before { background: var(--paper); }
+.tg .button:hover { color: var(--teal-deep); border-color: var(--paper); }
+.tg__note { font-size: 17px; max-width: 24em; }
+.tg__menu { padding: clamp(22px, 2.6vw, 34px); border-radius: 14px; background: var(--paper); color: var(--ink); }
+.tg__menu h3 { font-size: clamp(26px, 2.2vw, 34px); font-style: italic; font-weight: 500; }
+.tg__menu ul { list-style: none; padding: 0; margin-top: 14px; display: grid; }
+.tg__menu li { display: grid; gap: 0; padding: 8px 0; border-top: 1px solid rgba(30, 84, 80, .16); }
+.tg__menu li b { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 22px; color: var(--teal); }
+.tg__menu li span { font-size: 17px; }
+.tg__menu-note { margin-top: 14px; font-size: 16px; }
+
 /* ---------- Story: words on the left, the storefront drawing (with the stoop) and our first poster on the right ---------- */
 .story { background: var(--paper); }
 .story__inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(48px, 7vw, 120px); align-items: center; }
@@ -622,6 +644,7 @@ img[data-parallax] { scale: 1.16; }
   .signatures__grid { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: minmax(200px, 38%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; margin-right: calc(-1 * var(--gutter)); padding-right: var(--gutter); }
   .signatures__grid > li { scroll-snap-align: start; }
   .countdown { grid-template-columns: 1fr; justify-items: start; }
+  .tg__inner { grid-template-columns: 1fr; }
   .holidays__grid { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
   .holiday h3 { font-size: 28px; }
   .spreads, .events { grid-template-columns: 1fr 1fr; }
@@ -655,6 +678,7 @@ img[data-parallax] { scale: 1.16; }
   .ctable td::before { content: attr(data-label) " · " attr(data-feeds); font-family: var(--font-body); font-weight: 600; color: var(--teal); }
   .citem__sizes { min-width: 0; }
   .countdown__units { gap: 10px; }
+  .tg__facts li { grid-template-columns: 1fr; gap: 2px; }
   .gallery__grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .visit__media { grid-template-columns: 1fr; }
   .visit__photo, .visit__map { min-height: 300px; }
