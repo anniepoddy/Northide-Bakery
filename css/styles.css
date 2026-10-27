@@ -382,6 +382,39 @@ img[data-parallax] { scale: 1.16; }
 .menu__intro { max-width: 60ch; font-size: 19px; margin-bottom: 40px; }
 .menu__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(256px, 1fr)); gap: clamp(40px, 4vw, 56px) clamp(20px, 2.4vw, 32px); }
 .menu__status { font-size: 19px; }
+.menu__order { margin-top: clamp(40px, 5vw, 64px); display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.menu__order p { font-size: 17px; max-width: 34em; }
+
+/* Hot food bar tab: a menu board with a day picker */
+.board { grid-column: 1 / -1; }
+.board__days { display: flex; flex-wrap: wrap; gap: 8px; }
+.board__day {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-width: 68px; min-height: 52px; padding: 6px 16px;
+  border: 1.5px solid rgba(30, 84, 80, .35); border-radius: 10px; background: var(--paper); color: var(--teal);
+  font: 600 19px/1.1 var(--font-body); cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+.board__day small { margin-top: 2px; font-size: 14px; font-variant-caps: all-small-caps; letter-spacing: .1em; }
+.board__day:hover { border-color: var(--teal); }
+.board__day[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: var(--paper); }
+.board__day[aria-pressed="true"] small { color: var(--butter); }
+.board__day:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.board__groups { display: grid; grid-template-columns: 1.15fr 1fr .85fr; gap: clamp(28px, 4vw, 64px); align-items: start; margin-top: 32px; }
+.board__group-name { padding-bottom: 10px; border-bottom: 2px solid var(--teal); font-size: 24px; color: var(--ink); }
+.board__group ul { list-style: none; padding: 0; margin: 0; }
+.board__item { padding: 14px 0; border-bottom: 1px solid rgba(30, 84, 80, .16); }
+.board__name { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.2; color: var(--ink); }
+.board__polish { margin-left: 10px; font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 18px; color: var(--teal); }
+.board__desc { margin-top: 4px; font-size: 17px; line-height: 1.45; }
+.board__when-item { margin-top: 6px; font-size: 16px; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .1em; color: var(--teal); }
+.board__empty { padding: 14px 0; font-style: italic; }
+.board__note { margin-top: 28px; font-size: 17px; }
+.board__note a { color: var(--teal); font-weight: 600; }
+.board--list { margin-top: clamp(16px, 2vw, 32px); }
+.board--list .board__groups { grid-template-columns: 1.4fr 1fr; }
+.board--list .board__group:last-child { grid-column: auto; }
+.board__item--row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 10px 0; }
+.board__item--row .board__name { font-size: 19px; }
+.board__price { flex: none; font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--teal); }
 /* Group headings inside a tab (hot food bar: by the pound, soups, plates...) */
 .menu__group { grid-column: 1 / -1; padding-top: 18px; border-top: 1.5px solid rgba(30, 84, 80, .2); }
 .menu__group:first-child { padding-top: 0; border-top: 0; }
@@ -416,8 +449,8 @@ img[data-parallax] { scale: 1.16; }
 /* ---------- Hot food bar: words on the left, a small photo set on the right ---------- */
 .hot-food { background: var(--butter); color: var(--teal-deep); padding: clamp(64px, 7vw, 104px) 0; }
 .hot-food h2, .hot-food h3 { color: var(--teal-deep); }
-.hot-food h2 { font-size: clamp(42px, 4.6vw, 68px); white-space: nowrap; } /* one line on computers */
-.hot-food__inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.hot-food h2 { font-size: clamp(40px, 3.8vw, 58px); white-space: nowrap; } /* one line on computers */
+.hot-food__inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(40px, 5vw, 80px); align-items: center; }
 .hot-food__lede { margin-top: 16px; font-size: clamp(19px, 1.5vw, 22px); max-width: 32em; }
 .hot-food__list { margin: 24px 0 28px; display: grid; gap: 12px; }
 .hot-food__list > div { padding-top: 12px; border-top: 1px solid rgba(23, 62, 59, .25); }
@@ -426,10 +459,11 @@ img[data-parallax] { scale: 1.16; }
 .hot-food__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .hot-food .text-link { color: var(--teal-deep); }
 /* One tall photo with two small ones stacked beside it, so the set stays short */
-.hot-food__media { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; width: 100%; max-width: 560px; aspect-ratio: 3 / 2; justify-self: end; }
+.hot-food__media { display: grid; grid-template-columns: 1.6fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; width: 100%; aspect-ratio: 16 / 10; justify-self: end; }
 .hot-food__photo { margin: 0; overflow: hidden; border-radius: var(--radius); }
 .hot-food__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-expo); }
 .hot-food__photo--main { grid-row: 1 / -1; }
+.hot-food__photo--c { grid-column: 2 / -1; }
 
 /* ---------- Holidays ---------- */
 /* Countdown to the next preorder deadline */
@@ -452,28 +486,6 @@ img[data-parallax] { scale: 1.16; }
 .holiday__date { margin-top: 6px; font-weight: 600; font-size: 18px; }
 .holiday__when { margin: 4px 0 6px; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .12em; font-size: 19px; color: var(--teal); }
 .holiday p:last-child { margin-top: 6px; font-size: 18px; }
-
-/* ---------- Thanksgiving orders (Square) ---------- */
-.tg { background: var(--teal-deep); color: var(--cream); padding: clamp(64px, 7vw, 104px) 0; }
-.tg[hidden] { display: none; }
-.tg h2 { color: var(--butter); font-size: clamp(40px, 4.4vw, 64px); }
-.tg__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
-.tg__lede { margin-top: 20px; font-size: clamp(19px, 1.5vw, 22px); max-width: 30em; }
-.tg__facts { list-style: none; padding: 0; margin: 22px 0 26px; display: grid; gap: 10px; }
-.tg__facts li { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(243, 230, 207, .25); font-size: 19px; }
-.tg__facts b { font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: .12em; color: var(--mint); }
-.tg__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
-.tg .button { background: var(--butter); border-color: var(--butter); color: var(--teal-deep); }
-.tg .button::before { background: var(--paper); }
-.tg .button:hover { color: var(--teal-deep); border-color: var(--paper); }
-.tg__note { font-size: 17px; max-width: 24em; }
-.tg__menu { padding: clamp(22px, 2.6vw, 34px); border-radius: 14px; background: var(--paper); color: var(--ink); }
-.tg__menu h3 { font-size: clamp(26px, 2.2vw, 34px); font-style: italic; font-weight: 500; }
-.tg__menu ul { list-style: none; padding: 0; margin-top: 14px; display: grid; }
-.tg__menu li { display: grid; gap: 0; padding: 8px 0; border-top: 1px solid rgba(30, 84, 80, .16); }
-.tg__menu li b { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 22px; color: var(--teal); }
-.tg__menu li span { font-size: 17px; }
-.tg__menu-note { margin-top: 14px; font-size: 16px; }
 
 /* ---------- Story: words on the left, the storefront drawing (with the stoop) and our first poster on the right ---------- */
 .story { background: var(--paper); }
@@ -644,7 +656,6 @@ img[data-parallax] { scale: 1.16; }
   .signatures__grid { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: minmax(200px, 38%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; margin-right: calc(-1 * var(--gutter)); padding-right: var(--gutter); }
   .signatures__grid > li { scroll-snap-align: start; }
   .countdown { grid-template-columns: 1fr; justify-items: start; }
-  .tg__inner { grid-template-columns: 1fr; }
   .holidays__grid { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
   .holiday h3 { font-size: 28px; }
   .spreads, .events { grid-template-columns: 1fr 1fr; }
@@ -654,6 +665,8 @@ img[data-parallax] { scale: 1.16; }
   .story__poster { max-width: 260px; }
   .site-footer__inner { grid-template-columns: 1fr 1fr; }
   .site-footer__logo { grid-column: 1 / -1; }
+  .board__groups { grid-template-columns: 1fr 1fr; }
+  .board__group:last-child { grid-column: 1 / -1; }
 }
 @media (max-width: 700px) {
   body { font-size: 17px; }
@@ -667,6 +680,11 @@ img[data-parallax] { scale: 1.16; }
   .spread { padding: 18px; }
   .inquire__row, .inquire__items [data-holiday-items] { grid-template-columns: 1fr; }
   .citem { grid-template-columns: 1fr; padding: 18px; }
+  .board__days { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .board__day[data-day="all"] { grid-column: 1 / -1; }
+  .board__day { min-width: 0; padding: 6px 4px; }
+  .board__groups, .board--list .board__groups { grid-template-columns: 1fr; }
+  .board__polish { display: block; margin-left: 0; }
   /* Tray table becomes stacked cards on phones */
   .ctable, .ctable tbody, .ctable tr, .ctable th, .ctable td { display: block; width: auto; }
   .ctable thead { display: none; }
@@ -678,13 +696,14 @@ img[data-parallax] { scale: 1.16; }
   .ctable td::before { content: attr(data-label) " · " attr(data-feeds); font-family: var(--font-body); font-weight: 600; color: var(--teal); }
   .citem__sizes { min-width: 0; }
   .countdown__units { gap: 10px; }
-  .tg__facts li { grid-template-columns: 1fr; gap: 2px; }
   .gallery__grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .visit__media { grid-template-columns: 1fr; }
   .visit__photo, .visit__map { min-height: 300px; }
   .site-footer__inner { grid-template-columns: 1fr; }
   .site-footer__sign { font-size: 12.5vw; }
   .hero__actions .button { flex: 1 1 auto; }
+  /* Long labels wrap instead of running off a phone screen */
+  .button { max-width: 100%; white-space: normal; text-align: center; line-height: 1.15; padding-block: 10px; }
   .hero__ink--bottom { display: none; } /* would sit on the address on narrow phones */
   .visit__address { font-size: 23px; }
   .menu__tab { min-height: 44px; padding: 0 16px; font-size: 15px; }

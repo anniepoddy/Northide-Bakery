@@ -25,8 +25,7 @@
     "address": { "@type": "PostalAddress", "streetAddress": "149 N 8th St", "addressLocality": "Brooklyn", "addressRegion": "NY", "postalCode": "11249", "addressCountry": "US" },
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "20:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "17:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
     ],
     "servesCuisine": ["Polish", "Bakery", "European"],
     "sameAs": ["https://www.instagram.com/northsidebakery", "https://www.facebook.com/northsidebakery"]
@@ -48,7 +47,8 @@
           <li><a href="#story">Our story</a></li>
           <li><a href="#visit">Visit</a></li>
         </ul>
-        <a class="button button--small" href="https://www.grubhub.com/restaurant/northside-bakery-149-n-8th-st-brooklyn/11010432" target="_blank" rel="noopener">Order on Grubhub</a>
+        <!-- ONLINE ORDERING (Square) is Thanksgiving preorders only for now. When everyday pickup orders open, change these labels to "Order online for pickup" (search this file for square.site). -->
+        <a class="button button--small" href="https://northsidebakerybrooklyn.square.site" target="_blank" rel="noopener">Preorder Thanksgiving</a>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="nav-toggle__bars" aria-hidden="true"></span>
@@ -91,8 +91,8 @@
         <p class="hero__motto">Baked on North&nbsp;8th since&nbsp;1992.</p>
         <p class="hero__lede">A Polish family bakery, hot food bar and European market in the heart of Williamsburg.</p>
         <div class="hero__actions">
-          <a class="button" href="https://www.grubhub.com/restaurant/northside-bakery-149-n-8th-st-brooklyn/11010432" target="_blank" rel="noopener">Order on Grubhub</a>
-          <a class="button button--ghost" href="#menu">See the menu</a>
+          <a class="button" href="https://northsidebakerybrooklyn.square.site" target="_blank" rel="noopener">Preorder Thanksgiving online</a>
+          <a class="button button--ghost" href="https://www.grubhub.com/restaurant/northside-bakery-149-n-8th-st-brooklyn/11010432" target="_blank" rel="noopener">Delivery on Grubhub</a>
         </div>
       </div>
 
@@ -197,6 +197,10 @@
           <p class="menu__intro" data-menu-intro></p>
           <ul class="menu__grid" data-menu-grid></ul>
         </div>
+        <div class="menu__order" data-reveal>
+          <a class="button" href="https://northsidebakerybrooklyn.square.site" target="_blank" rel="noopener">Preorder Thanksgiving online</a>
+          <p>Online ordering is just for Thanksgiving preorders for now. Everyday pickup orders are coming soon.</p>
+        </div>
         <noscript><p>Turn on JavaScript to see the full menu, or call us at (718) 782-5551.</p></noscript>
       </div>
     </section>
@@ -206,21 +210,22 @@
       <div class="container hot-food__inner">
         <div class="hot-food__text">
           <h2 id="hot-title" data-reveal>The hot food bar</h2>
-          <p class="hot-food__lede" data-reveal>Polish home cooking by the pound, all out behind the glass so you can point to what looks good. Grab it for lunch, or pick up dinner on the way home.</p>
+          <p class="hot-food__lede" data-reveal>Polish home cooking, buffet style. Point to whatever looks good behind the glass and pay by the pound.</p>
           <dl class="hot-food__list">
-            <div data-reveal><dt>Build your own plate</dt><dd>Any mix of mains, sides and vegetables, as much or as little as you like. $10.50 per lb.</dd></div>
-            <div data-reveal><dt>Soup of the day</dt><dd>A different one every day. Small $4.25, large $7.95.</dd></div>
+            <div data-reveal><dt>Build your own plate</dt><dd>Any mix of mains and sides. $10.50 per lb.</dd></div>
+            <div data-reveal><dt>Two soups a day</dt><dd>Small $4.25, large $7.95.</dd></div>
           </dl>
           <div class="hot-food__actions" data-reveal>
-            <a class="button button--deep" href="#menu" data-show-category="hot">See the hot food menu</a>
+            <a class="button button--deep" href="#menu" data-show-category="hot">See what's on today</a>
             <a class="button button--outline-deep" href="https://www.grubhub.com/restaurant/northside-bakery-149-n-8th-st-brooklyn/11010432" target="_blank" rel="noopener">Order on Grubhub</a>
           </div>
         </div>
         <div class="hot-food__media">
-          <!-- PLACEHOLDER: swap for a top-down photo of the hot food bar through the glass -->
+          <!-- PLACEHOLDER: swap any of these for photos of the hot food bar itself, through the glass -->
           <figure class="hot-food__photo hot-food__photo--main" data-reveal="image"><img src="images/photos/kielbasa-tray.jpg" alt="Grilled kielbasa glistening in a hot bar tray" width="1024" height="1024" loading="lazy"></figure>
           <figure class="hot-food__photo hot-food__photo--a" data-reveal="image"><img src="images/photos/golabki-sm.jpg" alt="Gołąbki in tomato sauce" width="800" height="1067" loading="lazy"></figure>
           <figure class="hot-food__photo hot-food__photo--b" data-reveal="image"><img src="images/photos/cutlet-plate-sm.jpg" alt="A plate with a breaded pork cutlet and sides" width="800" height="1067" loading="lazy"></figure>
+          <figure class="hot-food__photo hot-food__photo--c" data-reveal="image"><img src="images/photos/chicken-broccoli-sm.jpg" alt="Chicken and broccoli from the hot food bar" width="800" height="1067" loading="lazy"></figure>
         </div>
       </div>
     </section>
@@ -240,9 +245,9 @@
           </div>
           <div class="countdown__clock" aria-live="polite">
             <p class="countdown__label" data-cd-label>Preorder deadline in</p>
-            <p class="countdown__units"><span><b data-cd-days>–</b>days</span><span><b data-cd-hours>–</b>hours</span><span><b data-cd-mins>–</b>minutes</span></p>
+            <p class="countdown__units"><span><b data-cd-days>–</b>days</span><span><b data-cd-hours>–</b>hours</span><span><b data-cd-mins>–</b>minutes</span><span aria-hidden="true"><b data-cd-secs>–</b>seconds</span></p>
           </div>
-          <a class="button button--butter" href="#thanksgiving-order" data-cd-button>Order Thanksgiving</a>
+          <a class="button button--butter" href="https://northsidebakerybrooklyn.square.site" target="_blank" rel="noopener" data-cd-button>Preorder online</a>
         </div>
 
         <ul class="holidays__grid">
@@ -283,39 +288,6 @@
             </div>
           </li>
         </ul>
-      </div>
-    </section>
-
-    <!-- THANKSGIVING ORDERS ONLINE (Square)
-         The button links to the Square Online store in data-square-url. The section hides itself after Thanksgiving.
-         The menu below mirrors the "Thanksgiving" category in Square: if prices change there, change them here too. -->
-    <section class="section tg" id="thanksgiving-order" aria-labelledby="tg-title" data-square-url="https://northsidebakerybrooklyn.square.site">
-      <div class="container tg__inner">
-        <div class="tg__text">
-          <h2 id="tg-title" data-reveal>Thanksgiving orders</h2>
-          <p class="tg__lede" data-reveal>Order online: pick your turkey, pies and sides, choose a pickup day and pay ahead. Then just swing by the counter and take it home.</p>
-          <ul class="tg__facts" data-reveal>
-            <li><b>Order by</b><span data-tg-deadline>Thursday, November 19</span></li>
-            <li><b>Pies</b><span>Pick up from <span data-tg-pies>Monday, November 16</span></span></li>
-            <li><b>Turkey &amp; sides</b><span>Pick up on Thanksgiving Day, <span data-tg-day>Thursday, November 26</span></span></li>
-            <li><b>Where</b><span>At the counter, 149 N 8th St</span></li>
-          </ul>
-          <div class="tg__actions" data-reveal>
-            <a class="button" href="tel:+17187825551" data-square-button>Call to preorder</a>
-            <p class="tg__note" data-square-note>Online ordering opens soon. Until then, call us at (718) 782-5551.</p>
-          </div>
-        </div>
-        <div class="tg__menu" data-reveal>
-          <h3>On the Thanksgiving menu</h3>
-          <ul>
-            <li><b>Roasted turkey</b><span>With fruit or meat stuffing. $135</span></li>
-            <li><b>Turkey roulade</b><span>With fruit or meat stuffing. $85</span></li>
-            <li><b>Pies</b><span>Apple, pumpkin, pecan, cherry or blueberry. $14.95 to $18.95</span></li>
-            <li><b>Sides by the half tray</b><span>Mashed potatoes, sweet potatoes, string beans with almonds or broccoli with garlic $45. Brussels sprouts $60</span></li>
-            <li><b>For the table</b><span>Stuffing loaf $35, turkey gravy $12, butternut squash soup $12, cranberry sauce and creamed spinach from $4</span></li>
-          </ul>
-          <p class="tg__menu-note">Also on the order page: rolada dinner plates and broccoli almond salad by the pound.</p>
-        </div>
       </div>
     </section>
 
@@ -383,36 +355,6 @@
               <li>Large smoked meats platter</li>
               <li>Bread and rolls basket</li>
               <li>Full sheet custom cake</li>
-            </ul>
-          </li>
-          <li class="event" data-reveal>
-            <h3>Baby or bridal shower</h3>
-            <p class="event__feeds">Feeds 20 to 25</p>
-            <ul>
-              <li>Large smoked meats platter</li>
-              <li>Half tray of pierogi</li>
-              <li>Large pastry platter</li>
-              <li>10 inch layer cake</li>
-            </ul>
-          </li>
-          <li class="event" data-reveal>
-            <h3>Family dinner at home</h3>
-            <p class="event__feeds">Feeds 8 to 10</p>
-            <ul>
-              <li>Half tray of gołąbki</li>
-              <li>Half tray of pierogi</li>
-              <li>Half tray of sides</li>
-              <li>Whole cheesecake</li>
-            </ul>
-          </li>
-          <li class="event" data-reveal>
-            <h3>Holiday gathering</h3>
-            <p class="event__feeds">Feeds 15 to 20</p>
-            <ul>
-              <li>Full tray of kielbasa with onions</li>
-              <li>Full tray of pierogi</li>
-              <li>Polish cakes by the tray</li>
-              <li>Pączki by the dozen</li>
             </ul>
           </li>
         </ul>
@@ -513,13 +455,13 @@
             <a href="tel:+17187825551">(718) 782-5551</a><br>
             <a href="mailto:hello@example.com">hello@example.com</a>
           </address>
-          <!-- Opening hours. Edit times here (24-hour format in data-open / data-close). The site uses them to show "open now". -->
+          <!-- Opening hours. Edit times here (24-hour format in data-open / data-close; data-closed marks a day we are closed). The site uses them to show "open now". -->
           <table class="hours" data-hours data-reveal>
             <caption class="visually-hidden">Opening hours</caption>
             <tbody>
               <tr data-days="1,2,3,4,5" data-open="07:00" data-close="20:00"><th scope="row">Monday to Friday</th><td>7 am to 8 pm</td></tr>
               <tr data-days="6" data-open="09:00" data-close="17:00"><th scope="row">Saturday</th><td>9 am to 5 pm</td></tr>
-              <tr data-days="0" data-open="11:00" data-close="17:00"><th scope="row">Sunday</th><td>11 am to 5 pm</td></tr>
+              <tr data-days="0" data-closed><th scope="row">Sunday</th><td>Closed</td></tr>
             </tbody>
           </table>
           <a class="button" href="https://www.google.com/maps/dir/?api=1&amp;destination=149+N+8th+St,+Brooklyn,+NY+11249" target="_blank" rel="noopener" data-reveal>Get directions</a>
@@ -543,13 +485,14 @@
         <div>
           <h2 class="site-footer__title">Northside Bakery</h2>
           <p>149 N 8th St, Brooklyn, NY 11249<br><a href="tel:+17187825551">(718) 782-5551</a><br><a href="mailto:hello@example.com">hello@example.com</a></p>
-          <p>Mon to Fri 7 am to 8 pm<br>Sat 9 am to 5 pm, Sun 11 am to 5 pm</p>
+          <p>Mon to Fri 7 am to 8 pm<br>Sat 9 am to 5 pm<br>Closed Sunday</p>
         </div>
         <div>
           <h2 class="site-footer__title">Follow and order</h2>
           <ul class="site-footer__links">
             <li><a href="https://www.instagram.com/northsidebakery" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://www.facebook.com/northsidebakery" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://northsidebakerybrooklyn.square.site" target="_blank" rel="noopener">Thanksgiving preorders</a></li>
             <li><a href="https://www.grubhub.com/restaurant/northside-bakery-149-n-8th-st-brooklyn/11010432" target="_blank" rel="noopener">Order on Grubhub</a></li>
           </ul>
         </div>

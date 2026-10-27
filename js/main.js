@@ -59,6 +59,18 @@
     const row = rows.find((r) => r.dataset.days.split(',').map(Number).includes(day));
     rows.forEach((r) => r.classList.toggle('is-today', r === row));
     if (!row) return;
+    if ('closed' in row.dataset) {
+      // Closed all day: point to the next day we open
+      const next = rows.find((r) => !('closed' in r.dataset) && r.dataset.days.split(',').map(Number).includes((day + 1) % 7));
+      if (todayEl) {
+        todayEl.textContent = 'Today: closed';
+        const badge = document.createElement('span');
+        badge.className = 'status is-closed';
+        badge.textContent = next ? `Opens tomorrow at ${formatTime(next.dataset.open)}` : 'Closed today';
+        todayEl.append(badge);
+      }
+      return;
+    }
     const open = toMinutes(row.dataset.open);
     const close = toMinutes(row.dataset.close);
     let status, closed = false;
@@ -199,10 +211,14 @@
         ? `${ev.hol.line} Last day to order: ${fmtDay.format(ev.deadlineDay)}.`
         : `${ev.hol.line} ${fmtDay.format(ev.day)}.`;
       $('[data-cd-label]').textContent = ev.deadlineDay ? 'Preorder deadline in' : `${ev.hol.name} in`;
-      const mins = Math.max(0, Math.floor((ev.target - now) / 6e4));
-      $('[data-cd-days]').textContent = Math.floor(mins / 1440);
-      $('[data-cd-hours]').textContent = Math.floor((mins % 1440) / 60);
-      $('[data-cd-mins]').textContent = mins % 60;
+      const secs = Math.max(0, Math.floor((ev.target - now) / 1000));
+      const mins = Math.floor(secs / 60);
+      // Only touch numbers that changed, so screen readers aren't told about every second
+      const set = (sel, v) => { const node = $(sel); if (node.textContent !== String(v)) node.textContent = v; };
+      set('[data-cd-days]', Math.floor(mins / 1440));
+      set('[data-cd-hours]', Math.floor((mins % 1440) / 60));
+      set('[data-cd-mins]', mins % 60);
+      set('[data-cd-secs]', String(secs % 60).padStart(2, '0'));
     }
     // Each holiday card shows its next date (and Thanksgiving its last order day)
     const fmtFull = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
@@ -220,46 +236,18 @@
     }
     fillDates();
 
-    // Thanksgiving order section: real dates, the Square link once it's added, hidden once Thanksgiving has passed
-    const tg = document.querySelector('#thanksgiving-order');
+    // While Thanksgiving is next, the countdown button opens the online store; for other holidays it calls
     const cdButton = countdown.querySelector('[data-cd-button]');
-    if (tg) {
-      const now = new Date();
-      const hol = HOLIDAYS.find((x) => x.name === 'Thanksgiving');
-      let day = hol.date(now.getFullYear());
-      if (nyTime(...ymd(day), 23) < now) day = hol.date(now.getFullYear() + 1);
-      const deadline = shift(day, -hol.deadlineDays);
-      const ordersOpen = nyTime(...ymd(deadline), 20) > now;
-      tg.querySelector('[data-tg-deadline]').textContent = fmtDay.format(deadline);
-      tg.querySelector('[data-tg-pies]').textContent = fmtDay.format(shift(day, -10)); // pies from the Monday 10 days before
-      tg.querySelector('[data-tg-day]').textContent = fmtDay.format(day);
-      const url = (tg.dataset.squareUrl || '').trim();
-      const btn = tg.querySelector('[data-square-button]');
-      const note = tg.querySelector('[data-square-note]');
-      if (!ordersOpen) {
-        // Orders have closed: keep it simple until next year
-        btn.textContent = 'Call the bakery';
-        note.textContent = 'Thanksgiving orders are closed for this year. Call us and we\'ll see what we can do.';
-      } else if (url) {
-        btn.href = url;
-        btn.target = '_blank';
-        btn.rel = 'noopener';
-        btn.textContent = 'Order on Square';
-        note.textContent = 'Secure checkout through Square. Questions? Call (718) 782-5551.';
-      }
-      // Show the section from October until Thanksgiving
-      const oct1 = new Date(Date.UTC(day.getUTCFullYear(), 9, 1));
-      tg.hidden = now < oct1;
-    }
-    // The countdown button goes to the Thanksgiving order section while Thanksgiving is next; otherwise it calls
     const cdSync = () => {
-      const showingTg = /Thanksgiving/.test(countdown.querySelector('[data-cd-title]').textContent) && tg && !tg.hidden;
-      cdButton.href = showingTg ? '#thanksgiving-order' : 'tel:+17187825551';
-      cdButton.textContent = showingTg ? 'Order Thanksgiving' : 'Call to preorder';
+      const online = /Thanksgiving/.test(countdown.querySelector('[data-cd-title]').textContent);
+      cdButton.href = online ? 'https://northsidebakerybrooklyn.square.site' : 'tel:+17187825551';
+      cdButton.textContent = online ? 'Preorder online' : 'Call to preorder';
+      if (online) { cdButton.target = '_blank'; cdButton.rel = 'noopener'; } else { cdButton.removeAttribute('target'); }
     };
     tick();
     cdSync();
-    setInterval(() => { tick(); cdSync(); }, 30 * 1000);
+    setInterval(tick, 1000);
+    setInterval(cdSync, 30 * 1000);
   }
 
   /* ---------- 7. Inquiry form ----------
@@ -397,6 +385,70 @@
     return li;
   }
 
+  // Hot food bar: a menu board of everything we make, with a day picker showing what's usually out that day
+  // Closed Sundays, so the week is Monday to Saturday
+  const DAYS = [['mon', 'Mon', 'Monday'], ['tue', 'Tue', 'Tuesday'], ['wed', 'Wed', 'Wednesday'], ['thu', 'Thu', 'Thursday'], ['fri', 'Fri', 'Friday'], ['sat', 'Sat', 'Saturday']];
+  const todayId = () => new Intl.DateTimeFormat('en-US', { weekday: 'short', timeZone: 'America/New_York' }).format(new Date()).slice(0, 3).toLowerCase();
+  let boardDay = null; // a day id, or 'all'; starts on today (or Monday on a Sunday)
+  const onDay = (item, day) => day === 'all' || item.days === 'daily' || (Array.isArray(item.days) && item.days.includes(day));
+  const daysText = (item) => (item.days === 'daily' ? 'Every day' : DAYS.filter(([d]) => (item.days || []).includes(d)).map(([, s]) => s).join(' · '));
+
+  function renderBoard(category, items) {
+    const today = todayId();
+    if (!boardDay) boardDay = DAYS.some(([d]) => d === today) ? today : 'mon';
+    const box = el('li', 'board');
+
+    const picker = el('div', 'board__days');
+    picker.setAttribute('role', 'group');
+    picker.setAttribute('aria-label', 'Show the dishes for');
+    [...DAYS, ['all', 'All dishes', 'All dishes']].forEach(([d, short, long]) => {
+      const b = el('button', 'board__day', short);
+      b.type = 'button';
+      b.dataset.day = d;
+      b.setAttribute('aria-pressed', String(d === boardDay));
+      if (d === today) { b.append(el('small', null, 'Today')); b.setAttribute('aria-label', `${long}, today`); }
+      b.addEventListener('click', () => {
+        boardDay = d;
+        gridEl.replaceChildren(renderBoard(category, items));
+        gridEl.querySelector(`[data-day="${d}"]`).focus();
+      });
+      picker.append(b);
+    });
+
+    const dayName = (DAYS.find(([d]) => d === boardDay) || [])[2];
+
+    const groups = el('div', 'board__groups');
+    category.groups.forEach((g) => {
+      const list = items.filter((i) => i.group === g.id && onDay(i, boardDay));
+      const col = el('div', 'board__group');
+      col.append(el('h3', 'board__group-name', g.name));
+      if (!list.length) {
+        col.append(el('p', 'board__empty', g.empty || `Nothing listed for ${dayName}.`));
+      } else {
+        const ul = el('ul');
+        list.forEach((item) => {
+          const row = el('li', 'board__item');
+          const name = el('p', 'board__name', item.name);
+          if (item.polish) name.append(el('span', 'board__polish', item.polish));
+          row.append(name);
+          if (item.description) row.append(el('p', 'board__desc', item.description));
+          if (boardDay === 'all') row.append(el('p', 'board__when-item', daysText(item)));
+          ul.append(row);
+        });
+        col.append(ul);
+      }
+      groups.append(col);
+    });
+
+    const note = el('p', 'board__note', 'This is our usual week. The bar changes with what is fresh, so call ');
+    const tel = el('a', null, '(718) 782-5551');
+    tel.href = 'tel:+17187825551';
+    note.append(tel, ' to check what is out today.');
+
+    box.append(picker, groups, note);
+    return box;
+  }
+
   function select(id, focusTab) {
     const category = menu.categories.find((c) => c.id === id) || menu.categories[0];
     current = category.id;
@@ -411,8 +463,37 @@
     // Holiday items are preorder only, so their intro gets a stand-out note style
     introEl.classList.toggle('menu__intro--preorder', category.id === 'holiday');
     const items = menu.items.filter((i) => i.category === current);
+    if (category.board) {
+      gridEl.replaceChildren(renderBoard(category, items));
+      return;
+    }
     if (!category.groups) {
-      gridEl.replaceChildren(...items.map(renderItem));
+      const cards = items.filter((i) => !i.list).map(renderItem);
+      // Plain lists under the photos (e.g. every loaf and roll): name, Polish name and price
+      if (category.lists) {
+        const box = el('li', 'board board--list');
+        const groups = el('div', 'board__groups');
+        category.lists.forEach((g) => {
+          const list = items.filter((i) => i.list === g.id);
+          if (!list.length) return;
+          const col = el('div', 'board__group');
+          col.append(el('h3', 'board__group-name', g.name));
+          const ul = el('ul');
+          list.forEach((item) => {
+            const row = el('li', 'board__item board__item--row');
+            const name = el('p', 'board__name', item.name);
+            if (item.polish) name.append(el('span', 'board__polish', item.polish));
+            row.append(name);
+            if (showPrice(item)) row.append(el('p', 'board__price', item.price));
+            ul.append(row);
+          });
+          col.append(ul);
+          groups.append(col);
+        });
+        box.append(groups);
+        cards.push(box);
+      }
+      gridEl.replaceChildren(...cards);
       return;
     }
     // Categories with groups (the hot food bar) get a small heading before each group
