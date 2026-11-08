@@ -11,6 +11,7 @@
   Open in a browser to look at it. Add to the address:
     ?guides=1   show the trim, seals, zipper and safe area
     ?print=1    leave the clear window empty (no ink), for the printer
+    ?layout=hero  alternate front: a big pierogi drawing on a color band, no window
   Render the PDFs and previews: node packaging/pierogi-bag/render.mjs
   The drawings and logo are recolored with CSS masks, which browsers only allow from a web
   server: run `npx serve .` in the repo root and open /packaging/pierogi-bag/bag.html.
@@ -102,6 +103,24 @@
     background: var(--red); color: var(--paper); display: grid; place-content: center; text-align: center;
     box-shadow: 0 0 0 .04in var(--cream), 0 0 0 .055in var(--red); transform: rotate(8deg);
   }
+  /* ---------- Alternate front (?layout=hero): big drawing on a color band ---------- */
+  .hero-band, .hero-art { display: none; }
+  .hero .window, .hero .window-label, .hero .edge { display: none; }
+  .hero .hero-band { display: block; position: absolute; left: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); top: 4.32in; height: 1.55in; background: var(--red); }
+  .hero .hero-band::before, .hero .hero-band::after { content: ""; position: absolute; left: 0; right: 0; height: .16in; }
+  .hero .hero-band::before { top: -.16in; background: radial-gradient(circle at 50% 100%, var(--red) .098in, transparent .104in) 0 0 / .23in .16in repeat-x; }
+  .hero .hero-band::after { bottom: -.16in; background: radial-gradient(circle at 50% 0, var(--red) .098in, transparent .104in) 0 0 / .23in .16in repeat-x; }
+  .hero .window-wrap { top: 3.02in; width: 5.6in; height: 3.92in; }
+  .hero .hero-art { display: block; position: absolute; inset: 0; color: var(--red); }
+  .hero .hero-art svg { width: 100%; height: 100%; overflow: visible; }
+  .hero .badge { right: -.35in; bottom: .35in; }
+  .hero .stamp { left: -.4in; bottom: .3in; }
+  .hero .front .copy { top: 7.05in; }
+  .hero .front h1 { font-size: .56in; }
+  .hero .front h1.long { font-size: .45in; }
+  .serving { display: none; }
+  .hero .serving { display: block; position: absolute; right: .62in; top: 6.74in; font: italic .1in/1 var(--body); color: var(--ink); opacity: .7; }
+
   /* Heritage stamp, opposite the count badge */
   .stamp { position: absolute; left: -.7in; bottom: .0in; width: 1.48in; height: 1.48in; transform: rotate(-9deg); color: var(--red); }
   .stamp svg { width: 100%; height: 100%; overflow: visible; }
@@ -195,11 +214,55 @@
     <span class="edge tint" style="--m:url(../../images/doodles/rolling-pin.svg);right:-.4in;top:2.65in;width:1.15in;transform:rotate(30deg)" aria-hidden="true"></span>
     <span class="edge tint" style="--m:url(../../images/doodles/egg.svg);right:-.18in;top:4.1in;width:.8in;transform:rotate(-12deg)" aria-hidden="true"></span>
 
+    <div class="hero-band" aria-hidden="true"></div>
+    <p class="serving">Serving suggestion</p>
     <div class="window-wrap">
       <div class="window">
         <img src="../../images/photos/pierogi-handmade.jpg" alt="Handmade pierogi on a floured tray">
       </div>
       <div class="window-label">CLEAR WINDOW<br>no ink, no white</div>
+      <div class="hero-art"><svg class="hero-svg" viewBox="0 0 400 280" aria-hidden="true">
+          <defs>
+            <filter id="phand"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="2"/></filter>
+            <pattern id="pst" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".95" fill="currentColor"/><circle cx="3.4" cy="3.4" r=".7" fill="currentColor"/></pattern>
+            <pattern id="pst2" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".85" fill="currentColor"/><circle cx="5.5" cy="5" r=".6" fill="currentColor"/></pattern>
+            <clipPath id="pclipb"><path d="M76.0 200.0A124 98 0 0 1 324.0 200.0C300 238 100 238 76 200Z"/></clipPath>
+            <clipPath id="pclipf"><path d="M76.0 200.0A124 98 0 0 1 324.0 200.0C300 238 100 238 76 200Z"/></clipPath>
+          </defs>
+          <g filter="url(#phand)">
+            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <path d="M128 96c-9-11 9-17 0-30M150 88c-9-11 9-17 0-30M172 96c-9-11 9-17 0-30"/>
+            </g>
+            <g transform="translate(118 -8) scale(.78) rotate(8 200 200)">
+              <path d="M52.0 200.0A11.7 11.7 0 0 1 54.0 180.6A11.9 11.9 0 0 1 60.0 161.7A12.2 12.2 0 0 1 69.8 143.8A12.7 12.7 0 0 1 83.2 127.5A13.1 13.1 0 0 1 99.8 113.2A13.6 13.6 0 0 1 119.1 101.2A14.0 14.0 0 0 1 140.5 91.9A14.4 14.4 0 0 1 163.7 85.6A14.6 14.6 0 0 1 187.8 82.4A14.7 14.7 0 0 1 212.2 82.4A14.6 14.6 0 0 1 236.3 85.6A14.4 14.4 0 0 1 259.5 91.9A14.0 14.0 0 0 1 280.9 101.2A13.6 13.6 0 0 1 300.2 113.2A13.1 13.1 0 0 1 316.8 127.5A12.7 12.7 0 0 1 330.2 143.8A12.2 12.2 0 0 1 340.0 161.7A11.9 11.9 0 0 1 346.0 180.6A11.7 11.7 0 0 1 348.0 200.0C300 238 100 238 52 200Z" fill="var(--paper)" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>
+              <g clip-path="url(#pclipb)">
+                <ellipse cx="282" cy="196" rx="70" ry="66" fill="url(#pst2)"/>
+                <ellipse cx="220" cy="222" rx="150" ry="22" fill="url(#pst)"/>
+              </g>
+              <path d="M76.0 200.0A124 98 0 0 1 324.0 200.0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M72.4 191.6L59.5 190.8M75.9 175.0L63.3 172.5M82.8 159.0L70.9 155.0M92.8 144.2L82.0 138.7M105.8 130.9L96.3 124.1M121.4 119.5L113.4 111.6M139.1 110.3L132.9 101.5M158.4 103.5L154.2 94.1M178.9 99.4L176.8 89.5M200.0 98.0L200.0 88.0M221.1 99.4L223.2 89.5M241.6 103.5L245.8 94.1M260.9 110.3L267.1 101.5M278.6 119.5L286.6 111.6M294.2 130.9L303.7 124.1M307.2 144.2L318.0 138.7M317.2 159.0L329.1 155.0M324.1 175.0L336.7 172.5M327.6 191.6L340.5 190.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M70 208C130 230 270 230 330 208" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="7 6"/>
+              <path d="M110 172c8-26 26-46 50-58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(-14 22) rotate(-4 200 200)">
+              <path d="M52.0 200.0A11.7 11.7 0 0 1 54.0 180.6A11.9 11.9 0 0 1 60.0 161.7A12.2 12.2 0 0 1 69.8 143.8A12.7 12.7 0 0 1 83.2 127.5A13.1 13.1 0 0 1 99.8 113.2A13.6 13.6 0 0 1 119.1 101.2A14.0 14.0 0 0 1 140.5 91.9A14.4 14.4 0 0 1 163.7 85.6A14.6 14.6 0 0 1 187.8 82.4A14.7 14.7 0 0 1 212.2 82.4A14.6 14.6 0 0 1 236.3 85.6A14.4 14.4 0 0 1 259.5 91.9A14.0 14.0 0 0 1 280.9 101.2A13.6 13.6 0 0 1 300.2 113.2A13.1 13.1 0 0 1 316.8 127.5A12.7 12.7 0 0 1 330.2 143.8A12.2 12.2 0 0 1 340.0 161.7A11.9 11.9 0 0 1 346.0 180.6A11.7 11.7 0 0 1 348.0 200.0C300 238 100 238 52 200Z" fill="var(--paper)" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>
+              <g clip-path="url(#pclipf)">
+                <ellipse cx="282" cy="196" rx="70" ry="66" fill="url(#pst2)"/>
+                <ellipse cx="220" cy="222" rx="150" ry="22" fill="url(#pst)"/>
+              </g>
+              <path d="M76.0 200.0A124 98 0 0 1 324.0 200.0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M72.4 191.6L59.5 190.8M75.9 175.0L63.3 172.5M82.8 159.0L70.9 155.0M92.8 144.2L82.0 138.7M105.8 130.9L96.3 124.1M121.4 119.5L113.4 111.6M139.1 110.3L132.9 101.5M158.4 103.5L154.2 94.1M178.9 99.4L176.8 89.5M200.0 98.0L200.0 88.0M221.1 99.4L223.2 89.5M241.6 103.5L245.8 94.1M260.9 110.3L267.1 101.5M278.6 119.5L286.6 111.6M294.2 130.9L303.7 124.1M307.2 144.2L318.0 138.7M317.2 159.0L329.1 155.0M324.1 175.0L336.7 172.5M327.6 191.6L340.5 190.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M70 208C130 230 270 230 330 208" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="7 6"/>
+              <path d="M110 172c8-26 26-46 50-58" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M150 170C134 166 136 148 152 146C148 128 170 120 184 128C188 112 216 108 226 124C240 116 262 126 258 144C274 148 274 166 258 170C226 178 180 178 150 170Z" fill="var(--paper)" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/>
+              <path d="M170 146C168 132 184 124 196 132C202 118 224 120 226 134C236 136 238 148 228 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M196 132C192 114 214 106 220 118C223 126 214 131 207 126" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M244 164l9-7M236 168l9-7M250 156l7-6M160 168l6-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M236 138L282 100M239.3 135.3l11.4 1.8M239.3 135.3l0.4 -11.6M242.6 132.6l11.0 1.8M242.6 132.6l0.3 -11.1M245.9 129.9l10.6 1.7M245.9 129.9l0.3 -10.7M249.1 127.1l10.2 1.6M249.1 127.1l0.3 -10.3M252.4 124.4l9.7 1.6M252.4 124.4l0.3 -9.9M255.7 121.7l9.3 1.5M255.7 121.7l0.3 -9.4M259.0 119.0l8.9 1.4M259.0 119.0l0.3 -9.0M262.3 116.3l8.5 1.4M262.3 116.3l0.3 -8.6M265.6 113.6l8.0 1.3M265.6 113.6l0.2 -8.1M268.9 110.9l7.6 1.2M268.9 110.9l0.2 -7.7M272.1 108.1l7.2 1.2M272.1 108.1l0.2 -7.3M275.4 105.4l6.8 1.1M275.4 105.4l0.2 -6.9M278.7 102.7l6.3 1.0M278.7 102.7l0.2 -6.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M174 140L140 108M170.9 137.1l0.4 -11.4M170.9 137.1l-11.4 1.1M167.8 134.2l0.4 -10.9M167.8 134.2l-10.9 1.0M164.7 131.3l0.4 -10.4M164.7 131.3l-10.3 1.0M161.6 128.4l0.3 -9.8M161.6 128.4l-9.8 0.9M158.5 125.5l0.3 -9.3M158.5 125.5l-9.2 0.9M155.5 122.5l0.3 -8.7M155.5 122.5l-8.7 0.8M152.4 119.6l0.3 -8.2M152.4 119.6l-8.1 0.8M149.3 116.7l0.3 -7.6M149.3 116.7l-7.6 0.7M146.2 113.8l0.2 -7.1M146.2 113.8l-7.1 0.7M143.1 110.9l0.2 -6.5M143.1 110.9l-6.5 0.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </g>
+          </g>
+        </svg></div>
       <div class="stamp" role="img" aria-label="Authentic Polish, since 1992, born in Greenpoint, Brooklyn">
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <defs><path id="ring" d="M50 50m-39 0a39 39 0 1 1 78 0a39 39 0 1 1 -78 0"/></defs>
@@ -359,6 +422,7 @@
   if (f.name.length > 26) document.querySelector(".front h1").classList.add("long");
   if (params.has("guides")) document.body.classList.add("guides");
   if (params.has("print")) document.body.classList.add("print");
+  if (params.get("layout") === "hero") document.body.classList.add("hero");
 </script>
 </body>
 </html>

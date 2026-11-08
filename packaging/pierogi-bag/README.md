@@ -7,12 +7,17 @@ Resealable zipper pouch for packs of 8 pierogi. Three flavors so far: cheese and
 - **Brand:** cream bag with Fraunces and EB Garamond, the ink doodles, Pierożek and a "since 1992, born in Greenpoint" stamp (see `brand/brand.md`).
 - **Flavor colors:** each flavor has its own color in place of the brand red, so they're easy to tell apart on the shelf: cheese and potato in Northside Red `#9A1B1F`, spinach and cheese in green `#2F5A3C`, sauerkraut and mushroom in brown `#6B4426`. This is a deliberate exception to the brand guide's red-and-cream rule, for pierogi packaging only.
 
+## Two front designs
+
+- **Window** (default): a clear arched window shows the real pierogi.
+- **Hero drawing** (`?layout=hero`): a big ink drawing of two pierogi with sour cream and dill sits on a band of the flavor color, with no window, so the whole bag is printed. Files end in `-hero`, e.g. `out/pierogi-ruskie-hero-print.pdf`; `out/pierogi-lineup-hero.png` shows all three. The drawing on its own is `images/illustrations/pierogi-hero.svg`. The back is the same for both.
+
 ## Files
 
 | File | What it is |
 | --- | --- |
 | `bag.html` | The design (front and back). Text and color for each flavor are in `FLAVORS` at the bottom. To look at it in a browser, run `npx serve .` in the repo root and open `/packaging/pierogi-bag/bag.html?flavor=ruskie` (the recolored drawings don't load from a double-clicked file). |
-| `render.mjs` | Makes everything in `out/`: `node packaging/pierogi-bag/render.mjs [flavor]` |
+| `render.mjs` | Makes everything in `out/`: `node packaging/pierogi-bag/render.mjs [flavor] [hero]` |
 | `out/pierogi-<flavor>-print.pdf` | Two-page print file, window left empty. |
 | `out/pierogi-<flavor>-proof-guides.pdf` | Same, with trim, seals, zipper and safe area drawn on. |
 | `out/*-front.png`, `out/*-back.png` | Previews with the pierogi in the window. |
