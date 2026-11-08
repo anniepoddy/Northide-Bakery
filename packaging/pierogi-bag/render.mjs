@@ -2,16 +2,27 @@
 // Run from the repo root:  node packaging/pierogi-bag/render.mjs [flavor]
 // Needs Playwright (cd tools && npm install playwright, then npx playwright install chromium).
 import { createRequire } from 'node:module';
-import { mkdirSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { mkdirSync, readFileSync, existsSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { dirname, join, extname, normalize } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
 const here = dirname(fileURLToPath(import.meta.url));
 const flavor = process.argv[2] || 'ruskie';
 const out = join(here, 'out');
 mkdirSync(out, { recursive: true });
-const url = (q) => pathToFileURL(join(here, 'bag.html')).href + `?flavor=${flavor}${q}`;
+// Serve the repo over http: the recolored drawings use CSS masks, which don't load from file://
+const repo = join(here, '..', '..');
+const TYPES = { '.html': 'text/html', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.css': 'text/css', '.js': 'text/javascript' };
+const server = createServer((req, res) => {
+  const file = join(repo, normalize(decodeURIComponent(req.url.split('?')[0])));
+  if (!file.startsWith(repo) || !existsSync(file)) { res.writeHead(404); return res.end(); }
+  res.writeHead(200, { 'content-type': TYPES[extname(file)] || 'application/octet-stream' });
+  res.end(readFileSync(file));
+}).listen(0);
+await new Promise(r => server.once('listening', r));
+const url = (q) => `http://localhost:${server.address().port}/packaging/pierogi-bag/bag.html?flavor=${flavor}${q}`;
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 800, height: 1000 }, deviceScaleFactor: 2 });
@@ -39,4 +50,5 @@ await sheets[0].screenshot({ path: join(out, `pierogi-${flavor}-front.png`) });
 await sheets[1].screenshot({ path: join(out, `pierogi-${flavor}-back.png`) });
 
 await browser.close();
+server.close();
 console.log('Wrote', out);

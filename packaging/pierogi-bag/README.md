@@ -1,16 +1,17 @@
 # Pierogi bag
 
-Resealable zipper pouch for packs of 8 pierogi. Three flavors so far: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`). Each flavor has its own ingredient drawings in the top band and along the edges, so they're easy to tell apart. `out/pierogi-lineup.png` and `out/pierogi-lineup-back.png` show the three side by side.
+Resealable zipper pouch for packs of 8 pierogi. Three flavors so far: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`). `out/pierogi-lineup.png` and `out/pierogi-lineup-back.png` show the three side by side.
 
 - **Size:** 8 in wide x 10 in tall, flat zipper pouch, plus 0.125 in bleed. Zipper about 1.15 in down, tear notches at 0.75 in, 3/8 in side and bottom seals. Ask the printer for their dieline and line it up with `?guides=1`; adjust the sizes at the top of `bag.html` if theirs differ.
 - **Clear window:** the arch on the front is unprinted film so the pierogi show through. Tell the printer: no ink and no white underlay inside the arch.
-- **Brand:** red and cream only, Fraunces and EB Garamond, the ink doodles and Pierożek (see `brand/brand.md`).
+- **Brand:** cream bag with Fraunces and EB Garamond, the ink doodles, Pierożek and a "since 1992, born in Greenpoint" stamp (see `brand/brand.md`).
+- **Flavor colors:** each flavor has its own color in place of the brand red, so they're easy to tell apart on the shelf: cheese and potato in Northside Red `#9A1B1F`, spinach and cheese in green `#2F5A3C`, sauerkraut and mushroom in brown `#6B4426`. This is a deliberate exception to the brand guide's red-and-cream rule, for pierogi packaging only.
 
 ## Files
 
 | File | What it is |
 | --- | --- |
-| `bag.html` | The design (front and back). Text for each flavor is in `FLAVORS` at the bottom. |
+| `bag.html` | The design (front and back). Text and color for each flavor are in `FLAVORS` at the bottom. To look at it in a browser, run `npx serve .` in the repo root and open `/packaging/pierogi-bag/bag.html?flavor=ruskie` (the recolored drawings don't load from a double-clicked file). |
 | `render.mjs` | Makes everything in `out/`: `node packaging/pierogi-bag/render.mjs [flavor]` |
 | `out/pierogi-<flavor>-print.pdf` | Two-page print file, window left empty. |
 | `out/pierogi-<flavor>-proof-guides.pdf` | Same, with trim, seals, zipper and safe area drawn on. |
@@ -29,4 +30,4 @@ Anything in [square brackets] is a placeholder:
 
 ## Add a flavor
 
-Copy the `ruskie` entry in `FLAVORS`, give it a new id (e.g. `mieso`), change the text and pick two drawings from `images/doodles/` for `doodles` (draw new ones in the same style if needed), then open `bag.html?flavor=mieso` or run `node packaging/pierogi-bag/render.mjs mieso`.
+Copy the `ruskie` entry in `FLAVORS`, give it a new id (e.g. `mieso`), change the text and pick a color, then open `bag.html?flavor=mieso` or run `node packaging/pierogi-bag/render.mjs mieso`.

@@ -12,17 +12,18 @@
     ?guides=1   show the trim, seals, zipper and safe area
     ?print=1    leave the clear window empty (no ink), for the printer
   Render the PDFs and previews: node packaging/pierogi-bag/render.mjs
+  The drawings and logo are recolored with CSS masks, which browsers only allow from a web
+  server: run `npx serve .` in the repo root and open /packaging/pierogi-bag/bag.html.
 
-  To add a flavor, add an entry to FLAVORS at the bottom and open ?flavor=<id>.
-  Each flavor names two ingredient drawings from images/doodles/ (doodles: [...]).
+  To add a flavor, add an entry to FLAVORS at the bottom (with its own color) and open ?flavor=<id>.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,50;1,9..144,400..700,50&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
 <style>
   :root {
+    /* --red is the flavor color. Each flavor sets its own in FLAVORS below. */
     --red: #9A1B1F;
-    --red-deep: #741417;
     --cream: #F3E6CF;
     --paper: #FBF6EC;
     --ink: #2B1D1E;
@@ -56,6 +57,9 @@
   /* The trim box: everything is positioned inside the finished 8 x 10 */
   .trim { position: absolute; inset: var(--bleed); }
 
+  /* One-color art (drawings, logo) recolored to the flavor color */
+  .tint { display: block; background: var(--red); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; aspect-ratio: 1; }
+
   .caps { font-variant-caps: all-small-caps; letter-spacing: .13em; font-weight: 600; }
 
   /* ---------- Red top band with a crimped edge, like a pierogi ---------- */
@@ -81,7 +85,7 @@
   }
 
   /* ---------- Front ---------- */
-  .front .logo { position: absolute; left: 50%; top: 1.98in; width: 1.95in; transform: translateX(-50%); }
+  .front .logo { position: absolute; left: 50%; top: 1.98in; width: 1.95in; transform: translateX(-50%); aspect-ratio: 668 / 463; }
   .window-wrap { position: absolute; left: 50%; top: 3.42in; width: 3.7in; height: 3.15in; transform: translateX(-50%); }
   .window {
     position: absolute; inset: 0; border-radius: 1.85in 1.85in .14in .14in; overflow: hidden;
@@ -98,6 +102,13 @@
     background: var(--red); color: var(--paper); display: grid; place-content: center; text-align: center;
     box-shadow: 0 0 0 .04in var(--cream), 0 0 0 .055in var(--red); transform: rotate(8deg);
   }
+  /* Heritage stamp, opposite the count badge */
+  .stamp { position: absolute; left: -.7in; bottom: .0in; width: 1.48in; height: 1.48in; transform: rotate(-9deg); color: var(--red); }
+  .stamp svg { width: 100%; height: 100%; overflow: visible; }
+  .stamp .ring { font: 600 7.6px var(--body); letter-spacing: .06em; fill: currentColor; font-variant-caps: all-small-caps; }
+  .stamp .since { font: italic 500 11px var(--display); fill: currentColor; }
+  .stamp .year { font: 600 23px var(--display); letter-spacing: -.02em; fill: currentColor; }
+
   .badge b { display: block; font: 600 .62in/.8 var(--display); letter-spacing: -.03em; }
   .badge span { display: block; font-size: .17in; line-height: 1.05; margin-top: .03in; }
 
@@ -125,7 +136,8 @@
   .back .cook ol { list-style: none; display: grid; gap: .12in; margin-top: .06in; }
   .back .cook li b { font: italic 600 .17in/1 var(--display); color: var(--red); margin-right: .05in; }
   .back .story { margin-top: .22in; padding-top: .16in; border-top: 1.5px solid var(--red); display: grid; grid-template-columns: 1fr .95in; gap: .14in; align-items: end; }
-  .back .story img { width: .95in; }
+  .back .story .tint { width: .95in; }
+  .back .heritage { margin-top: .12in; font-size: .155in; }
 
   .ph {
     border: 1.5px dashed var(--red); border-radius: 4px; background: var(--paper);
@@ -164,31 +176,40 @@
     <div class="band-top">
       <div class="doodles" aria-hidden="true">
         <img src="../../images/doodles/cream/wheat.svg" style="left:-.15in;top:.55in;width:1.1in;transform:rotate(-14deg)" alt="">
-        <img data-d="a" data-cream style="left:.95in;top:.8in;width:1.1in;transform:rotate(9deg)" alt="">
-        <img data-d="b" data-cream style="left:2.15in;top:.45in;width:1.1in;transform:rotate(-6deg)" alt="">
-        <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:.95in;width:.95in;transform:rotate(-10deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:.95in;top:.95in;width:1.05in;transform:rotate(9deg)" alt="">
+        <img src="../../images/doodles/cream/rolling-pin.svg" style="left:2.05in;top:.5in;width:1.15in;transform:rotate(-6deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:1in;width:.95in;transform:rotate(-10deg)" alt="">
         <img src="../../images/doodles/cream/pierozek-character.svg" style="left:4.35in;top:.5in;width:1.15in;transform:rotate(4deg)" alt="">
-        <img data-d="a" data-cream style="left:5.6in;top:.85in;width:1.1in;transform:rotate(-12deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:5.6in;top:1in;width:1in;transform:rotate(12deg)" alt="">
         <img src="../../images/doodles/cream/wheat.svg" style="left:6.75in;top:.55in;width:1.15in;transform:rotate(16deg) scaleX(-1)" alt="">
       </div>
     </div>
     <div class="crimp" aria-hidden="true"></div>
 
-    <img class="logo" src="../../images/logo/logo-red.png" alt="Northside Bakery, est. 1992">
+    <div class="logo tint" style="--m:url(../../images/logo/logo-ink.png)" role="img" aria-label="Northside Bakery, est. 1992"></div>
 
     <!-- Doodles crowding the side edges, like the paper bag -->
-    <img class="edge" data-d="a" style="left:-.45in;top:3.2in;width:1.35in;transform:rotate(-18deg)" alt="" aria-hidden="true">
-    <img class="edge" src="../../images/doodles/pierogi.svg" style="left:-.3in;top:4.8in;width:1.05in;transform:rotate(14deg)" alt="" aria-hidden="true">
-    <img class="edge" data-d="b" style="left:-.4in;top:6.05in;width:1.2in;transform:rotate(-8deg)" alt="" aria-hidden="true">
-    <img class="edge" src="../../images/doodles/rolling-pin.svg" style="right:-.4in;top:2.65in;width:1.15in;transform:rotate(30deg)" alt="" aria-hidden="true">
-    <img class="edge" data-d="b" style="right:-.48in;top:3.95in;width:1.3in;transform:rotate(14deg)" alt="" aria-hidden="true">
-    <img class="edge" data-d="a" style="right:-.42in;top:5.55in;width:1.2in;transform:rotate(-10deg)" alt="" aria-hidden="true">
+    <span class="edge tint" style="--m:url(../../images/doodles/wheat.svg);left:-.42in;top:3.3in;width:1.15in;transform:rotate(-24deg)" aria-hidden="true"></span>
+    <span class="edge tint" style="--m:url(../../images/doodles/pierogi.svg);left:-.3in;top:4.8in;width:1.05in;transform:rotate(14deg)" aria-hidden="true"></span>
+    <span class="edge tint" style="--m:url(../../images/doodles/whisk.svg);left:-.32in;top:6.15in;width:1in;transform:rotate(-8deg)" aria-hidden="true"></span>
+    <span class="edge tint" style="--m:url(../../images/doodles/rolling-pin.svg);right:-.4in;top:2.65in;width:1.15in;transform:rotate(30deg)" aria-hidden="true"></span>
+    <span class="edge tint" style="--m:url(../../images/doodles/egg.svg);right:-.18in;top:4.1in;width:.8in;transform:rotate(-12deg)" aria-hidden="true"></span>
 
     <div class="window-wrap">
       <div class="window">
         <img src="../../images/photos/pierogi-handmade.jpg" alt="Handmade pierogi on a floured tray">
       </div>
       <div class="window-label">CLEAR WINDOW<br>no ink, no white</div>
+      <div class="stamp" role="img" aria-label="Authentic Polish, since 1992, born in Greenpoint, Brooklyn">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs><path id="ring" d="M50 50m-39 0a39 39 0 1 1 78 0a39 39 0 1 1 -78 0"/></defs>
+          <circle cx="50" cy="50" r="48" fill="var(--cream)" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="50" cy="50" r="30.5" fill="none" stroke="currentColor" stroke-width=".8"/>
+          <text class="ring"><textPath href="#ring" textLength="242" lengthAdjust="spacing">authentic polish · born in greenpoint, brooklyn ·</textPath></text>
+          <text class="since" x="50" y="44" text-anchor="middle">since</text>
+          <text class="year" x="50" y="64" text-anchor="middle">1992</text>
+        </svg>
+      </div>
       <div class="badge" aria-label="8 pierogi per bag">
         <b>8</b>
         <span class="caps">pierogi</span>
@@ -223,11 +244,11 @@
     <div class="band-top">
       <div class="doodles" aria-hidden="true">
         <img src="../../images/doodles/cream/wheat.svg" style="left:-.15in;top:.55in;width:1.1in;transform:rotate(14deg) scaleX(-1)" alt="">
-        <img data-d="b" data-cream style="left:.95in;top:.85in;width:1.1in;transform:rotate(-9deg)" alt="">
-        <img data-d="a" data-cream style="left:2.15in;top:.45in;width:1.1in;transform:rotate(8deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:.95in;top:1in;width:1in;transform:rotate(-9deg)" alt="">
+        <img src="../../images/doodles/cream/whisk.svg" style="left:2.1in;top:.55in;width:1.05in;transform:rotate(8deg)" alt="">
         <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:1in;width:.95in;transform:rotate(10deg)" alt="">
-        <img data-d="b" data-cream style="left:4.4in;top:.45in;width:1.1in;transform:rotate(-5deg)" alt="">
-        <img data-d="a" data-cream style="left:5.6in;top:.85in;width:1.1in;transform:rotate(12deg)" alt="">
+        <img src="../../images/doodles/cream/rolling-pin.svg" style="left:4.35in;top:.55in;width:1.15in;transform:rotate(-5deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:5.6in;top:.98in;width:1in;transform:rotate(-12deg)" alt="">
         <img src="../../images/doodles/cream/wheat.svg" style="left:6.75in;top:.55in;width:1.15in;transform:rotate(-16deg)" alt="">
       </div>
     </div>
@@ -235,8 +256,16 @@
 
     <div class="cols">
       <div>
-        <h2 data-f="backHead"></h2>
-        <p class="intro" data-f="backIntro"></p>
+        <h2>Authentic Polish,<br>since 1992.</h2>
+        <p class="intro heritage">Richard and Teresa Podedworny opened Northside Bakery in 1992 in Greenpoint, Brooklyn’s Polish neighborhood, for neighbors who missed the taste of home. A year later we moved to the North Side of Williamsburg, which gave us our name. We’re still family-run, and our pierogi are still made by hand.</p>
+
+        <div class="story">
+          <div>
+            <h3 class="caps">Soft and pillowy</h3>
+            <p data-f="backIntro"></p>
+          </div>
+          <span class="tint" style="--m:url(../../images/doodles/pierozek-character.svg)" aria-hidden="true"></span>
+        </div>
 
         <div class="cook">
           <h3 class="caps">How to cook</h3>
@@ -244,14 +273,6 @@
             <li><b>Boil.</b> <span data-f="boil"></span></li>
             <li><b>Pan-fry.</b> <span data-f="fry"></span></li>
           </ol>
-        </div>
-
-        <div class="story">
-          <div>
-            <h3 class="caps">A family bakery since 1992</h3>
-            <p>Richard and Teresa Podedworny opened Northside Bakery in 1992 for a neighborhood that missed the taste of home. Within a year we moved to the North Side of Williamsburg, and we’re still family-run today.</p>
-          </div>
-          <img src="../../images/doodles/pierozek-character.svg" alt="" aria-hidden="true">
         </div>
       </div>
 
@@ -290,43 +311,40 @@
   // One entry per flavor. Text in [square brackets] must be confirmed before printing.
   const FLAVORS = {
     ruskie: {
-      eyebrow: "Authentic Polish · Handmade in Williamsburg",
+      color: "#9A1B1F",   /* Northside Red */
+      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
       name: "Cheese & potato pierogi",
       polish: "Pierogi ruskie",
-      doodles: ["potato", "cheese"],
       tagline: "Soft, pillowy dough folded by hand around potato and farmer’s cheese.",
       netwt: "Net wt. [00] oz ([000] g)",
       storage: "[Keep frozen]",
-      backHead: "Soft and pillowy, the way they should be.",
-      backIntro: "Each pierogi is folded and crimped by hand around a filling of potato and farmer’s cheese. It’s the same recipe we’ve made in Brooklyn since 1992. Eight in a bag, enough for dinner for two.",
+      backIntro: "A soft, tender dough folded and crimped around potato and farmer’s cheese, the classic. Eight in a bag, enough for dinner for two.",
       boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
       fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Top with fried onions and sour cream.]",
       ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. milk, wheat, egg]."
     },
     szpinak: {
-      eyebrow: "Authentic Polish · Handmade in Williamsburg",
+      color: "#2F5A3C",   /* deep spinach green */
+      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
       name: "Spinach & cheese pierogi",
       polish: "Pierogi ze szpinakiem i serem",
-      doodles: ["spinach", "cheese"],
       tagline: "Soft, pillowy dough folded by hand around spinach and farmer’s cheese.",
       netwt: "Net wt. [00] oz ([000] g)",
       storage: "[Keep frozen]",
-      backHead: "Soft and pillowy, the way they should be.",
-      backIntro: "Each pierogi is folded and crimped by hand around a filling of spinach and farmer’s cheese. Made in Brooklyn by a family bakery that’s been at it since 1992. Eight in a bag, enough for dinner for two.",
+      backIntro: "A soft, tender dough folded and crimped around spinach and farmer’s cheese. Eight in a bag, enough for dinner for two.",
       boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
       fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Serve with sour cream.]",
       ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. milk, wheat, egg]."
     },
     kapusta: {
-      eyebrow: "Authentic Polish · Handmade in Williamsburg",
+      color: "#6B4426",   /* mushroom brown */
+      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
       name: "Sauerkraut & mushroom pierogi",
       polish: "Pierogi z kapustą i grzybami",
-      doodles: ["cabbage", "mushroom"],
       tagline: "Soft, pillowy dough folded by hand around tangy sauerkraut and mushrooms.",
       netwt: "Net wt. [00] oz ([000] g)",
       storage: "[Keep frozen]",
-      backHead: "Soft and pillowy, the way they should be.",
-      backIntro: "Each pierogi is folded and crimped by hand around tangy sauerkraut and mushrooms, the filling Polish families make for Christmas Eve. Made in Brooklyn since 1992. Eight in a bag, enough for dinner for two.",
+      backIntro: "A soft, tender dough folded and crimped around tangy sauerkraut and mushrooms, the filling Polish families make for Christmas Eve. Eight in a bag.",
       boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
       fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Top with fried onions.]",
       ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. wheat, egg]."
@@ -336,11 +354,7 @@
   const params = new URLSearchParams(location.search);
   const f = FLAVORS[params.get("flavor")] || FLAVORS.ruskie;
   document.querySelectorAll("[data-f]").forEach(el => { el.textContent = f[el.dataset.f] ?? ""; });
-  // Each flavor's two ingredients fill the doodle slots marked data-d="a" and "b"
-  document.querySelectorAll("[data-d]").forEach(el => {
-    const name = f.doodles[el.dataset.d === "a" ? 0 : 1];
-    el.src = "../../images/doodles/" + (el.hasAttribute("data-cream") ? "cream/" : "") + name + ".svg";
-  });
+  document.documentElement.style.setProperty("--red", f.color);
   document.title = "Pierogi bag: " + f.name;
   if (f.name.length > 26) document.querySelector(".front h1").classList.add("long");
   if (params.has("guides")) document.body.classList.add("guides");
