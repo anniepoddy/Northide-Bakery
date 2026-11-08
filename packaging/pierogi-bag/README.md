@@ -1,6 +1,6 @@
 # Pierogi bag
 
-Resealable zipper pouch for packs of 8 pierogi. Three flavors so far: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`). `out/pierogi-lineup.png` shows the three fronts side by side.
+Resealable zipper pouch for packs of 8 pierogi. Three flavors so far: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`). Each flavor has its own ingredient drawings in the top band and along the edges, so they're easy to tell apart. `out/pierogi-lineup.png` and `out/pierogi-lineup-back.png` show the three side by side.
 
 - **Size:** 8 in wide x 10 in tall, flat zipper pouch, plus 0.125 in bleed. Zipper about 1.15 in down, tear notches at 0.75 in, 3/8 in side and bottom seals. Ask the printer for their dieline and line it up with `?guides=1`; adjust the sizes at the top of `bag.html` if theirs differ.
 - **Clear window:** the arch on the front is unprinted film so the pierogi show through. Tell the printer: no ink and no white underlay inside the arch.
@@ -29,4 +29,4 @@ Anything in [square brackets] is a placeholder:
 
 ## Add a flavor
 
-Copy the `ruskie` entry in `FLAVORS`, give it a new id (e.g. `mieso`), change the text, then open `bag.html?flavor=mieso` or run `node packaging/pierogi-bag/render.mjs mieso`.
+Copy the `ruskie` entry in `FLAVORS`, give it a new id (e.g. `mieso`), change the text and pick two drawings from `images/doodles/` for `doodles` (draw new ones in the same style if needed), then open `bag.html?flavor=mieso` or run `node packaging/pierogi-bag/render.mjs mieso`.

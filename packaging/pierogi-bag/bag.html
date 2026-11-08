@@ -14,6 +14,7 @@
   Render the PDFs and previews: node packaging/pierogi-bag/render.mjs
 
   To add a flavor, add an entry to FLAVORS at the bottom and open ?flavor=<id>.
+  Each flavor names two ingredient drawings from images/doodles/ (doodles: [...]).
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,11 +164,11 @@
     <div class="band-top">
       <div class="doodles" aria-hidden="true">
         <img src="../../images/doodles/cream/wheat.svg" style="left:-.15in;top:.55in;width:1.1in;transform:rotate(-14deg)" alt="">
-        <img src="../../images/doodles/cream/pierogi.svg" style="left:.95in;top:.95in;width:1.05in;transform:rotate(9deg)" alt="">
-        <img src="../../images/doodles/cream/rolling-pin.svg" style="left:2.05in;top:.5in;width:1.15in;transform:rotate(-6deg)" alt="">
-        <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:1in;width:.95in;transform:rotate(-10deg)" alt="">
+        <img data-d="a" data-cream style="left:.95in;top:.8in;width:1.1in;transform:rotate(9deg)" alt="">
+        <img data-d="b" data-cream style="left:2.15in;top:.45in;width:1.1in;transform:rotate(-6deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:.95in;width:.95in;transform:rotate(-10deg)" alt="">
         <img src="../../images/doodles/cream/pierozek-character.svg" style="left:4.35in;top:.5in;width:1.15in;transform:rotate(4deg)" alt="">
-        <img src="../../images/doodles/cream/pierogi.svg" style="left:5.6in;top:1in;width:1in;transform:rotate(12deg)" alt="">
+        <img data-d="a" data-cream style="left:5.6in;top:.85in;width:1.1in;transform:rotate(-12deg)" alt="">
         <img src="../../images/doodles/cream/wheat.svg" style="left:6.75in;top:.55in;width:1.15in;transform:rotate(16deg) scaleX(-1)" alt="">
       </div>
     </div>
@@ -176,11 +177,12 @@
     <img class="logo" src="../../images/logo/logo-red.png" alt="Northside Bakery, est. 1992">
 
     <!-- Doodles crowding the side edges, like the paper bag -->
-    <img class="edge" src="../../images/doodles/wheat.svg" style="left:-.42in;top:3.3in;width:1.15in;transform:rotate(-24deg)" alt="" aria-hidden="true">
+    <img class="edge" data-d="a" style="left:-.45in;top:3.2in;width:1.35in;transform:rotate(-18deg)" alt="" aria-hidden="true">
     <img class="edge" src="../../images/doodles/pierogi.svg" style="left:-.3in;top:4.8in;width:1.05in;transform:rotate(14deg)" alt="" aria-hidden="true">
-    <img class="edge" src="../../images/doodles/whisk.svg" style="left:-.32in;top:6.15in;width:1in;transform:rotate(-8deg)" alt="" aria-hidden="true">
+    <img class="edge" data-d="b" style="left:-.4in;top:6.05in;width:1.2in;transform:rotate(-8deg)" alt="" aria-hidden="true">
     <img class="edge" src="../../images/doodles/rolling-pin.svg" style="right:-.4in;top:2.65in;width:1.15in;transform:rotate(30deg)" alt="" aria-hidden="true">
-    <img class="edge" src="../../images/doodles/egg.svg" style="right:-.18in;top:4.1in;width:.8in;transform:rotate(-12deg)" alt="" aria-hidden="true">
+    <img class="edge" data-d="b" style="right:-.48in;top:3.95in;width:1.3in;transform:rotate(14deg)" alt="" aria-hidden="true">
+    <img class="edge" data-d="a" style="right:-.42in;top:5.55in;width:1.2in;transform:rotate(-10deg)" alt="" aria-hidden="true">
 
     <div class="window-wrap">
       <div class="window">
@@ -221,11 +223,11 @@
     <div class="band-top">
       <div class="doodles" aria-hidden="true">
         <img src="../../images/doodles/cream/wheat.svg" style="left:-.15in;top:.55in;width:1.1in;transform:rotate(14deg) scaleX(-1)" alt="">
-        <img src="../../images/doodles/cream/pierogi.svg" style="left:.95in;top:1in;width:1in;transform:rotate(-9deg)" alt="">
-        <img src="../../images/doodles/cream/whisk.svg" style="left:2.1in;top:.55in;width:1.05in;transform:rotate(8deg)" alt="">
+        <img data-d="b" data-cream style="left:.95in;top:.85in;width:1.1in;transform:rotate(-9deg)" alt="">
+        <img data-d="a" data-cream style="left:2.15in;top:.45in;width:1.1in;transform:rotate(8deg)" alt="">
         <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:1in;width:.95in;transform:rotate(10deg)" alt="">
-        <img src="../../images/doodles/cream/rolling-pin.svg" style="left:4.35in;top:.55in;width:1.15in;transform:rotate(-5deg)" alt="">
-        <img src="../../images/doodles/cream/pierogi.svg" style="left:5.6in;top:.98in;width:1in;transform:rotate(-12deg)" alt="">
+        <img data-d="b" data-cream style="left:4.4in;top:.45in;width:1.1in;transform:rotate(-5deg)" alt="">
+        <img data-d="a" data-cream style="left:5.6in;top:.85in;width:1.1in;transform:rotate(12deg)" alt="">
         <img src="../../images/doodles/cream/wheat.svg" style="left:6.75in;top:.55in;width:1.15in;transform:rotate(-16deg)" alt="">
       </div>
     </div>
@@ -291,6 +293,7 @@
       eyebrow: "Authentic Polish · Handmade in Williamsburg",
       name: "Cheese & potato pierogi",
       polish: "Pierogi ruskie",
+      doodles: ["potato", "cheese"],
       tagline: "Soft, pillowy dough folded by hand around potato and farmer’s cheese.",
       netwt: "Net wt. [00] oz ([000] g)",
       storage: "[Keep frozen]",
@@ -304,6 +307,7 @@
       eyebrow: "Authentic Polish · Handmade in Williamsburg",
       name: "Spinach & cheese pierogi",
       polish: "Pierogi ze szpinakiem i serem",
+      doodles: ["spinach", "cheese"],
       tagline: "Soft, pillowy dough folded by hand around spinach and farmer’s cheese.",
       netwt: "Net wt. [00] oz ([000] g)",
       storage: "[Keep frozen]",
@@ -317,6 +321,7 @@
       eyebrow: "Authentic Polish · Handmade in Williamsburg",
       name: "Sauerkraut & mushroom pierogi",
       polish: "Pierogi z kapustą i grzybami",
+      doodles: ["cabbage", "mushroom"],
       tagline: "Soft, pillowy dough folded by hand around tangy sauerkraut and mushrooms.",
       netwt: "Net wt. [00] oz ([000] g)",
       storage: "[Keep frozen]",
@@ -331,6 +336,11 @@
   const params = new URLSearchParams(location.search);
   const f = FLAVORS[params.get("flavor")] || FLAVORS.ruskie;
   document.querySelectorAll("[data-f]").forEach(el => { el.textContent = f[el.dataset.f] ?? ""; });
+  // Each flavor's two ingredients fill the doodle slots marked data-d="a" and "b"
+  document.querySelectorAll("[data-d]").forEach(el => {
+    const name = f.doodles[el.dataset.d === "a" ? 0 : 1];
+    el.src = "../../images/doodles/" + (el.hasAttribute("data-cream") ? "cream/" : "") + name + ".svg";
+  });
   document.title = "Pierogi bag: " + f.name;
   if (f.name.length > 26) document.querySelector(".front h1").classList.add("long");
   if (params.has("guides")) document.body.classList.add("guides");

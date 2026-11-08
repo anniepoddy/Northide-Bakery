@@ -130,7 +130,7 @@ Based on the ink drawings on our current paper bags: bakery objects drawn like o
 - **Never on top of** food photos, the logo or text.
 - **Minimum size:** 32px on screen, 0.5 inch in print.
 
-**Current library** (`images/doodles/`): `boule`, `baguette`, `pierogi`, `croissant`, `pretzel`, `wheat`, `whisk`, `rolling-pin`, `paczek`, `golabek`, `loaf-oval`, `toast`, `egg`, `rosemary`, `seeds`, `board`, `makowiec`, `babka`, `kielbasa`, and the three characters.
+**Current library** (`images/doodles/`): `boule`, `baguette`, `pierogi`, `croissant`, `pretzel`, `wheat`, `whisk`, `rolling-pin`, `paczek`, `golabek`, `loaf-oval`, `toast`, `egg`, `rosemary`, `seeds`, `board`, `makowiec`, `babka`, `kielbasa`, the pierogi filling ingredients (`potato`, `cheese`, `spinach`, `mushroom`, `cabbage`), and the three characters.
 
 **The bag border:** like our paper bag, drawings can crowd the edges of a surface, overlapping and running off the edge, with the logo calm in the middle. The website hero uses this layout.
 
