@@ -1,6 +1,6 @@
 # Pierogi bag
 
-Resealable zipper pouch for packs of 8 pierogi. Cheese and potato (*pierogi ruskie*) is the first flavor.
+Resealable zipper pouch for packs of 8 pierogi. Three flavors so far: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`). `out/pierogi-lineup.png` shows the three fronts side by side.
 
 - **Size:** 8 in wide x 10 in tall, flat zipper pouch, plus 0.125 in bleed. Zipper about 1.15 in down, tear notches at 0.75 in, 3/8 in side and bottom seals. Ask the printer for their dieline and line it up with `?guides=1`; adjust the sizes at the top of `bag.html` if theirs differ.
 - **Clear window:** the arch on the front is unprinted film so the pierogi show through. Tell the printer: no ink and no white underlay inside the arch.
@@ -12,8 +12,8 @@ Resealable zipper pouch for packs of 8 pierogi. Cheese and potato (*pierogi rusk
 | --- | --- |
 | `bag.html` | The design (front and back). Text for each flavor is in `FLAVORS` at the bottom. |
 | `render.mjs` | Makes everything in `out/`: `node packaging/pierogi-bag/render.mjs [flavor]` |
-| `out/pierogi-ruskie-print.pdf` | Two-page print file, window left empty. |
-| `out/pierogi-ruskie-proof-guides.pdf` | Same, with trim, seals, zipper and safe area drawn on. |
+| `out/pierogi-<flavor>-print.pdf` | Two-page print file, window left empty. |
+| `out/pierogi-<flavor>-proof-guides.pdf` | Same, with trim, seals, zipper and safe area drawn on. |
 | `out/*-front.png`, `out/*-back.png` | Previews with the pierogi in the window. |
 
 ## Before it goes to print

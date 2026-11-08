@@ -103,6 +103,7 @@
   .front .copy { position: absolute; left: .55in; right: .55in; top: 6.95in; text-align: center; }
   .eyebrow { color: var(--red); font-size: .16in; }
   .front h1 { margin-top: .04in; font: 600 .5in/.98 var(--display); letter-spacing: -.02em; color: var(--red); }
+  .front h1.long { font-size: .42in; }  /* long flavor names stay on one line */
   .front .polish { margin-top: .03in; font: italic 500 .2in/1.2 var(--body); color: var(--red); }
   .front .pillowy { margin: .1in auto 0; max-width: 5.2in; font: italic 500 .19in/1.25 var(--display); color: var(--ink); }
 
@@ -298,6 +299,32 @@
       boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
       fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Top with fried onions and sour cream.]",
       ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. milk, wheat, egg]."
+    },
+    szpinak: {
+      eyebrow: "Authentic Polish · Handmade in Williamsburg",
+      name: "Spinach & cheese pierogi",
+      polish: "Pierogi ze szpinakiem i serem",
+      tagline: "Soft, pillowy dough folded by hand around spinach and farmer’s cheese.",
+      netwt: "Net wt. [00] oz ([000] g)",
+      storage: "[Keep frozen]",
+      backHead: "Soft and pillowy, the way they should be.",
+      backIntro: "Each pierogi is folded and crimped by hand around a filling of spinach and farmer’s cheese. Made in Brooklyn by a family bakery that’s been at it since 1992. Eight in a bag, enough for dinner for two.",
+      boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
+      fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Serve with sour cream.]",
+      ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. milk, wheat, egg]."
+    },
+    kapusta: {
+      eyebrow: "Authentic Polish · Handmade in Williamsburg",
+      name: "Sauerkraut & mushroom pierogi",
+      polish: "Pierogi z kapustą i grzybami",
+      tagline: "Soft, pillowy dough folded by hand around tangy sauerkraut and mushrooms.",
+      netwt: "Net wt. [00] oz ([000] g)",
+      storage: "[Keep frozen]",
+      backHead: "Soft and pillowy, the way they should be.",
+      backIntro: "Each pierogi is folded and crimped by hand around tangy sauerkraut and mushrooms, the filling Polish families make for Christmas Eve. Made in Brooklyn since 1992. Eight in a bag, enough for dinner for two.",
+      boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
+      fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Top with fried onions.]",
+      ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. wheat, egg]."
     }
   };
 
@@ -305,6 +332,7 @@
   const f = FLAVORS[params.get("flavor")] || FLAVORS.ruskie;
   document.querySelectorAll("[data-f]").forEach(el => { el.textContent = f[el.dataset.f] ?? ""; });
   document.title = "Pierogi bag: " + f.name;
+  if (f.name.length > 26) document.querySelector(".front h1").classList.add("long");
   if (params.has("guides")) document.body.classList.add("guides");
   if (params.has("print")) document.body.classList.add("print");
 </script>
