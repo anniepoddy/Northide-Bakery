@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pierogi bag: cheese and potato</title>
+<!--
+  Northside Bakery pierogi bag, front and back.
+  Size: 8 in wide x 10 in tall flat zipper pouch, plus 0.125 in bleed on every side.
+  Brand rules: brand/brand.md (red and cream only, Fraunces + EB Garamond, ink doodles).
+
+  Open in a browser to look at it. Add to the address:
+    ?guides=1   show the trim, seals, zipper and safe area
+    ?print=1    leave the clear window empty (no ink), for the printer
+  Render the PDFs and previews: node packaging/pierogi-bag/render.mjs
+
+  To add a flavor, add an entry to FLAVORS at the bottom and open ?flavor=<id>.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,50;1,9..144,400..700,50&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #9A1B1F;
+    --red-deep: #741417;
+    --cream: #F3E6CF;
+    --paper: #FBF6EC;
+    --ink: #2B1D1E;
+    --display: "Fraunces", Georgia, serif;
+    --body: "EB Garamond", Georgia, serif;
+
+    --bleed: .125in;
+    --w: 8in;            /* finished width */
+    --h: 10in;           /* finished height */
+    --top-clear: 1.75in; /* tear notch + zipper zone: no words above this */
+    --side-seal: .375in;
+  }
+  @page { size: 8.25in 10.25in; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #d9cfc0; }
+  body { font-family: var(--body); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  img { display: block; }
+
+  .sheet {
+    position: relative; overflow: hidden;
+    width: calc(var(--w) + 2 * var(--bleed)); height: calc(var(--h) + 2 * var(--bleed));
+    background: var(--cream);
+    margin: 0 auto 40px; break-after: page;
+  }
+  @media print { html { background: none; } .sheet { margin: 0; } }
+  /* Fine paper grain, like the bag stock on the website */
+  .sheet::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .09; mix-blend-mode: multiply; z-index: 5;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .17 0 0 0 0 .11 0 0 0 0 .12 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  /* The trim box: everything is positioned inside the finished 8 x 10 */
+  .trim { position: absolute; inset: var(--bleed); }
+
+  .caps { font-variant-caps: all-small-caps; letter-spacing: .13em; font-weight: 600; }
+
+  /* ---------- Red top band with a crimped edge, like a pierogi ---------- */
+  .band-top {
+    position: absolute; left: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); top: calc(-1 * var(--bleed));
+    height: calc(var(--top-clear) + var(--bleed) + .05in); background: var(--red); overflow: hidden;
+  }
+  .crimp {
+    position: absolute; left: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); top: calc(var(--top-clear) + .05in); height: .16in;
+    background: radial-gradient(circle at 50% 0, var(--red) .098in, transparent .104in) 0 0 / .23in .16in repeat-x;
+  }
+  .band-top .doodles img, .band-bottom .doodles img { position: absolute; }
+
+  /* ---------- Red bottom band ---------- */
+  .band-bottom {
+    position: absolute; left: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); bottom: calc(-1 * var(--bleed));
+    background: var(--red); color: var(--paper);
+    padding: .2in calc(var(--bleed) + .55in) calc(var(--bleed) + .5in);
+  }
+  .crimp--up {
+    position: absolute; left: 0; right: 0; top: -.16in; height: .16in;
+    background: radial-gradient(circle at 50% 100%, var(--red) .098in, transparent .104in) 0 0 / .23in .16in repeat-x;
+  }
+
+  /* ---------- Front ---------- */
+  .front .logo { position: absolute; left: 50%; top: 1.98in; width: 1.95in; transform: translateX(-50%); }
+  .window-wrap { position: absolute; left: 50%; top: 3.42in; width: 3.7in; height: 3.15in; transform: translateX(-50%); }
+  .window {
+    position: absolute; inset: 0; border-radius: 1.85in 1.85in .14in .14in; overflow: hidden;
+    box-shadow: 0 0 0 .045in var(--red), 0 0 0 .09in var(--cream), 0 0 0 .105in var(--red);
+  }
+  .window img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transform: scale(1.25); transform-origin: 80% 55%; }
+  .print .window img { display: none; }
+  .print .window { background: #fff; }
+  .window-label { display: none; }
+  .guides .window-label { display: grid; place-items: center; position: absolute; inset: 0; color: #0a7bd6; font: 600 13px/1.3 var(--body); text-align: center; z-index: 30; }
+
+  .badge {
+    position: absolute; right: -.62in; bottom: .02in; width: 1.32in; height: 1.32in; border-radius: 50%;
+    background: var(--red); color: var(--paper); display: grid; place-content: center; text-align: center;
+    box-shadow: 0 0 0 .04in var(--cream), 0 0 0 .055in var(--red); transform: rotate(8deg);
+  }
+  .badge b { display: block; font: 600 .62in/.8 var(--display); letter-spacing: -.03em; }
+  .badge span { display: block; font-size: .17in; line-height: 1.05; margin-top: .03in; }
+
+  .front .copy { position: absolute; left: .55in; right: .55in; top: 6.95in; text-align: center; }
+  .eyebrow { color: var(--red); font-size: .16in; }
+  .front h1 { margin-top: .04in; font: 600 .5in/.98 var(--display); letter-spacing: -.02em; color: var(--red); }
+  .front .polish { margin-top: .03in; font: italic 500 .2in/1.2 var(--body); color: var(--red); }
+  .front .pillowy { margin: .1in auto 0; max-width: 5.2in; font: italic 500 .19in/1.25 var(--display); color: var(--ink); }
+
+  .front .band-bottom { display: flex; justify-content: space-between; align-items: baseline; gap: .2in; }
+  .front .band-bottom .motto { font: italic 500 .2in/1 var(--display); }
+  .front .band-bottom .meta { font-size: .14in; line-height: 1.2; }
+  .front .band-bottom .meta:last-child { text-align: right; }
+
+  .edge { position: absolute; z-index: 1; }
+
+  /* ---------- Back ---------- */
+  .back .cols { position: absolute; left: .55in; right: .55in; top: 2.1in; display: grid; grid-template-columns: 1fr 2.75in; gap: .38in; }
+  .back h2 { font: 600 .36in/1 var(--display); letter-spacing: -.02em; color: var(--red); }
+  .back h3 { color: var(--red); font-size: .17in; margin-bottom: .04in; }
+  .back p, .back li { font-size: .145in; line-height: 1.42; }
+  .back .intro { margin-top: .1in; }
+  .back .cook { margin-top: .22in; padding-top: .16in; border-top: 1.5px solid var(--red); }
+  .back .cook ol { list-style: none; display: grid; gap: .12in; margin-top: .06in; }
+  .back .cook li b { font: italic 600 .17in/1 var(--display); color: var(--red); margin-right: .05in; }
+  .back .story { margin-top: .22in; padding-top: .16in; border-top: 1.5px solid var(--red); display: grid; grid-template-columns: 1fr .95in; gap: .14in; align-items: end; }
+  .back .story img { width: .95in; }
+
+  .ph {
+    border: 1.5px dashed var(--red); border-radius: 4px; background: var(--paper);
+    padding: .12in; color: var(--red); font-size: .13in; line-height: 1.35;
+  }
+  .ph + .ph { margin-top: .12in; }
+  .ph .caps { font-size: .14in; display: block; margin-bottom: .03in; }
+  .ph--nutrition { height: 3.7in; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .ph--barcode { height: .95in; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+
+  .back .band-bottom { display: flex; justify-content: space-between; align-items: center; gap: .3in; }
+  .back .band-bottom .motto { font: italic 500 .24in/1 var(--display); }
+  .back .band-bottom .meta { font-size: .14in; line-height: 1.3; text-align: right; }
+  .back .band-bottom img.logo-small { width: 1.05in; }
+
+  /* ---------- Guides (?guides=1) ---------- */
+  .guide { display: none; position: absolute; z-index: 20; pointer-events: none; }
+  .guides .guide { display: block; }
+  .g-trim { inset: var(--bleed); outline: 1px solid #0a7bd6; }
+  .g-seal-l, .g-seal-r { top: var(--bleed); bottom: var(--bleed); width: var(--side-seal); background: repeating-linear-gradient(45deg, rgba(10,123,214,.18) 0 4px, transparent 4px 9px); }
+  .g-seal-l { left: var(--bleed); } .g-seal-r { right: var(--bleed); }
+  .g-seal-b { left: var(--bleed); right: var(--bleed); bottom: var(--bleed); height: var(--side-seal); background: repeating-linear-gradient(45deg, rgba(10,123,214,.18) 0 4px, transparent 4px 9px); }
+  .g-seal-t { left: var(--bleed); right: var(--bleed); top: var(--bleed); height: .5in; background: repeating-linear-gradient(45deg, rgba(10,123,214,.18) 0 4px, transparent 4px 9px); }
+  .g-notch { top: calc(var(--bleed) + .75in); width: .18in; height: .18in; border: 1.5px solid #0a7bd6; border-radius: 50%; }
+  .g-notch.l { left: calc(var(--bleed) + .1in); } .g-notch.r { right: calc(var(--bleed) + .1in); }
+  .g-zip { left: var(--bleed); right: var(--bleed); top: calc(var(--bleed) + 1.15in); height: .35in; border-top: 1.5px dashed #0a7bd6; border-bottom: 1.5px dashed #0a7bd6; }
+  .g-safe { left: calc(var(--bleed) + .5in); right: calc(var(--bleed) + .5in); top: calc(var(--bleed) + var(--top-clear)); bottom: calc(var(--bleed) + .5in); outline: 1px dashed #d60a6b; }
+  .g-label { font: 600 11px/1.2 var(--body); color: #0a7bd6; background: rgba(255,255,255,.85); padding: 1px 4px; }
+</style>
+</head>
+<body>
+
+<!-- ======================= FRONT ======================= -->
+<section class="sheet front" aria-label="Front of bag">
+  <div class="trim">
+    <div class="band-top">
+      <div class="doodles" aria-hidden="true">
+        <img src="../../images/doodles/cream/wheat.svg" style="left:-.15in;top:.55in;width:1.1in;transform:rotate(-14deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:.95in;top:.95in;width:1.05in;transform:rotate(9deg)" alt="">
+        <img src="../../images/doodles/cream/rolling-pin.svg" style="left:2.05in;top:.5in;width:1.15in;transform:rotate(-6deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:1in;width:.95in;transform:rotate(-10deg)" alt="">
+        <img src="../../images/doodles/cream/pierozek-character.svg" style="left:4.35in;top:.5in;width:1.15in;transform:rotate(4deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:5.6in;top:1in;width:1in;transform:rotate(12deg)" alt="">
+        <img src="../../images/doodles/cream/wheat.svg" style="left:6.75in;top:.55in;width:1.15in;transform:rotate(16deg) scaleX(-1)" alt="">
+      </div>
+    </div>
+    <div class="crimp" aria-hidden="true"></div>
+
+    <img class="logo" src="../../images/logo/logo-red.png" alt="Northside Bakery, est. 1992">
+
+    <!-- Doodles crowding the side edges, like the paper bag -->
+    <img class="edge" src="../../images/doodles/wheat.svg" style="left:-.42in;top:3.3in;width:1.15in;transform:rotate(-24deg)" alt="" aria-hidden="true">
+    <img class="edge" src="../../images/doodles/pierogi.svg" style="left:-.3in;top:4.8in;width:1.05in;transform:rotate(14deg)" alt="" aria-hidden="true">
+    <img class="edge" src="../../images/doodles/whisk.svg" style="left:-.32in;top:6.15in;width:1in;transform:rotate(-8deg)" alt="" aria-hidden="true">
+    <img class="edge" src="../../images/doodles/rolling-pin.svg" style="right:-.4in;top:2.65in;width:1.15in;transform:rotate(30deg)" alt="" aria-hidden="true">
+    <img class="edge" src="../../images/doodles/egg.svg" style="right:-.18in;top:4.1in;width:.8in;transform:rotate(-12deg)" alt="" aria-hidden="true">
+
+    <div class="window-wrap">
+      <div class="window">
+        <img src="../../images/photos/pierogi-handmade.jpg" alt="Handmade pierogi on a floured tray">
+      </div>
+      <div class="window-label">CLEAR WINDOW<br>no ink, no white</div>
+      <div class="badge" aria-label="8 pierogi per bag">
+        <b>8</b>
+        <span class="caps">pierogi</span>
+      </div>
+    </div>
+
+    <div class="copy">
+      <p class="eyebrow caps" data-f="eyebrow"></p>
+      <h1 data-f="name"></h1>
+      <p class="polish" data-f="polish"></p>
+      <p class="pillowy" data-f="tagline"></p>
+    </div>
+
+    <div class="band-bottom">
+      <div class="crimp--up" aria-hidden="true"></div>
+      <p class="meta caps" data-f="netwt"></p>
+      <p class="motto">Baked on North 8th since 1992.</p>
+      <p class="meta caps" data-f="storage"></p>
+    </div>
+  </div>
+
+  <div class="guide g-trim"></div>
+  <div class="guide g-seal-t"></div><div class="guide g-seal-l"></div><div class="guide g-seal-r"></div><div class="guide g-seal-b"></div>
+  <div class="guide g-notch l"></div><div class="guide g-notch r"></div>
+  <div class="guide g-zip"><span class="g-label">ZIPPER</span></div>
+  <div class="guide g-safe"><span class="g-label" style="color:#d60a6b">SAFE AREA (keep words inside)</span></div>
+</section>
+
+<!-- ======================= BACK ======================= -->
+<section class="sheet back" aria-label="Back of bag">
+  <div class="trim">
+    <div class="band-top">
+      <div class="doodles" aria-hidden="true">
+        <img src="../../images/doodles/cream/wheat.svg" style="left:-.15in;top:.55in;width:1.1in;transform:rotate(14deg) scaleX(-1)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:.95in;top:1in;width:1in;transform:rotate(-9deg)" alt="">
+        <img src="../../images/doodles/cream/whisk.svg" style="left:2.1in;top:.55in;width:1.05in;transform:rotate(8deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:3.3in;top:1in;width:.95in;transform:rotate(10deg)" alt="">
+        <img src="../../images/doodles/cream/rolling-pin.svg" style="left:4.35in;top:.55in;width:1.15in;transform:rotate(-5deg)" alt="">
+        <img src="../../images/doodles/cream/pierogi.svg" style="left:5.6in;top:.98in;width:1in;transform:rotate(-12deg)" alt="">
+        <img src="../../images/doodles/cream/wheat.svg" style="left:6.75in;top:.55in;width:1.15in;transform:rotate(-16deg)" alt="">
+      </div>
+    </div>
+    <div class="crimp" aria-hidden="true"></div>
+
+    <div class="cols">
+      <div>
+        <h2 data-f="backHead"></h2>
+        <p class="intro" data-f="backIntro"></p>
+
+        <div class="cook">
+          <h3 class="caps">How to cook</h3>
+          <ol>
+            <li><b>Boil.</b> <span data-f="boil"></span></li>
+            <li><b>Pan-fry.</b> <span data-f="fry"></span></li>
+          </ol>
+        </div>
+
+        <div class="story">
+          <div>
+            <h3 class="caps">A family bakery since 1992</h3>
+            <p>Richard and Teresa Podedworny opened Northside Bakery in 1992 for a neighborhood that missed the taste of home. Within a year we moved to the North Side of Williamsburg, and we’re still family-run today.</p>
+          </div>
+          <img src="../../images/doodles/pierozek-character.svg" alt="" aria-hidden="true">
+        </div>
+      </div>
+
+      <div>
+        <div class="ph ph--nutrition">
+          <span class="caps">Nutrition Facts panel</span>
+          From the nutrition analysis.<br>FDA format, about 2.75 in wide.
+        </div>
+        <div class="ph">
+          <span class="caps">Ingredients</span>
+          <span data-f="ingredients"></span>
+        </div>
+        <div class="ph ph--barcode">
+          <span class="caps">UPC barcode</span>
+          Keep on paper or white, at least 1.5 in wide.
+        </div>
+      </div>
+    </div>
+
+    <div class="band-bottom">
+      <div class="crimp--up" aria-hidden="true"></div>
+      <img class="logo-small" src="../../images/logo/logo-cream.png" alt="Northside Bakery">
+      <p class="motto">Smacznego from North 8th.</p>
+      <p class="meta"><span class="caps">Northside Bakery</span><br>149 N 8th St, Brooklyn, NY 11249<br>(718) 782-5551</p>
+    </div>
+  </div>
+
+  <div class="guide g-trim"></div>
+  <div class="guide g-seal-t"></div><div class="guide g-seal-l"></div><div class="guide g-seal-r"></div><div class="guide g-seal-b"></div>
+  <div class="guide g-notch l"></div><div class="guide g-notch r"></div>
+  <div class="guide g-zip"><span class="g-label">ZIPPER</span></div>
+  <div class="guide g-safe"><span class="g-label" style="color:#d60a6b">SAFE AREA (keep words inside)</span></div>
+</section>
+
+<script>
+  // One entry per flavor. Text in [square brackets] must be confirmed before printing.
+  const FLAVORS = {
+    ruskie: {
+      eyebrow: "Authentic Polish · Handmade in Williamsburg",
+      name: "Cheese & potato pierogi",
+      polish: "Pierogi ruskie",
+      tagline: "Soft, pillowy dough folded by hand around potato and farmer’s cheese.",
+      netwt: "Net wt. [00] oz ([000] g)",
+      storage: "[Keep frozen]",
+      backHead: "Soft and pillowy, the way they should be.",
+      backIntro: "Each pierogi is folded and crimped by hand around a filling of potato and farmer’s cheese. It’s the same recipe we’ve made in Brooklyn since 1992. Eight in a bag, enough for dinner for two.",
+      boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
+      fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Top with fried onions and sour cream.]",
+      ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. milk, wheat, egg]."
+    }
+  };
+
+  const params = new URLSearchParams(location.search);
+  const f = FLAVORS[params.get("flavor")] || FLAVORS.ruskie;
+  document.querySelectorAll("[data-f]").forEach(el => { el.textContent = f[el.dataset.f] ?? ""; });
+  document.title = "Pierogi bag: " + f.name;
+  if (params.has("guides")) document.body.classList.add("guides");
+  if (params.has("print")) document.body.classList.add("print");
+</script>
+</body>
+</html>
