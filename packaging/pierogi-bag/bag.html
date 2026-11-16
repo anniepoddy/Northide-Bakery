@@ -131,15 +131,34 @@
   body:not(.hero) .badge b { font-size: .7in; }
   body:not(.hero) .stamp { left: -.78in; bottom: -.08in; width: 1.5in; height: 1.5in; }
   body:not(.hero) .front .band-bottom { top: calc(6.42in + var(--bleed)); align-items: flex-end; }
-  body:not(.hero) .front .copy { top: 6.56in; z-index: 2; color: var(--paper); }
+  body:not(.hero) .front .copy { top: 6.52in; z-index: 2; color: var(--paper); }
   body:not(.hero) .front .eyebrow { color: var(--cream); font-size: .145in; opacity: .92; }
   body:not(.hero) .front h1 { color: var(--paper); margin-top: .1in; line-height: .9; }
-  body:not(.hero) .front h1 .flavor { display: block; font-size: .44in; font-weight: 500; font-style: italic; letter-spacing: -.01em; }
-  body:not(.hero) .front h1 .word { display: block; font-size: 1.14in; font-weight: 700; letter-spacing: -.035em; line-height: .86; margin-top: .02in; }
-  body:not(.hero) .front .polish { color: var(--cream); font-size: .19in; margin-top: .2in; }
+  body:not(.hero) .front h1 .flavor { display: block; font-size: .4in; font-weight: 500; font-style: italic; letter-spacing: -.01em; }
+  body:not(.hero) .front h1 .word { display: block; font-size: 1.0in; font-weight: 700; letter-spacing: -.035em; line-height: .86; margin-top: .02in; }
+  body:not(.hero) .front .polish { color: var(--cream); font-size: .19in; margin-top: .14in; }
   body:not(.hero) .front .pillowy { color: var(--paper); font-size: .17in; margin-top: .06in; max-width: 4.6in; text-wrap: balance; }
   body:not(.hero) .front .edge { width: .9in !important; }
   body:not(.hero) .front .edge[style*="whisk"] { display: none; }
+
+  /* Brooklyn ribbon under the logo (window layout) */
+  .ribbon { display: none; }
+  body:not(.hero) .ribbon {
+    display: block; position: absolute; left: 50%; top: 2.86in; transform: translateX(-50%);
+    padding: .07in .42in .06in; background: var(--red); color: var(--paper); white-space: nowrap;
+    font-size: .15in; line-height: 1;
+    clip-path: polygon(0 0, 100% 0, calc(100% - .13in) 50%, 100% 100%, 0 100%, .13in 50%);
+  }
+  body:not(.hero) .front .logo { top: 1.86in; width: 1.42in; }
+  body:not(.hero) .window-wrap { top: 3.3in; height: 2.84in; width: 4.25in; }
+  .front .band-bottom .motto { text-align: center; }
+  .front .band-bottom .motto small { display: block; margin-top: .05in; font: 600 .11in/1 var(--body); font-style: normal; font-variant-caps: all-small-caps; letter-spacing: .14em; opacity: .9; }
+
+  /* Storefront drawing on the back */
+  .back .back-head h2 { order: -1; }
+  .back .back-head { display: grid; grid-template-columns: 1fr 2.3in; gap: .15in; align-items: end; }
+  .back .storefront { color: var(--red); }
+  .back .storefront svg { display: block; width: 100%; height: auto; }
 
   /* Heritage stamp, opposite the count badge */
   .stamp { position: absolute; left: -.7in; bottom: .0in; width: 1.48in; height: 1.48in; transform: rotate(-9deg); color: var(--red); }
@@ -226,6 +245,7 @@
     <div class="crimp" aria-hidden="true"></div>
 
     <div class="logo tint" style="--m:url(../../images/logo/logo-ink.png)" role="img" aria-label="Northside Bakery, est. 1992"></div>
+    <p class="ribbon caps">Polish bakery · Williamsburg, Brooklyn</p>
 
     <!-- Doodles crowding the side edges, like the paper bag -->
     <span class="edge tint" style="--m:url(../../images/doodles/wheat.svg);left:-.42in;top:3.3in;width:1.15in;transform:rotate(-24deg)" aria-hidden="true"></span>
@@ -309,7 +329,7 @@
     <div class="band-bottom">
       <div class="crimp--up" aria-hidden="true"></div>
       <p class="meta caps" data-f="netwt"></p>
-      <p class="motto">Baked on North 8th since 1992.</p>
+      <p class="motto">Baked on North 8th since 1992.<small>149 N 8th St · Brooklyn, NY</small></p>
       <p class="meta caps" data-f="storage"></p>
     </div>
   </div>
@@ -339,7 +359,90 @@
 
     <div class="cols">
       <div>
-        <h2>Authentic Polish,<br>since 1992.</h2>
+        <div class="back-head">
+        <div class="storefront" role="img" aria-label="Drawing of the Northside Bakery storefront"><svg class="store-svg" viewBox="0 0 400 222" aria-hidden="true">
+            <defs>
+              <filter id="shand"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="21"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+              <pattern id="sst" width="4.5" height="4.5" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r=".85" fill="currentColor"/><circle cx="3.4" cy="3.4" r=".6" fill="currentColor"/></pattern>
+            </defs>
+            <g filter="url(#shand)">
+              <path d="M28 214V16M372 214V16M20 16H380M24 22H376" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 216H394" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M334 114h9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M349 170h14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M348 166h15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M43 175h14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M337 81h15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M359 45h13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M58 73h10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M358 31h10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M59 102h13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M335 75h14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M346 121h13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M59 42h15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M57 92h14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M349 48h8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M42 51h15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M331 152h15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M355 33h10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M356 181h15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M58 186h10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M43 88h8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M336 205h13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M50 50h8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M61 136h12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M55 51h12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M62 114h10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M331 108h13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M78 36h36v34h-36ZM96 36v34M78 53h36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M72 38L80 26H112L120 38Z" fill="var(--paper)" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M84 28l-4 9M92 28l-2 9M100 28v9M108 28l2 9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M182 36h36v34h-36ZM200 36v34M182 53h36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M176 38L184 26H216L224 38Z" fill="var(--paper)" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M188 28l-4 9M196 28l-2 9M204 28v9M212 28l2 9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M286 36h36v34h-36ZM304 36v34M286 53h36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M280 38L288 26H320L328 38Z" fill="var(--paper)" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M292 28l-4 9M300 28l-2 9M308 28v9M316 28l2 9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M92 80H308V108H92Z" fill="var(--paper)" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="200" y="100" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="17" letter-spacing="1.2" fill="currentColor">NORTHSIDE BAKERY</text>
+              <path d="M84 116H316L334 138H66Z" fill="var(--paper)" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M92.0 116L101.0 116L81.0 138L70.0 138Z" fill="url(#sst)" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M128.6 116L137.6 116L124.6 138L113.6 138Z" fill="url(#sst)" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M165.2 116L174.2 116L168.2 138L157.2 138Z" fill="url(#sst)" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M201.8 116L210.8 116L211.8 138L200.8 138Z" fill="url(#sst)" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M238.4 116L247.4 116L255.4 138L244.4 138Z" fill="url(#sst)" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M275.0 116L284.0 116L299.0 138L288.0 138Z" fill="url(#sst)" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M311.6 116L320.6 116L342.6 138L331.6 138Z" fill="url(#sst)" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M66 138H334V144A11.2 11.2 0 0 1 311.7 144A11.2 11.2 0 0 1 289.3 144A11.2 11.2 0 0 1 267.0 144A11.2 11.2 0 0 1 244.7 144A11.2 11.2 0 0 1 222.3 144A11.2 11.2 0 0 1 200.0 144A11.2 11.2 0 0 1 177.7 144A11.2 11.2 0 0 1 155.3 144A11.2 11.2 0 0 1 133.0 144A11.2 11.2 0 0 1 110.7 144A11.2 11.2 0 0 1 88.3 144A11.2 11.2 0 0 1 66.0 144Z" fill="var(--paper)" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M80 158H320V214M80 158V214" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M88 164H162V206H88ZM238 164H312V206H238Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M172 164H228V214M172 164V214M200 164V214" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M178 172h16v34h-16ZM206 172h16v34h-16Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M196 190v6M204 190v6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M92 186H158M242 186H308" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M92 186c0-9 16-9 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M97 180l2 3M101 179l2 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M112 186c0-9 16-9 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M117 180l2 3M121 179l2 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M132 186c0-9 16-9 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M137 180l2 3M141 179l2 3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M244 186c1-6 11-6 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M262 186c1-6 11-6 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M280 186c1-6 11-6 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M296 186c1-6 11-6 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M92 204a6 5 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M110 204a6 5 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M128 204a6 5 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M146 204a6 5 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M246 204c4-7 14-7 18 0M270 204c4-7 14-7 18 0M294 204c3-5 9-5 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M344 214L352 176H372L380 214M352 176l-2-4h24l-2 4" fill="var(--paper)" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="362" y="192" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="7.5" fill="currentColor">pierogi</text>
+              <text x="362" y="202" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="6.5" fill="currentColor">today</text>
+              <path d="M80 147H320V158H80Z" fill="url(#sst)"/>
+            </g>
+          </svg></div>
+        <h2>Authentic Polish, since&nbsp;1992.</h2>
+        </div>
         <p class="intro heritage">Richard and Teresa Podedworny opened Northside Bakery in 1992 in Greenpoint, Brooklyn’s Polish neighborhood, for neighbors who missed the taste of home. A year later we moved to the North Side of Williamsburg, which gave us our name. We’re still family-run, and our pierogi are still made by hand.</p>
 
         <div class="story">
@@ -395,7 +498,7 @@
   const FLAVORS = {
     ruskie: {
       color: "#9A1B1F",   /* Northside Red */
-      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
+      eyebrow: "Handmade by the Podedworny family since 1992",
       name: "Cheese & potato pierogi",
       polish: "Pierogi ruskie",
       tagline: "Soft, pillowy dough folded by hand around potato and farmer’s cheese.",
@@ -408,7 +511,7 @@
     },
     szpinak: {
       color: "#2F5A3C",   /* deep spinach green */
-      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
+      eyebrow: "Handmade by the Podedworny family since 1992",
       name: "Spinach & cheese pierogi",
       polish: "Pierogi ze szpinakiem i serem",
       tagline: "Soft, pillowy dough folded by hand around spinach and farmer’s cheese.",
@@ -421,7 +524,7 @@
     },
     kapusta: {
       color: "#6B4426",   /* mushroom brown */
-      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
+      eyebrow: "Handmade by the Podedworny family since 1992",
       name: "Sauerkraut & mushroom pierogi",
       polish: "Pierogi z kapustą i grzybami",
       tagline: "Soft, pillowy dough folded by hand around tangy sauerkraut and mushrooms.",
@@ -434,7 +537,7 @@
     },
     jagody: {
       color: "#33407E",   /* blueberry blue */
-      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
+      eyebrow: "Handmade by the Podedworny family since 1992",
       name: "Blueberry pierogi",
       polish: "Pierogi z jagodami",
       tagline: "Soft, pillowy dough folded by hand around sweet blueberries.",

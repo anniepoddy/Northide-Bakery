@@ -9,8 +9,8 @@ Resealable zipper pouch for packs of 8 pierogi. Four flavors: cheese and potato 
 
 ## Two front designs
 
-- **Window** (default): a clear arched window shows the real pierogi. The bottom third is a solid block of the flavor color with the flavor name and a big "Pierogi" in cream, so each flavor stands out on the shelf.
-- **Hero drawing** (`?layout=hero`): a big ink drawing of two pierogi with sour cream and dill sits on a band of the flavor color, with no window, so the whole bag is printed. Files end in `-hero`, e.g. `out/pierogi-ruskie-hero-print.pdf`; `out/pierogi-lineup-hero.png` shows all three. The drawing on its own is `images/illustrations/pierogi-hero.svg`. The back is the same for both.
+- **Window** (default): a clear arched window shows the real pierogi. The bottom third is a solid block of the flavor color with the flavor name and a big "Pierogi" in cream, so each flavor stands out on the shelf. A ribbon under the logo says "Polish bakery · Williamsburg, Brooklyn", the line above the flavor names the Podedworny family, and the address sits under the tagline at the bottom.
+- **Hero drawing** (`?layout=hero`): a big ink drawing of two pierogi with sour cream and dill sits on a band of the flavor color, with no window, so the whole bag is printed. Files end in `-hero`, e.g. `out/pierogi-ruskie-hero-print.pdf`; `out/pierogi-lineup-hero.png` shows all three. The drawing on its own is `images/illustrations/pierogi-hero.svg`. The back is the same for both, with a line drawing of the storefront next to the family story (`images/illustrations/storefront-line.svg`).
 
 ## Files
 
