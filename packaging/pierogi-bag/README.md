@@ -1,6 +1,6 @@
 # Pierogi bag
 
-Resealable zipper pouch for packs of 8 pierogi. Four flavors: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`) and blueberry (`jagody`). `out/pierogi-lineup.png` and `out/pierogi-lineup-back.png` show the three side by side.
+Resealable zipper pouch for packs of 8 pierogi. Four flavors: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`) and blueberry (`jagody`). `out/pierogi-lineup.png` and `out/pierogi-lineup-back.png` show all four side by side.
 
 - **Size:** 8 in wide x 10 in tall, flat zipper pouch, plus 0.125 in bleed. Zipper about 1.15 in down, tear notches at 0.75 in, 3/8 in side and bottom seals. Ask the printer for their dieline and line it up with `?guides=1`; adjust the sizes at the top of `bag.html` if theirs differ.
 - **Clear window:** the arch on the front is unprinted film so the pierogi show through. Tell the printer: no ink and no white underlay inside the arch.
