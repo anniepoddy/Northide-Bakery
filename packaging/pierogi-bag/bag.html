@@ -12,6 +12,7 @@
     ?guides=1   show the trim, seals, zipper and safe area
     ?print=1    leave the clear window empty (no ink), for the printer
     ?layout=hero  alternate front: a big pierogi drawing on a color band, no window
+    ?layout=circle  the window front with the logo in a big cream circle across the top band
   Render the PDFs and previews: node packaging/pierogi-bag/render.mjs
   The drawings and logo are recolored with CSS masks, which browsers only allow from a web
   server: run `npx serve .` in the repo root and open /packaging/pierogi-bag/bag.html.
@@ -154,6 +155,23 @@
   .front .band-bottom .motto { text-align: center; }
   .front .band-bottom .motto small { display: block; margin-top: .05in; font: 600 .11in/1 var(--body); font-style: normal; font-variant-caps: all-small-caps; letter-spacing: .14em; opacity: .9; }
 
+  /* ---------- ?layout=circle: logo in a cream circle straddling a taller top band ---------- */
+  .logo-disc { display: none; }
+  body.circle .front .band-top { height: calc(2.3in + var(--bleed) + .05in); }
+  body.circle .front .crimp { top: 2.35in; }
+  body.circle .logo-disc {
+    display: block; position: absolute; left: 50%; top: 1.38in; width: 1.95in; height: 1.95in; transform: translateX(-50%);
+    border-radius: 50%; background: var(--cream); box-shadow: inset 0 0 0 .07in var(--cream), inset 0 0 0 .088in var(--red);
+  }
+  body.circle .front .logo { top: 1.82in; width: 1.55in; }
+  body.circle .ribbon { top: 3.43in; }
+  body.circle .window-wrap { top: 3.86in; height: 2.32in; width: 3.95in; }
+  body.circle .badge { width: 1.24in; height: 1.24in; right: -.66in; bottom: -.08in; }
+  body.circle .badge b { font-size: .6in; }
+  body.circle .stamp { width: 1.3in; height: 1.3in; left: -.7in; bottom: -.1in; }
+  body.circle .front .band-top img[style*="left:3.3in"] { display: none; }
+  body.circle .front .edge[style*="rolling-pin"] { top: 2.75in !important; }
+
   /* Storefront drawing on the back */
   .back .back-head h2 { order: -1; }
   .back .back-head { display: grid; grid-template-columns: 1fr 2.3in; gap: .15in; align-items: end; }
@@ -244,6 +262,7 @@
     </div>
     <div class="crimp" aria-hidden="true"></div>
 
+    <div class="logo-disc" aria-hidden="true"></div>
     <div class="logo tint" style="--m:url(../../images/logo/logo-ink.png)" role="img" aria-label="Northside Bakery, est. 1992"></div>
     <p class="ribbon caps">Polish bakery · Williamsburg, Brooklyn</p>
 
@@ -567,6 +586,7 @@
   if (params.has("guides")) document.body.classList.add("guides");
   if (params.has("print")) document.body.classList.add("print");
   if (params.get("layout") === "hero") document.body.classList.add("hero");
+  if (params.get("layout") === "circle") document.body.classList.add("circle");
 </script>
 </body>
 </html>

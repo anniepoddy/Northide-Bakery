@@ -7,9 +7,10 @@ Resealable zipper pouch for packs of 8 pierogi. Four flavors: cheese and potato 
 - **Brand:** cream bag with Fraunces and EB Garamond, the ink doodles, Pierożek and a "since 1992, born in Greenpoint" stamp (see `brand/brand.md`).
 - **Flavor colors:** each flavor has its own color in place of the brand red, so they're easy to tell apart on the shelf: cheese and potato in Northside Red `#9A1B1F`, spinach and cheese in green `#2F5A3C`, sauerkraut and mushroom in brown `#6B4426`, blueberry in blue `#33407E`. This is a deliberate exception to the brand guide's red-and-cream rule, for pierogi packaging only.
 
-## Two front designs
+## Front designs
 
 - **Window** (default): a clear arched window shows the real pierogi. The bottom third is a solid block of the flavor color with the flavor name and a big "Pierogi" in cream, so each flavor stands out on the shelf. A ribbon under the logo says "Polish bakery · Williamsburg, Brooklyn", the line above the flavor names the Podedworny family, and the address sits under the tagline at the bottom.
+- **Logo circle** (`?layout=circle`): the window design rebuilt from the Canva mock-up, with the logo in a big cream circle across the edge of a taller top band (kept below the zipper). Files end in `-circle`; `out/pierogi-lineup-circle.png` shows all four.
 - **Hero drawing** (`?layout=hero`): a big ink drawing of two pierogi with sour cream and dill sits on a band of the flavor color, with no window, so the whole bag is printed. Files end in `-hero`, e.g. `out/pierogi-ruskie-hero-print.pdf`; `out/pierogi-lineup-hero.png` shows all three. The drawing on its own is `images/illustrations/pierogi-hero.svg`. The back is the same for both, with a line drawing of the storefront next to the family story (`images/illustrations/storefront-line.svg`).
 
 ## Files
