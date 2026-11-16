@@ -1,15 +1,15 @@
 # Pierogi bag
 
-Resealable zipper pouch for packs of 8 pierogi. Three flavors so far: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`). `out/pierogi-lineup.png` and `out/pierogi-lineup-back.png` show the three side by side.
+Resealable zipper pouch for packs of 8 pierogi. Four flavors: cheese and potato (`ruskie`), spinach and cheese (`szpinak`), sauerkraut and mushroom (`kapusta`) and blueberry (`jagody`). `out/pierogi-lineup.png` and `out/pierogi-lineup-back.png` show the three side by side.
 
 - **Size:** 8 in wide x 10 in tall, flat zipper pouch, plus 0.125 in bleed. Zipper about 1.15 in down, tear notches at 0.75 in, 3/8 in side and bottom seals. Ask the printer for their dieline and line it up with `?guides=1`; adjust the sizes at the top of `bag.html` if theirs differ.
 - **Clear window:** the arch on the front is unprinted film so the pierogi show through. Tell the printer: no ink and no white underlay inside the arch.
 - **Brand:** cream bag with Fraunces and EB Garamond, the ink doodles, Pierożek and a "since 1992, born in Greenpoint" stamp (see `brand/brand.md`).
-- **Flavor colors:** each flavor has its own color in place of the brand red, so they're easy to tell apart on the shelf: cheese and potato in Northside Red `#9A1B1F`, spinach and cheese in green `#2F5A3C`, sauerkraut and mushroom in brown `#6B4426`. This is a deliberate exception to the brand guide's red-and-cream rule, for pierogi packaging only.
+- **Flavor colors:** each flavor has its own color in place of the brand red, so they're easy to tell apart on the shelf: cheese and potato in Northside Red `#9A1B1F`, spinach and cheese in green `#2F5A3C`, sauerkraut and mushroom in brown `#6B4426`, blueberry in blue `#33407E`. This is a deliberate exception to the brand guide's red-and-cream rule, for pierogi packaging only.
 
 ## Two front designs
 
-- **Window** (default): a clear arched window shows the real pierogi.
+- **Window** (default): a clear arched window shows the real pierogi. The bottom third is a solid block of the flavor color with the flavor name and a big "Pierogi" in cream, so each flavor stands out on the shelf.
 - **Hero drawing** (`?layout=hero`): a big ink drawing of two pierogi with sour cream and dill sits on a band of the flavor color, with no window, so the whole bag is printed. Files end in `-hero`, e.g. `out/pierogi-ruskie-hero-print.pdf`; `out/pierogi-lineup-hero.png` shows all three. The drawing on its own is `images/illustrations/pierogi-hero.svg`. The back is the same for both.
 
 ## Files

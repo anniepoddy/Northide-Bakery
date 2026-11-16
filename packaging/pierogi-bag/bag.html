@@ -121,6 +121,26 @@
   .serving { display: none; }
   .hero .serving { display: block; position: absolute; right: .62in; top: 6.74in; font: italic .1in/1 var(--body); color: var(--ink); opacity: .7; }
 
+  /* ---------- Shelf-pop front (the default window layout) ----------
+     A big block of the flavor color across the bottom third, with the flavor
+     and a large "Pierogi" in cream, so each flavor reads from across the aisle. */
+  body:not(.hero) .front .logo { top: 1.93in; width: 1.62in; }
+  body:not(.hero) .window-wrap { top: 3.1in; width: 4.4in; height: 2.98in; }
+  body:not(.hero) .window { border-radius: 2.2in 2.2in .14in .14in; box-shadow: 0 0 0 .07in var(--red), 0 0 0 .12in var(--cream), 0 0 0 .145in var(--red); }
+  body:not(.hero) .badge { right: -.72in; bottom: -.05in; width: 1.45in; height: 1.45in; }
+  body:not(.hero) .badge b { font-size: .7in; }
+  body:not(.hero) .stamp { left: -.78in; bottom: -.08in; width: 1.5in; height: 1.5in; }
+  body:not(.hero) .front .band-bottom { top: calc(6.42in + var(--bleed)); align-items: flex-end; }
+  body:not(.hero) .front .copy { top: 6.56in; z-index: 2; color: var(--paper); }
+  body:not(.hero) .front .eyebrow { color: var(--cream); font-size: .145in; opacity: .92; }
+  body:not(.hero) .front h1 { color: var(--paper); margin-top: .1in; line-height: .9; }
+  body:not(.hero) .front h1 .flavor { display: block; font-size: .44in; font-weight: 500; font-style: italic; letter-spacing: -.01em; }
+  body:not(.hero) .front h1 .word { display: block; font-size: 1.14in; font-weight: 700; letter-spacing: -.035em; line-height: .86; margin-top: .02in; }
+  body:not(.hero) .front .polish { color: var(--cream); font-size: .19in; margin-top: .2in; }
+  body:not(.hero) .front .pillowy { color: var(--paper); font-size: .17in; margin-top: .06in; max-width: 4.6in; text-wrap: balance; }
+  body:not(.hero) .front .edge { width: .9in !important; }
+  body:not(.hero) .front .edge[style*="whisk"] { display: none; }
+
   /* Heritage stamp, opposite the count badge */
   .stamp { position: absolute; left: -.7in; bottom: .0in; width: 1.48in; height: 1.48in; transform: rotate(-9deg); color: var(--red); }
   .stamp svg { width: 100%; height: 100%; overflow: visible; }
@@ -411,6 +431,19 @@
       boil: "[Bring a large pot of salted water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
       fry: "[Boil first and drain. Fry in butter over medium heat until golden on both sides. Top with fried onions.]",
       ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. wheat, egg]."
+    },
+    jagody: {
+      color: "#33407E",   /* blueberry blue */
+      eyebrow: "Authentic Polish · Greenpoint & Williamsburg since 1992",
+      name: "Blueberry pierogi",
+      polish: "Pierogi z jagodami",
+      tagline: "Soft, pillowy dough folded by hand around sweet blueberries.",
+      netwt: "Net wt. [00] oz ([000] g)",
+      storage: "[Keep frozen]",
+      backIntro: "A soft, tender dough folded and crimped around sweet blueberries, the Polish summer favorite. Eight in a bag, for dessert or a sweet dinner.",
+      boil: "[Bring a large pot of water to a boil. Add the pierogi straight from the freezer and stir once. When they float, cook 3 to 4 minutes more, then drain.]",
+      fry: "[Boil first and drain. Warm in a little butter if you like. Top with sweetened sour cream or a dusting of sugar.]",
+      ingredients: "[Ingredient list from the kitchen, in order by weight.] Contains: [allergens, e.g. wheat, egg, milk]."
     }
   };
 
@@ -420,6 +453,14 @@
   document.documentElement.style.setProperty("--red", f.color);
   document.title = "Pierogi bag: " + f.name;
   if (f.name.length > 26) document.querySelector(".front h1").classList.add("long");
+  if (params.get("layout") !== "hero") {
+    // Window layout: the flavor on one line, then a big "Pierogi"
+    const h1 = document.querySelector(".front h1");
+    h1.innerHTML = "";
+    const fl = document.createElement("span"); fl.className = "flavor"; fl.textContent = f.name.replace(/ pierogi$/i, "");
+    const w = document.createElement("span"); w.className = "word"; w.textContent = "Pierogi";
+    h1.append(fl, w);
+  }
   if (params.has("guides")) document.body.classList.add("guides");
   if (params.has("print")) document.body.classList.add("print");
   if (params.get("layout") === "hero") document.body.classList.add("hero");
