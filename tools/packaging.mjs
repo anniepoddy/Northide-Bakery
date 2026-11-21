@@ -422,7 +422,7 @@ export function boxFront(fl) {
 // ---------- preview page ----------
 
 const FONTS = 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap';
-export { FONTS };
+export { FONTS, pierog, garnish };
 
 function previewPage() {
   const cards = FLAVORS.map(fl => `
