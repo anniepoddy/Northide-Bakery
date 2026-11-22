@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pierogi pouch mockup</title>
+<!-- Stand-up pouch mockup. Swap the artwork by replacing canva-front.png (any portrait image).
+     Render: node packaging/pouch-mockup/render.mjs -->
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1800px; height: 1200px; overflow: hidden;
+    background: radial-gradient(120% 90% at 50% 30%, #f4f1ec 0%, #e4e0d9 55%, #cfcac2 100%); }
+  .floor { position: absolute; left: 0; right: 0; top: 960px; bottom: 0;
+    background: linear-gradient(#d6d1c9, #c3bdb4); }
+  .floor::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: rgba(255,255,255,.5); }
+  .pouch { position: absolute; }
+  .pouch svg { display: block; overflow: visible; }
+  .p-front { left: 690px; top: 120px; z-index: 2; }
+  .p-side { left: 250px; top: 205px; transform: perspective(1600px) rotateY(32deg) rotateZ(-1.5deg); transform-origin: 50% 100%; z-index: 1; filter: brightness(.96); }
+  .p-back { left: 1210px; top: 230px; transform: perspective(1600px) rotateY(-28deg) rotateZ(1.2deg) scale(.92); transform-origin: 50% 100%; z-index: 1; filter: brightness(.95); }
+  .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(40,30,20,.45), rgba(40,30,20,0)); }
+  .label { position: absolute; left: 0; right: 0; bottom: 40px; text-align: center; font: 600 22px/1.3 Georgia, serif; letter-spacing: .14em; color: #6f675d; font-variant-caps: all-small-caps; }
+</style>
+</head>
+<body>
+<div class="floor"></div>
+<div class="shadow" style="left:640px;top:925px;width:520px;height:90px"></div>
+<div class="shadow" style="left:240px;top:930px;width:400px;height:70px;opacity:.8"></div>
+<div class="shadow" style="left:1180px;top:930px;width:400px;height:70px;opacity:.8"></div>
+
+<template id="pouch">
+<svg width="420" height="830" viewBox="0 0 420 830">
+  <defs>
+    <!-- pouch silhouette: flat top seal, sides bulge a little, rounded gusset bottom -->
+    <clipPath id="ID-shape"><path d="M14 0H406Q410 0 410 4V120C414 300 418 560 416 760Q414 812 360 818H60Q6 812 4 760C2 560 6 300 10 120V4Q10 0 14 0Z"/></clipPath>
+    <linearGradient id="ID-light" x1="0" x2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".38"/><stop offset=".08" stop-color="#000" stop-opacity=".12"/>
+      <stop offset=".3" stop-color="#fff" stop-opacity=".10"/><stop offset=".42" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset=".88" stop-color="#000" stop-opacity=".10"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".40"/>
+    </linearGradient>
+    <linearGradient id="ID-vert" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset=".14" stop-color="#000" stop-opacity="0"/>
+      <stop offset=".86" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/>
+    </linearGradient>
+    <pattern id="ID-crimp" width="4" height="10" patternUnits="userSpaceOnUse"><rect width="2" height="10" fill="#000" opacity=".12"/><rect x="2" width="1" height="10" fill="#fff" opacity=".22"/></pattern>
+    <filter id="ID-frost"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2.6 1.25"/></filter>
+    <filter id="ID-soft"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <g clip-path="url(#ID-shape)">
+    <rect width="420" height="830" fill="#F2E8D9"/>
+    <!-- artwork, starting below the top seal -->
+    <image href="canva-front.png" x="0" y="58" width="420" height="735" preserveAspectRatio="xMidYMin slice"/>
+    <!-- top heat seal and zipper -->
+    <rect width="420" height="40" fill="#F2E8D9"/><rect width="420" height="40" fill="url(#ID-crimp)"/>
+    <rect y="40" width="420" height="18" fill="#F2E8D9"/>
+    <path d="M0 47H420" stroke="#000" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M0 52H420" stroke="#fff" stroke-opacity=".5" stroke-width="2"/>
+    <path d="M0 57H420" stroke="#000" stroke-opacity=".14" stroke-width="1.5"/>
+    <!-- bottom gusset seal -->
+    <path d="M0 778Q210 800 420 778V830H0Z" fill="#000" opacity=".10"/>
+    <path d="M30 790Q210 808 390 790" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none"/>
+    <!-- lighting, gloss and frost -->
+    <rect width="420" height="830" fill="url(#ID-light)"/>
+    <rect width="420" height="830" fill="url(#ID-vert)"/>
+    <path d="M150 70C140 300 150 560 140 790" stroke="#fff" stroke-width="22" opacity=".18" filter="url(#ID-soft)" fill="none"/>
+    <path d="M300 120C306 340 300 560 308 760" stroke="#fff" stroke-width="10" opacity=".14" filter="url(#ID-soft)" fill="none"/>
+    <path d="M10 160Q60 175 70 260M410 330Q360 350 352 430M12 560Q56 548 70 610" stroke="#000" stroke-width="5" opacity=".10" filter="url(#ID-soft)" fill="none"/>
+    <rect width="420" height="830" filter="url(#ID-frost)" opacity=".16"/>
+    <rect width="420" height="160" y="670" filter="url(#ID-frost)" opacity=".2"/>
+  </g>
+  <!-- tear notches -->
+  <path d="M10 26l9 5-9 5Z" fill="#cfcac2"/><path d="M410 26l-9 5 9 5Z" fill="#cfcac2"/>
+  <path d="M14 0H406Q410 0 410 4V120C414 300 418 560 416 760Q414 812 360 818H60Q6 812 4 760C2 560 6 300 10 120V4Q10 0 14 0Z" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/>
+</svg>
+</template>
+
+<div class="pouch p-side"></div>
+<div class="pouch p-back"></div>
+<div class="pouch p-front"></div>
+<p class="label">Northside Bakery · frozen pierogi · stand-up pouch</p>
+
+<script>
+  const tpl = document.getElementById("pouch").innerHTML;
+  document.querySelectorAll(".pouch").forEach((el, i) => {
+    el.innerHTML = tpl.replaceAll("ID-", "p" + i + "-");
+  });
+  document.querySelector(".p-front svg").setAttribute("width", 500);
+  document.querySelector(".p-front svg").setAttribute("height", 988);
+</script>
+</body>
+</html>
